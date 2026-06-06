@@ -17,7 +17,11 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.abhijeetsingh200.Lockly",
+      "permissions": [
+        "QUERY_ALL_PACKAGES"
+      ]
     },
     "web": {
       "output": "static",
@@ -39,6 +43,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "b2dc1d0c-5b3b-4050-98ec-7c64e6314106"
+      }
+    },
+    "owner": "abhijeetsingh200"
   }
 }
