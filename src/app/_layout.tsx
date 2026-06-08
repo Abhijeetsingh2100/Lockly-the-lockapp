@@ -1,12 +1,14 @@
 import "../../global.css";
-import { Stack } from "expo-router";
+import { Stack, useRouter, useRootNavigationState } from "expo-router";
 import { useState, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { SafeStorage } from "../utils/storage";
 import PinPad from "../components/PinPad";
 import { SafeAreaView } from "react-native-safe-area-context";
+import * as Linking from 'expo-linking';
 
 export default function RootLayout() {
+  const url = Linking.useURL();
   const [isAppReady, setIsAppReady] = useState(false);
   const [isLocked, setIsLocked] = useState(true);
   const [hasPin, setHasPin] = useState<boolean | null>(null);
@@ -19,9 +21,31 @@ export default function RootLayout() {
   const [currentPin, setCurrentPin] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
+  const router = useRouter();
+
   useEffect(() => {
     checkPinStatus();
   }, []);
+
+  const rootNavigationState = useRootNavigationState();
+  
+  useEffect(() => {
+    // Only navigate after the Root Layout has fully mounted its navigator
+    if (!rootNavigationState?.key) return;
+
+    if (isAppReady && url && url.includes('locked?pkg=')) {
+      const tMatch = url.match(/t=([^&]+)/);
+      const pkgMatch = url.match(/pkg=([^&]+)/);
+      
+      if (tMatch && tMatch[1] && pkgMatch && pkgMatch[1]) {
+        const timestamp = parseInt(tMatch[1], 10);
+        // If the deep link is fresh (less than 30s old), explicitly force the router to the locked screen
+        if (Date.now() - timestamp < 30000) {
+          router.replace(`/locked?pkg=${pkgMatch[1]}`);
+        }
+      }
+    }
+  }, [rootNavigationState?.key, url, isAppReady]);
 
   const checkPinStatus = async () => {
     try {
@@ -87,8 +111,17 @@ export default function RootLayout() {
     );
   }
 
-  // If app is not locked, show the standard navigation
-  if (!isLocked && hasPin) {
+  const tMatch = url?.match(/t=([^&]+)/);
+  let isDeepLinkLock = false;
+  if (url?.includes('locked?pkg=') && tMatch && tMatch[1]) {
+    const timestamp = parseInt(tMatch[1], 10);
+    if (Date.now() - timestamp < 30000) { // 30 seconds to account for cold boot
+      isDeepLinkLock = true;
+    }
+  }
+
+  // If app is not locked or it's a deep link lock for another app, show the standard navigation
+  if ((!isLocked && hasPin) || isDeepLinkLock) {
     return <Stack screenOptions={{headerShown: false}}/>;
   }
 
