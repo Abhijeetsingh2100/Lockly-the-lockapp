@@ -1,56 +1,109 @@
 import { Tabs } from 'expo-router';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity, Animated } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+
+function AnimatedTabBar({ state, descriptors, navigation }: any) {
+  const slideAnim = useRef(new Animated.Value(0)).current;
+  const [tabWidth, setTabWidth] = useState(0);
+
+  useEffect(() => {
+    if (tabWidth > 0) {
+      Animated.spring(slideAnim, {
+        toValue: state.index * tabWidth,
+        useNativeDriver: true,
+        tension: 65,
+        friction: 10,
+      }).start();
+    }
+  }, [state.index, tabWidth]);
+
+  return (
+    <View 
+      className="flex-row items-center bg-[#F8FAFC]" 
+      style={{ height: 85, paddingHorizontal: 20, paddingBottom: 15 }}
+      onLayout={(e) => {
+        const availableWidth = e.nativeEvent.layout.width - 40; // 40 is paddingHorizontal * 2
+        setTabWidth(availableWidth / 3);
+      }}
+    >
+      {/* Sliding Blue Pill Background */}
+      {tabWidth > 0 && (
+        <Animated.View 
+          style={{
+            position: 'absolute',
+            left: 20,
+            bottom: 15,
+            width: tabWidth,
+            height: 60,
+            alignItems: 'center',
+            justifyContent: 'center',
+            transform: [{ translateX: slideAnim }]
+          }}
+        >
+          <View style={{ width: 100, height: 60, backgroundColor: '#2563EB', borderRadius: 24 }} />
+        </Animated.View>
+      )}
+
+      {/* Tab Buttons */}
+      {state.routes.map((route: any, index: number) => {
+        const isFocused = state.index === index;
+
+        const onPress = () => {
+          const event = navigation.emit({
+            type: 'tabPress',
+            target: route.key,
+            canPreventDefault: true,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name);
+          }
+        };
+
+        let iconName = '';
+        let IconFamily: any = Ionicons;
+        let label = '';
+
+        if (route.name === 'index') {
+          iconName = 'home-outline';
+          label = 'Apps';
+        } else if (route.name === 'permissions') {
+          iconName = 'shield-outline';
+          IconFamily = MaterialCommunityIcons;
+          label = 'Permissions';
+        } else if (route.name === 'settings') {
+          iconName = 'settings-outline';
+          label = 'Settings';
+        }
+
+        return (
+          <TouchableOpacity
+            key={route.key}
+            activeOpacity={1}
+            onPress={onPress}
+            style={{ flex: 1, height: 60, alignItems: 'center', justifyContent: 'center' }}
+          >
+            <IconFamily name={iconName} size={22} color={isFocused ? '#FFFFFF' : '#64748B'} />
+            <Text className={`text-[11px] font-bold mt-1 ${isFocused ? 'text-white' : 'text-[#64748B]'}`}>
+              {label}
+            </Text>
+          </TouchableOpacity>
+        );
+      })}
+    </View>
+  );
+}
 
 export default function TabLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarShowLabel: false,
-        tabBarStyle: {
-          backgroundColor: '#F8FAFC',
-          borderTopWidth: 0,
-          elevation: 0,
-          height: 85,
-          paddingHorizontal: 20,
-          alignItems: 'center',
-          justifyContent: 'center',
-        },
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View className={`items-center justify-center w-20 h-[60px] mt-4 rounded-[24px] ${focused ? 'bg-[#2563EB]' : ''}`}>
-              <Ionicons name="home-outline" size={22} color={focused ? '#FFFFFF' : '#64748B'} />
-              <Text className={`text-[11px] font-bold mt-1 ${focused ? 'text-white' : 'text-[#64748B]'}`}>Apps</Text>
-            </View>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="permissions"
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View className={`items-center justify-center w-[100px] h-[60px] mt-4 rounded-[24px] ${focused ? 'bg-[#2563EB]' : ''}`}>
-              <MaterialCommunityIcons name="shield-outline" size={22} color={focused ? '#FFFFFF' : '#64748B'} />
-              <Text className={`text-[11px] font-bold mt-1 ${focused ? 'text-white' : 'text-[#64748B]'}`}>Permissions</Text>
-            </View>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="settings"
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View className={`items-center justify-center w-20 h-[60px] mt-4 rounded-[24px] ${focused ? 'bg-[#2563EB]' : ''}`}>
-              <Ionicons name="settings-outline" size={22} color={focused ? '#FFFFFF' : '#64748B'} />
-              <Text className={`text-[11px] font-bold mt-1 ${focused ? 'text-white' : 'text-[#64748B]'}`}>Settings</Text>
-            </View>
-          ),
-        }}
-      />
+    <Tabs 
+      tabBar={(props) => <AnimatedTabBar {...props} />}
+      screenOptions={{ headerShown: false }}
+    >
+      <Tabs.Screen name="index" />
+      <Tabs.Screen name="permissions" />
+      <Tabs.Screen name="settings" />
     </Tabs>
   );
 }

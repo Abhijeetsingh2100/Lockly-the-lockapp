@@ -1,14 +1,33 @@
 import { View, Text, TextInput, ScrollView, Switch, TouchableOpacity, Modal, Image, FlatList, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons, Feather, FontAwesome5 } from '@expo/vector-icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { AppStorage } from '../../utils/storage';
 
 type AlertButton = { text: string; onPress?: () => void; style?: 'cancel' | 'destructive' | 'default' };
 
 const initialApps: any[] = [];
 
 export default function Home() {
-  const [appStates, setAppStates] = useState(initialApps);
+  const [appStates, setAppStates] = useState<any[]>([]);
+  const [isStorageLoaded, setIsStorageLoaded] = useState(false);
+
+  useEffect(() => {
+    const load = async () => {
+      const stored = await AppStorage.getLockedApps();
+      if (stored && stored.length > 0) {
+        setAppStates(stored);
+      }
+      setIsStorageLoaded(true);
+    };
+    load();
+  }, []);
+
+  useEffect(() => {
+    if (isStorageLoaded) {
+      AppStorage.saveLockedApps(appStates);
+    }
+  }, [appStates, isStorageLoaded]);
   const [modalVisible, setModalVisible] = useState(false);
   const [deviceApps, setDeviceApps] = useState<any[]>([]);
   const [loadingApps, setLoadingApps] = useState(false);

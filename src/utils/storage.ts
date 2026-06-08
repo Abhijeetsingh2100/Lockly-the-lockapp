@@ -45,3 +45,30 @@ export const SafeStorage = {
     }
   }
 };
+
+export const AppStorage = {
+  async getLockedApps(): Promise<any[]> {
+    const data = await SafeStorage.getItem('locked_apps');
+    return data ? JSON.parse(data) : [];
+  },
+
+  async saveLockedApps(apps: any[]): Promise<void> {
+    await SafeStorage.setItem('locked_apps', JSON.stringify(apps));
+  },
+
+  async getAppPermissions(appId: string): Promise<any> {
+    const data = await SafeStorage.getItem(`perms_${appId}`);
+    // Default permissions when an app is first opened in Control Panel
+    return data ? JSON.parse(data) : {
+      wifi: true,
+      bluetooth: true,
+      camera: true,
+      microphone: true,
+      location: true,
+    };
+  },
+
+  async saveAppPermissions(appId: string, permissions: any): Promise<void> {
+    await SafeStorage.setItem(`perms_${appId}`, JSON.stringify(permissions));
+  }
+};

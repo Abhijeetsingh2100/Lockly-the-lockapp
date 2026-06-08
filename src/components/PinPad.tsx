@@ -53,8 +53,8 @@ export default function PinPad({ pin, setPin, title, subtitle, onComplete, error
           <Feather name="lock" size={32} color="#2563EB" />
         </View>
         <Text className="text-3xl font-extrabold text-[#0F172A] mb-2">{title}</Text>
-        {subtitle && <Text className="text-base text-[#64748B] text-center px-4">{subtitle}</Text>}
-        {error && <Text className="text-base text-red-500 font-bold text-center mt-2 px-4">{error}</Text>}
+        {subtitle ? <Text className="text-base text-[#64748B] text-center px-4">{subtitle}</Text> : null}
+        {error ? <Text className="text-base text-red-500 font-bold text-center mt-2 px-4">{error}</Text> : null}
       </View>
 
       {renderDots()}
