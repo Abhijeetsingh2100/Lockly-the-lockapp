@@ -1,4 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NativeModules } from 'react-native';
+
+const { LocklyModule } = NativeModules;
 
 // In-memory fallback for development when native module is missing
 const memoryStorage = new Map<string, string>();
@@ -53,13 +56,18 @@ export const AppStorage = {
   },
 
   async saveLockedApps(apps: any[]): Promise<void> {
-    await SafeStorage.setItem('locked_apps', JSON.stringify(apps));
+    const json = JSON.stringify(apps);
+    await SafeStorage.setItem('locked_apps', json);
+    if (LocklyModule) {
+      LocklyModule.updateLockedApps(json);
+    }
   },
 
   async getAppPermissions(appId: string): Promise<any> {
     const data = await SafeStorage.getItem(`perms_${appId}`);
     // Default permissions when an app is first opened in Control Panel
     return data ? JSON.parse(data) : {
+      disableControlPanel: false,
       wifi: true,
       bluetooth: true,
       camera: true,
@@ -70,5 +78,26 @@ export const AppStorage = {
 
   async saveAppPermissions(appId: string, permissions: any): Promise<void> {
     await SafeStorage.setItem(`perms_${appId}`, JSON.stringify(permissions));
+    
+    // Also push the full locked apps JSON to native module so it picks up the latest disableControlPanel state
+    if (LocklyModule) {
+      const data = await SafeStorage.getItem('locked_apps');
+      if (data) {
+        LocklyModule.updateLockedApps(data);
+      }
+    }
+  },
+
+  async checkAccessibilityPermission(): Promise<boolean> {
+    if (LocklyModule) {
+      return await LocklyModule.checkAccessibilityPermission();
+    }
+    return false;
+  },
+
+  async openAccessibilitySettings(): Promise<void> {
+    if (LocklyModule) {
+      await LocklyModule.openAccessibilitySettings();
+    }
   }
 };

@@ -89,6 +89,7 @@ export default function Home() {
     const newApp = {
       id: Date.now().toString(),
       name: item.label,
+      packageName: item.packageName,
       status: 'Unlocked',
       iconType: 'DeviceIcon',
       iconUri: item.icon,
@@ -117,11 +118,31 @@ export default function Home() {
     );
   };
 
-  const toggleSwitch = (id: string) => {
-    setAppStates(prev => prev.map(app => 
-      app.id === id 
-        ? { ...app, isProtected: !app.isProtected, status: !app.isProtected ? 'Protected' : 'Unlocked' }
-        : app
+  const toggleSwitch = async (id: string) => {
+    const app = appStates.find(a => a.id === id);
+    if (!app?.isProtected) {
+      const isEnabled = await AppStorage.checkAccessibilityPermission();
+      if (!isEnabled) {
+        showAlert(
+          "Permission Required",
+          "Lockly requires the Accessibility Service to detect when locked apps are opened. Please enable it in Settings to protect your apps.",
+          [
+            { text: "Cancel", style: "cancel" },
+            { 
+              text: "Open Settings", 
+              style: "default",
+              onPress: () => AppStorage.openAccessibilitySettings()
+            }
+          ]
+        );
+        return;
+      }
+    }
+
+    setAppStates(prev => prev.map(a => 
+      a.id === id 
+        ? { ...a, isProtected: !a.isProtected, status: !a.isProtected ? 'Protected' : 'Unlocked' }
+        : a
     ));
   };
 

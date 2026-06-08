@@ -152,11 +152,18 @@ export default function Permissions() {
               </View>
 
               <View className="bg-white rounded-[32px] px-5 py-3 shadow-sm border border-gray-50 mb-12">
-                {renderPermissionItem('wifi', 'Wi-Fi / Network', 'wifi', Feather)}
-                {renderPermissionItem('bluetooth', 'Bluetooth', 'bluetooth', Feather)}
-                {renderPermissionItem('camera', 'Camera', 'camera-outline', Ionicons)}
-                {renderPermissionItem('microphone', 'Microphone', 'mic-outline', Ionicons)}
-                {renderPermissionItem('location', 'Location Services', 'map-pin', Feather, true)}
+                {renderPermissionItem('disableControlPanel', 'Disable Control Panel', 'shield', Feather, !permissions.disableControlPanel)}
+                
+                {permissions.disableControlPanel && (
+                  <View className="mt-2">
+                    <Text className="text-[#64748B] text-xs font-bold uppercase tracking-wider mb-2 ml-2 mt-2">Allowed Features</Text>
+                    {renderPermissionItem('wifi', 'Wi-Fi / Network', 'wifi', Feather)}
+                    {renderPermissionItem('bluetooth', 'Bluetooth', 'bluetooth', Feather)}
+                    {renderPermissionItem('camera', 'Camera', 'camera-outline', Ionicons)}
+                    {renderPermissionItem('microphone', 'Microphone', 'mic-outline', Ionicons)}
+                    {renderPermissionItem('location', 'Location Services', 'map-pin', Feather, true)}
+                  </View>
+                )}
               </View>
             </ScrollView>
           )}
