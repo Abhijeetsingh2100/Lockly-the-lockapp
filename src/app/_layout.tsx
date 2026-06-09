@@ -6,12 +6,14 @@ import { SafeStorage } from "../utils/storage";
 import PinPad from "../components/PinPad";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Linking from 'expo-linking';
+import * as LocalAuthentication from 'expo-local-authentication';
 
 export default function RootLayout() {
   const url = Linking.useURL();
   const [isAppReady, setIsAppReady] = useState(false);
   const [isLocked, setIsLocked] = useState(true);
   const [hasPin, setHasPin] = useState<boolean | null>(null);
+  const [biometricEnabled, setBiometricEnabled] = useState(false);
   
   // Setup flow state
   const [setupStep, setSetupStep] = useState<'create' | 'confirm'>('create');
@@ -55,6 +57,8 @@ export default function RootLayout() {
       } else {
         setHasPin(false);
       }
+      const biometric = await SafeStorage.getItem('app_biometric');
+      setBiometricEnabled(biometric === 'true');
     } catch (e) {
       console.log('Error checking pin status', e);
       setHasPin(false);
@@ -103,6 +107,21 @@ export default function RootLayout() {
     }
   };
 
+  const handleBiometricUnlock = async () => {
+    try {
+      const result = await LocalAuthentication.authenticateAsync({
+        promptMessage: 'Authenticate to unlock Lockly'
+      });
+      if (result.success) {
+        setIsLocked(false);
+      } else {
+        setErrorMsg('Biometric authentication failed');
+      }
+    } catch (e) {
+      setErrorMsg('Error with biometric authentication');
+    }
+  };
+
   if (!isAppReady || hasPin === null) {
     return (
       <View className="flex-1 bg-[#F8FAFC] items-center justify-center">
@@ -139,6 +158,8 @@ export default function RootLayout() {
           }}
           onComplete={handleUnlockPin}
           error={errorMsg}
+          showBiometric={biometricEnabled}
+          onBiometricPress={handleBiometricUnlock}
         />
       ) : setupStep === 'create' ? (
         <PinPad

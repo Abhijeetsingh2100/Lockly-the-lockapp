@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { Feather, Ionicons } from '@expo/vector-icons';
 
 interface PinPadProps {
   pin: string;
@@ -9,9 +9,11 @@ interface PinPadProps {
   subtitle?: string;
   onComplete: (finalPin: string) => void;
   error?: string;
+  showBiometric?: boolean;
+  onBiometricPress?: () => void;
 }
 
-export default function PinPad({ pin, setPin, title, subtitle, onComplete, error }: PinPadProps) {
+export default function PinPad({ pin, setPin, title, subtitle, onComplete, error, showBiometric, onBiometricPress }: PinPadProps) {
   const handlePress = (num: string) => {
     if (pin.length < 6) {
       const newPin = pin + num;
@@ -65,6 +67,19 @@ export default function PinPad({ pin, setPin, title, subtitle, onComplete, error
       >
         {buttons.map((btn, index) => {
           if (btn === '') {
+            if (showBiometric && onBiometricPress) {
+              return (
+                <TouchableOpacity 
+                  key={index} 
+                  activeOpacity={0.7}
+                  onPress={onBiometricPress}
+                  className="items-center justify-center bg-gray-50"
+                  style={{ width: 85, height: 85, borderRadius: 45 }}
+                >
+                  <Ionicons name="finger-print" size={32} color="#2563EB" />
+                </TouchableOpacity>
+              );
+            }
             return <View key={index} style={{ width: 85, height: 85 }} />;
           }
           if (btn === 'delete') {

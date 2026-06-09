@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import PinPad from '../components/PinPad';
 import { SafeStorage } from '../utils/storage';
 import { NativeModules } from 'react-native';
+import * as LocalAuthentication from 'expo-local-authentication';
 
 const { LocklyModule } = NativeModules;
 
@@ -17,6 +18,7 @@ export default function LockedScreen() {
   const [enteredPin, setEnteredPin] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [savedPin, setSavedPin] = useState<string | null>(null);
+  const [biometricEnabled, setBiometricEnabled] = useState(false);
 
   useEffect(() => {
     // Prevent back button from bypassing lock
@@ -26,6 +28,8 @@ export default function LockedScreen() {
     const loadPin = async () => {
       const pin = await SafeStorage.getItem('app_pin');
       setSavedPin(pin);
+      const biometric = await SafeStorage.getItem('app_biometric');
+      setBiometricEnabled(biometric === 'true');
     };
     loadPin();
 
@@ -67,6 +71,32 @@ export default function LockedScreen() {
     }
   };
 
+  const handleBiometricUnlock = async () => {
+    try {
+      const result = await LocalAuthentication.authenticateAsync({
+        promptMessage: 'Authenticate to access application'
+      });
+      if (result.success) {
+        if (pkg) {
+          if (LocklyModule) {
+            await LocklyModule.setUnlockedApp(pkg.toString());
+          }
+          RNLauncherKitHelper.launchApplication(pkg.toString());
+          router.replace('/');
+          setTimeout(() => {
+            BackHandler.exitApp();
+          }, 500);
+        } else {
+          BackHandler.exitApp();
+        }
+      } else {
+        setErrorMsg('Biometric authentication failed');
+      }
+    } catch (e) {
+      setErrorMsg('Error with biometric authentication');
+    }
+  };
+
   if (!savedPin) {
     return (
       <View className="flex-1 bg-black items-center justify-center">
@@ -84,6 +114,8 @@ export default function LockedScreen() {
         subtitle="Enter your Lockly PIN to access this application"
         error={errorMsg}
         onComplete={handleVerifyPin}
+        showBiometric={biometricEnabled}
+        onBiometricPress={handleBiometricUnlock}
       />
     </SafeAreaView>
   );
