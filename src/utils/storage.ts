@@ -99,5 +99,12 @@ export const AppStorage = {
     if (LocklyModule) {
       await LocklyModule.openAccessibilitySettings();
     }
+  },
+
+  async setAutoLockDelay(delayInMs: number): Promise<void> {
+    await SafeStorage.setItem('app_autolock_delay', delayInMs.toString());
+    if (LocklyModule && LocklyModule.setAutoLockDelay) {
+      LocklyModule.setAutoLockDelay(delayInMs);
+    }
   }
 };

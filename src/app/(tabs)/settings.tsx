@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, ScrollView, Switch, Modal, Alert } from '
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useState, useEffect } from 'react';
-import { SafeStorage } from '../../utils/storage';
+import { SafeStorage, AppStorage } from '../../utils/storage';
 import PinPad from '../../components/PinPad';
 import * as LocalAuthentication from 'expo-local-authentication';
 
@@ -30,19 +30,38 @@ export default function Settings() {
     setCustomAlert(prev => ({ ...prev, visible: false }));
   };
 
-  // Toggles state
+  // Settings state
   const [biometricEnabled, setBiometricEnabled] = useState(false);
-  const [autoLockEnabled, setAutoLockEnabled] = useState(false);
+  const [autoLockDelay, setAutoLockDelay] = useState(0);
+  const [isAutoLockModalVisible, setIsAutoLockModalVisible] = useState(false);
   const [darkModeEnabled, setDarkModeEnabled] = useState(false);
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
 
   useEffect(() => {
-    const checkBiometric = async () => {
+    const loadSettings = async () => {
       const isEnabled = await SafeStorage.getItem('app_biometric');
       setBiometricEnabled(isEnabled === 'true');
+      const delay = await SafeStorage.getItem('app_autolock_delay');
+      if (delay) {
+        setAutoLockDelay(parseInt(delay, 10));
+      }
     };
-    checkBiometric();
+    loadSettings();
   }, []);
+
+  const handleAutoLockSelect = async (delayMs: number) => {
+    setAutoLockDelay(delayMs);
+    setIsAutoLockModalVisible(false);
+    await AppStorage.setAutoLockDelay(delayMs);
+  };
+
+  const getAutoLockLabel = (delay: number) => {
+    if (delay === 0) return 'Immediately';
+    if (delay === 60000) return '1 minute';
+    if (delay === 300000) return '5 minutes';
+    if (delay === 900000) return '15 minutes';
+    return 'Immediately';
+  };
 
   const handleSetupBiometric = async () => {
     try {
@@ -187,11 +206,6 @@ export default function Settings() {
             onPress={handleStartChangePin}
           />
           <SettingItem 
-            icon={<MaterialCommunityIcons name="grid" size={20} color="#475569" />}
-            title="Change Pattern"
-            type="link"
-          />
-          <SettingItem 
             icon={<Ionicons name="finger-print" size={20} color="#475569" />}
             title="Biometric Authentication"
             type="link"
@@ -200,9 +214,9 @@ export default function Settings() {
           <SettingItem 
             icon={<Feather name="clock" size={20} color="#475569" />}
             title="Auto Lock"
-            type="toggle"
-            value={autoLockEnabled}
-            onToggle={setAutoLockEnabled}
+            type="link"
+            value={getAutoLockLabel(autoLockDelay)}
+            onPress={() => setIsAutoLockModalVisible(true)}
             isLast={true}
           />
         </View>
@@ -359,6 +373,42 @@ export default function Settings() {
                 </TouchableOpacity>
               )}
             </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Auto Lock Delay Modal */}
+      <Modal animationType="slide" visible={isAutoLockModalVisible} onRequestClose={() => setIsAutoLockModalVisible(false)} transparent={true}>
+        <View className="flex-1 bg-black/50 justify-end">
+          <View className="bg-white rounded-t-[32px] p-6 pb-12">
+            <View className="flex-row justify-between items-center mb-6">
+              <Text className="text-2xl font-bold text-[#0F172A]">Auto Lock Delay</Text>
+              <TouchableOpacity onPress={() => setIsAutoLockModalVisible(false)} className="bg-gray-100 p-2 rounded-full">
+                <Feather name="x" size={24} color="#0F172A" />
+              </TouchableOpacity>
+            </View>
+            <Text className="text-[#64748B] text-base mb-6">
+              Select how much time after closing a locked app before it requires unlocking again.
+            </Text>
+            
+            {[
+              { label: 'Immediately', value: 0 },
+              { label: '1 minute', value: 60000 },
+              { label: '5 minutes', value: 300000 },
+              { label: '15 minutes', value: 900000 }
+            ].map((option) => (
+              <TouchableOpacity 
+                key={option.value}
+                activeOpacity={0.7}
+                onPress={() => handleAutoLockSelect(option.value)}
+                className="flex-row items-center justify-between py-4 border-b border-gray-100"
+              >
+                <Text className="text-[#1E293B] text-lg font-medium">{option.label}</Text>
+                {autoLockDelay === option.value && (
+                  <Feather name="check" size={24} color="#2563EB" />
+                )}
+              </TouchableOpacity>
+            ))}
           </View>
         </View>
       </Modal>
