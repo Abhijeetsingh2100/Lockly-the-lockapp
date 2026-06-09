@@ -81,7 +81,16 @@ export default function Permissions() {
   return (
     <SafeAreaView className="flex-1 bg-[#F8FAFC]" edges={['top']}>
       {/* Header */}
-      <View className="px-6 pt-4 pb-6 border-b border-gray-100">
+      <View className="flex-row justify-between items-center px-6 pt-4 pb-2">
+              <View className="flex-row items-center gap-2">
+                <MaterialCommunityIcons name="shield-check" size={28} color="#2563EB" />
+                <Text className="text-[#2563EB] text-2xl font-bold tracking-tight">Lockly</Text>
+              </View>
+              <TouchableOpacity>
+                <Feather name="more-vertical" size={24} color="#475569" />
+              </TouchableOpacity>
+            </View>
+      <View className="px-6 pt-4 pb-2 border-b border-gray-100">
         <Text className="text-[#0F172A] text-4xl font-extrabold">Permissions</Text>
       </View>
 

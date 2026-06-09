@@ -3,7 +3,7 @@ import { NativeModules } from 'react-native';
 
 const { LocklyModule } = NativeModules;
 
-// In-memory fallback for development when native module is missing
+
 const memoryStorage = new Map<string, string>();
 let isNativeStorageFailing = false;
 
