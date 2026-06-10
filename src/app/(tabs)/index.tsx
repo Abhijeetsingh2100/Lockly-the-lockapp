@@ -91,12 +91,17 @@ export default function Home() {
     const isEnabled = await AppStorage.checkAccessibilityPermission();
     if (!isEnabled) {
       showAlert(
-        "Permission Required",
-        "Lockly requires the Accessibility Service to protect apps. Please enable it in Settings before adding an app.",
+        "Accessibility Required",
+        "Android 13+ blocks Accessibility for side-loaded apps. \n\n1. Click 'App Info' below, tap the 3 dots (⋮) in the top-right, and select 'Allow restricted settings'.\n2. Then click 'Accessibility' to turn it on.",
         [
           { text: "Cancel", style: "cancel" },
           { 
-            text: "Open Settings", 
+            text: "App Info", 
+            style: "default",
+            onPress: () => AppStorage.openAppInfoSettings()
+          },
+          { 
+            text: "Accessibility", 
             style: "default",
             onPress: () => AppStorage.openAccessibilitySettings()
           }
@@ -399,7 +404,7 @@ export default function Home() {
             <Text className="text-xl font-bold text-[#0F172A] text-center mb-2">{customAlert.title}</Text>
             <Text className="text-[#64748B] text-base text-center mb-8">{customAlert.message}</Text>
 
-            <View className="flex-row gap-3 w-full">
+            <View className="flex-row flex-wrap gap-3 w-full justify-center">
               {customAlert.buttons ? customAlert.buttons.map((btn, index) => (
                 <TouchableOpacity 
                   key={index}
