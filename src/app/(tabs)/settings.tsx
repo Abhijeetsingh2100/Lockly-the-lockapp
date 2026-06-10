@@ -6,10 +6,12 @@ import { SafeStorage, AppStorage } from '../../utils/storage';
 import PinPad from '../../components/PinPad';
 import * as LocalAuthentication from 'expo-local-authentication';
 import { useAuth } from '../../context/AuthContext';
+import { useRouter } from 'expo-router';
 
 type AlertButton = { text: string; onPress?: () => void; style?: 'cancel' | 'destructive' | 'default' };
 
 export default function Settings() {
+  const router = useRouter();
   const { role } = useAuth();
   const [isChangingPin, setIsChangingPin] = useState(false);
   const [isBiometricSetupVisible, setIsBiometricSetupVisible] = useState(false);
@@ -36,8 +38,6 @@ export default function Settings() {
   const [biometricEnabled, setBiometricEnabled] = useState(false);
   const [autoLockDelay, setAutoLockDelay] = useState(0);
   const [isAutoLockModalVisible, setIsAutoLockModalVisible] = useState(false);
-  const [darkModeEnabled, setDarkModeEnabled] = useState(false);
-  const [notificationsEnabled, setNotificationsEnabled] = useState(true);
 
   useEffect(() => {
     const loadSettings = async () => {
@@ -227,25 +227,7 @@ export default function Settings() {
           </>
         )}
 
-        {/* GENERAL SECTION */}
-        <SectionHeader title="General" />
-        <View className="bg-[#EEF2FF] rounded-3xl px-4 py-2">
-          <SettingItem 
-            icon={<Feather name="moon" size={20} color="#475569" />}
-            title="Dark Mode"
-            type="toggle"
-            value={darkModeEnabled}
-            onToggle={setDarkModeEnabled}
-          />
-          <SettingItem 
-            icon={<Feather name="bell" size={20} color="#475569" />}
-            title="Notifications"
-            type="toggle"
-            value={notificationsEnabled}
-            onToggle={setNotificationsEnabled}
-            isLast={true}
-          />
-        </View>
+
 
         {/* ABOUT SECTION */}
         <SectionHeader title="About" />
@@ -254,6 +236,7 @@ export default function Settings() {
             icon={<MaterialCommunityIcons name="shield-check-outline" size={20} color="#475569" />}
             title="Privacy Policy"
             type="link"
+            onPress={() => router.push('/privacy')}
           />
           <SettingItem 
             icon={<Feather name="info" size={20} color="#475569" />}
