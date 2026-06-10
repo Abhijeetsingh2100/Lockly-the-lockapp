@@ -197,7 +197,16 @@ export default function RootLayout() {
   if (!isLocked && (hasPin || isUserMode)) {
     return (
       <AuthProvider initialRole={isUserMode ? 'user' : 'admin'}>
-        {isUserMode ? <GuestWifiScreen /> : <Stack screenOptions={{headerShown: false}}/>}
+        {isUserMode ? (
+          <GuestWifiScreen 
+            onBack={() => {
+              setLoginRole('none');
+              setIsLocked(true);
+            }} 
+          />
+        ) : (
+          <Stack screenOptions={{headerShown: false}}/>
+        )}
       </AuthProvider>
     );
   }

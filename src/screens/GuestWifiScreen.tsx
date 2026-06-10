@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import WifiManager from 'react-native-wifi-reborn';
 
-export default function GuestWifiScreen() {
+export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
   const [isEnabled, setIsEnabled] = useState(false);
   const [networks, setNetworks] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,22 @@ export default function GuestWifiScreen() {
 
   useEffect(() => {
     checkWifiStatus();
-  }, []);
+    
+    const backAction = () => {
+      if (onBack) {
+        onBack();
+        return true;
+      }
+      return false;
+    };
+    const backHandler = import('react-native').then(({ BackHandler }) => {
+      return BackHandler.addEventListener('hardwareBackPress', backAction);
+    });
+    
+    return () => {
+      backHandler.then(handler => handler.remove());
+    };
+  }, [onBack]);
 
   const checkWifiStatus = async () => {
     try {
