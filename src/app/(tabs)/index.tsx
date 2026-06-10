@@ -81,10 +81,27 @@ export default function Home() {
     setLoadingApps(false);
   };
 
-  const handleAddApp = (item: any) => {
+  const handleAddApp = async (item: any) => {
     // Prevent adding same app multiple times
     if (appStates.some(app => app.name === item.label)) {
       showAlert("Already Added", `${item.label} is already in your apps list.`);
+      return;
+    }
+
+    const isEnabled = await AppStorage.checkAccessibilityPermission();
+    if (!isEnabled) {
+      showAlert(
+        "Permission Required",
+        "Lockly requires the Accessibility Service to protect apps. Please enable it in Settings before adding an app.",
+        [
+          { text: "Cancel", style: "cancel" },
+          { 
+            text: "Open Settings", 
+            style: "default",
+            onPress: () => AppStorage.openAccessibilitySettings()
+          }
+        ]
+      );
       return;
     }
 
@@ -92,12 +109,12 @@ export default function Home() {
       id: Date.now().toString(),
       name: item.label,
       packageName: item.packageName,
-      status: 'Unlocked',
+      status: 'Protected',
       iconType: 'DeviceIcon',
       iconUri: item.icon,
       bgColor: 'bg-[#F1F5F9]',
       iconColor: '#475569',
-      isProtected: false,
+      isProtected: true,
       icon: '', // Optional default for backward compatibility
     };
 
@@ -192,7 +209,11 @@ export default function Home() {
   };
 
   const filteredApps = appStates.filter(app => app.name.toLowerCase().includes(searchQuery.toLowerCase()));
-  const filteredDeviceApps = deviceApps.filter(app => app.label.toLowerCase().includes(addAppSearchQuery.toLowerCase()));
+  const filteredDeviceApps = deviceApps.filter(
+    app => 
+      app.label.toLowerCase().includes(addAppSearchQuery.toLowerCase()) && 
+      !appStates.some(addedApp => addedApp.name === app.label)
+  );
 
   return (
     <SafeAreaView className="flex-1 bg-[#F8FAFC]" edges={['top']}>
@@ -318,7 +339,6 @@ export default function Home() {
                 windowSize={5}
                 removeClippedSubviews={true}
                 renderItem={({ item }) => {
-                  const isAdded = appStates.some(app => app.name === item.label);
                   return (
                   <View className="flex-row items-center justify-between py-4 border-b border-gray-100">
                     <View className="flex-row items-center gap-4 flex-1">
@@ -338,18 +358,12 @@ export default function Home() {
                         <Text className="text-gray-500 text-xs mt-1" numberOfLines={1}>{item.packageName}</Text>
                       </View>
                     </View>
-                    {isAdded ? (
-                      <View className="bg-gray-100 px-4 py-2 rounded-full">
-                        <Text className="text-gray-400 font-bold">Added</Text>
-                      </View>
-                    ) : (
-                      <TouchableOpacity 
-                        className="bg-[#EEF2FF] px-4 py-2 rounded-full"
-                        onPress={() => handleAddApp(item)}
-                      >
-                        <Text className="text-[#2563EB] font-bold">Add</Text>
-                      </TouchableOpacity>
-                    )}
+                    <TouchableOpacity 
+                      className="bg-[#EEF2FF] px-4 py-2 rounded-full"
+                      onPress={() => handleAddApp(item)}
+                    >
+                      <Text className="text-[#2563EB] font-bold">Add</Text>
+                    </TouchableOpacity>
                   </View>
                 )}}
               />
