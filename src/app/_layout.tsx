@@ -6,9 +6,11 @@ import { SafeStorage } from "../utils/storage";
 import PinPad from "../components/PinPad";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Linking from 'expo-linking';
+import { RNLauncherKitHelper } from 'react-native-launcher-kit';
+import { NativeModules } from 'react-native';
 import * as LocalAuthentication from 'expo-local-authentication';
 import { AuthProvider } from '../context/AuthContext';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity, Text, BackHandler } from 'react-native';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import GuestWifiScreen from '../screens/GuestWifiScreen';
 
@@ -36,24 +38,6 @@ export default function RootLayout() {
   }, []);
 
   const rootNavigationState = useRootNavigationState();
-  
-  useEffect(() => {
-    // Only navigate after the Root Layout has fully mounted its navigator
-    if (!rootNavigationState?.key) return;
-
-    if (isAppReady && url && url.includes('locked?pkg=')) {
-      const tMatch = url.match(/t=([^&]+)/);
-      const pkgMatch = url.match(/pkg=([^&]+)/);
-      
-      if (tMatch && tMatch[1] && pkgMatch && pkgMatch[1]) {
-        const timestamp = parseInt(tMatch[1], 10);
-        // If the deep link is fresh (less than 30s old), explicitly force the router to the locked screen
-        if (Date.now() - timestamp < 30000) {
-          router.replace(`/locked?pkg=${pkgMatch[1]}`);
-        }
-      }
-    }
-  }, [rootNavigationState?.key, url, isAppReady]);
 
   const checkPinStatus = async () => {
     try {
@@ -137,17 +121,80 @@ export default function RootLayout() {
   }
 
   const tMatch = url?.match(/t=([^&]+)/);
+  const pkgMatch = url?.match(/pkg=([^&]+)/);
   let isDeepLinkLock = false;
-  if (url?.includes('locked?pkg=') && tMatch && tMatch[1]) {
+  let targetPkg = '';
+  
+  if (url?.includes('locked?pkg=') && tMatch && tMatch[1] && pkgMatch && pkgMatch[1]) {
     const timestamp = parseInt(tMatch[1], 10);
     if (Date.now() - timestamp < 30000) { // 30 seconds to account for cold boot
       isDeepLinkLock = true;
+      targetPkg = pkgMatch[1];
     }
   }
 
-  // If app is not locked or it's a deep link lock for another app, show the standard navigation
+  const handleDeepLinkUnlock = async (pin: string) => {
+    try {
+      const storedPin = await SafeStorage.getItem('app_pin');
+      if (pin === storedPin) {
+        if (NativeModules.LocklyModule) {
+          await NativeModules.LocklyModule.setUnlockedApp(targetPkg);
+        }
+        RNLauncherKitHelper.launchApplication(targetPkg);
+        setTimeout(() => {
+          BackHandler.exitApp();
+        }, 300);
+      } else {
+        setErrorMsg('Incorrect PIN. Please try again.');
+        setCurrentPin('');
+      }
+    } catch (e) {
+      setErrorMsg('Error checking PIN');
+      setCurrentPin('');
+    }
+  };
+
+  const handleDeepLinkBiometric = async () => {
+    try {
+      const result = await LocalAuthentication.authenticateAsync({
+        promptMessage: 'Authenticate to access application'
+      });
+      if (result.success) {
+        if (NativeModules.LocklyModule) {
+          await NativeModules.LocklyModule.setUnlockedApp(targetPkg);
+        }
+        RNLauncherKitHelper.launchApplication(targetPkg);
+        setTimeout(() => {
+          BackHandler.exitApp();
+        }, 300);
+      } else {
+        setErrorMsg('Biometric authentication failed');
+      }
+    } catch (e) {
+      setErrorMsg('Error with biometric authentication');
+    }
+  };
+
+  if (isDeepLinkLock) {
+    return (
+      <SafeAreaView className="flex-1 bg-black">
+        <PinPad
+          pin={currentPin}
+          setPin={(p) => { setCurrentPin(p); setErrorMsg(''); }}
+          title="App Locked"
+          subtitle="Enter your Lockly PIN to access this application"
+          error={errorMsg}
+          onComplete={handleDeepLinkUnlock}
+          showBiometric={biometricEnabled}
+          onBiometricPress={handleDeepLinkBiometric}
+        />
+      </SafeAreaView>
+    );
+  }
+
+  // If app is not locked, show the standard navigation
   const isUserMode = loginRole === 'user';
-  if ((!isLocked && (hasPin || isUserMode)) || isDeepLinkLock) {
+  if (!isLocked && (hasPin || isUserMode)) {
     return (
       <AuthProvider initialRole={isUserMode ? 'user' : 'admin'}>
         {isUserMode ? <GuestWifiScreen /> : <Stack screenOptions={{headerShown: false}}/>}
