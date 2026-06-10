@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, FlatList, Switch, ActivityIndicator, TextInput, Modal, Alert, NativeModules, PermissionsAndroid, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, Switch, ActivityIndicator, TextInput, Modal, Alert, NativeModules, PermissionsAndroid, Platform, BackHandler } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import WifiManager from 'react-native-wifi-reborn';
@@ -25,12 +25,10 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
       }
       return false;
     };
-    const backHandler = import('react-native').then(({ BackHandler }) => {
-      return BackHandler.addEventListener('hardwareBackPress', backAction);
-    });
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
     
     return () => {
-      backHandler.then(handler => handler.remove());
+      backHandler.remove();
     };
   }, [onBack]);
 
@@ -91,15 +89,23 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
   const handleConnect = async () => {
     if (!selectedNetwork) return;
     setConnecting(true);
+    
+    const isSecure = selectedNetwork.capabilities?.toUpperCase().includes('WPA') || 
+                     selectedNetwork.capabilities?.toUpperCase().includes('WEP');
+
     try {
-      await WifiManager.connectToProtectedSSID(selectedNetwork.SSID, password, false, false);
+      if (isSecure) {
+        await WifiManager.connectToProtectedSSID(selectedNetwork.SSID, password, false, false);
+      } else {
+        await WifiManager.connectToSSID(selectedNetwork.SSID);
+      }
       Alert.alert("Success", `Connected to ${selectedNetwork.SSID}`);
       setIsModalVisible(false);
       setPassword('');
       scanNetworks();
     } catch (e) {
-      console.log('Failed to connect', e);
-      Alert.alert("Connection Failed", "Could not connect to the network. Please check the password.");
+      console.log('Connection failed', e);
+      Alert.alert("Error", "Failed to connect to the network. Please check your credentials.");
     }
     setConnecting(false);
   };
@@ -204,18 +210,24 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
             <Text className="text-xl font-bold text-[#0F172A] mb-2">Connect to {selectedNetwork?.SSID}</Text>
             <Text className="text-[#64748B] text-sm mb-6">Enter the password for this Wi-Fi network.</Text>
 
-            <View className="bg-[#F1F5F9] rounded-xl px-4 py-3 flex-row items-center mb-8 border border-gray-200">
-              <Feather name="lock" size={20} color="#64748B" />
-              <TextInput
-                className="flex-1 ml-3 text-base text-[#0F172A]"
-                placeholder="Password"
-                placeholderTextColor="#94A3B8"
-                secureTextEntry
-                value={password}
-                onChangeText={setPassword}
-                autoFocus
-              />
-            </View>
+            {selectedNetwork && (selectedNetwork.capabilities?.toUpperCase().includes('WPA') || selectedNetwork.capabilities?.toUpperCase().includes('WEP')) ? (
+              <View className="bg-[#F1F5F9] rounded-xl px-4 py-3 flex-row items-center mb-8 border border-gray-200">
+                <Feather name="lock" size={20} color="#64748B" />
+                <TextInput
+                  className="flex-1 ml-3 text-base text-[#0F172A]"
+                  placeholder="Password"
+                  placeholderTextColor="#94A3B8"
+                  secureTextEntry
+                  value={password}
+                  onChangeText={setPassword}
+                  autoFocus
+                />
+              </View>
+            ) : (
+              <View className="mb-8">
+                <Text className="text-[#64748B] text-base">This is an open network. No password is required.</Text>
+              </View>
+            )}
 
             <View className="flex-row gap-3">
               <TouchableOpacity 
@@ -228,8 +240,8 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
               <TouchableOpacity 
                 activeOpacity={0.7}
                 onPress={handleConnect}
-                disabled={connecting || password.length === 0}
-                className={`flex-1 py-3 rounded-full items-center ${connecting || password.length === 0 ? 'bg-blue-300' : 'bg-[#2563EB]'}`}
+                disabled={connecting || ((selectedNetwork?.capabilities?.toUpperCase().includes('WPA') || selectedNetwork?.capabilities?.toUpperCase().includes('WEP')) && password.length === 0)}
+                className={`flex-1 py-3 rounded-full items-center ${connecting || ((selectedNetwork?.capabilities?.toUpperCase().includes('WPA') || selectedNetwork?.capabilities?.toUpperCase().includes('WEP')) && password.length === 0) ? 'bg-blue-300' : 'bg-[#2563EB]'}`}
               >
                 {connecting ? (
                   <ActivityIndicator color="white" size="small" />

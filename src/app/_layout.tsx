@@ -22,6 +22,7 @@ export default function RootLayout() {
   const [biometricEnabled, setBiometricEnabled] = useState(false);
   
   const [loginRole, setLoginRole] = useState<'none' | 'admin' | 'user'>('none');
+  const [lastCancelledUrl, setLastCancelledUrl] = useState<string | null>(null);
   
   // Setup flow state
   const [setupStep, setSetupStep] = useState<'create' | 'confirm'>('create');
@@ -112,6 +113,31 @@ export default function RootLayout() {
     }
   };
 
+  useEffect(() => {
+    const tMatch = url?.match(/t=([^&]+)/);
+    const pkgMatch = url?.match(/pkg=([^&]+)/);
+    let isDeepLinkLockActive = false;
+    
+    if (url && url !== lastCancelledUrl && url.includes('locked?pkg=') && tMatch && tMatch[1] && pkgMatch && pkgMatch[1]) {
+      const timestamp = parseInt(tMatch[1], 10);
+      if (Date.now() - timestamp < 30000) {
+        isDeepLinkLockActive = true;
+      }
+    }
+
+    if (isDeepLinkLockActive) {
+      const handleBackPress = () => {
+        setLastCancelledUrl(url); // Mark this URL as cancelled so it doesn't loop
+        if (NativeModules.LocklyModule) {
+          NativeModules.LocklyModule.goToHome();
+        }
+        return true; 
+      };
+      const backHandler = BackHandler.addEventListener('hardwareBackPress', handleBackPress);
+      return () => backHandler.remove();
+    }
+  }, [url, lastCancelledUrl]);
+
   if (!isAppReady || hasPin === null) {
     return (
       <View className="flex-1 bg-[#F8FAFC] items-center justify-center">
@@ -125,7 +151,7 @@ export default function RootLayout() {
   let isDeepLinkLock = false;
   let targetPkg = '';
   
-  if (url?.includes('locked?pkg=') && tMatch && tMatch[1] && pkgMatch && pkgMatch[1]) {
+  if (url && url !== lastCancelledUrl && url.includes('locked?pkg=') && tMatch && tMatch[1] && pkgMatch && pkgMatch[1]) {
     const timestamp = parseInt(tMatch[1], 10);
     if (Date.now() - timestamp < 30000) { // 30 seconds to account for cold boot
       isDeepLinkLock = true;
