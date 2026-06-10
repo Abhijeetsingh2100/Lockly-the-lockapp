@@ -5,10 +5,12 @@ import { useState, useEffect } from 'react';
 import { SafeStorage, AppStorage } from '../../utils/storage';
 import PinPad from '../../components/PinPad';
 import * as LocalAuthentication from 'expo-local-authentication';
+import { useAuth } from '../../context/AuthContext';
 
 type AlertButton = { text: string; onPress?: () => void; style?: 'cancel' | 'destructive' | 'default' };
 
 export default function Settings() {
+  const { role } = useAuth();
   const [isChangingPin, setIsChangingPin] = useState(false);
   const [isBiometricSetupVisible, setIsBiometricSetupVisible] = useState(false);
   const [step, setStep] = useState<'current' | 'new' | 'confirm'>('current');
@@ -197,29 +199,33 @@ export default function Settings() {
         <Text className="text-[34px] font-bold text-[#0F172A] mb-2">Settings</Text>
 
         {/* SECURITY SECTION */}
-        <SectionHeader title="Security" />
-        <View className="bg-[#EEF2FF] rounded-3xl px-4 py-2">
-          <SettingItem 
-            icon={<MaterialCommunityIcons name="form-textbox-password" size={20} color="#475569" />}
-            title="Change PIN"
-            type="link"
-            onPress={handleStartChangePin}
-          />
-          <SettingItem 
-            icon={<Ionicons name="finger-print" size={20} color="#475569" />}
-            title="Biometric Authentication"
-            type="link"
-            onPress={() => setIsBiometricSetupVisible(true)}
-          />
-          <SettingItem 
-            icon={<Feather name="clock" size={20} color="#475569" />}
-            title="Auto Lock"
-            type="link"
-            value={getAutoLockLabel(autoLockDelay)}
-            onPress={() => setIsAutoLockModalVisible(true)}
-            isLast={true}
-          />
-        </View>
+        {role === 'admin' && (
+          <>
+            <SectionHeader title="Security" />
+            <View className="bg-[#EEF2FF] rounded-3xl px-4 py-2">
+              <SettingItem 
+                icon={<MaterialCommunityIcons name="form-textbox-password" size={20} color="#475569" />}
+                title="Change PIN"
+                type="link"
+                onPress={handleStartChangePin}
+              />
+              <SettingItem 
+                icon={<Ionicons name="finger-print" size={20} color="#475569" />}
+                title="Biometric Authentication"
+                type="link"
+                onPress={() => setIsBiometricSetupVisible(true)}
+              />
+              <SettingItem 
+                icon={<Feather name="clock" size={20} color="#475569" />}
+                title="Auto Lock"
+                type="link"
+                value={getAutoLockLabel(autoLockDelay)}
+                onPress={() => setIsAutoLockModalVisible(true)}
+                isLast={true}
+              />
+            </View>
+          </>
+        )}
 
         {/* GENERAL SECTION */}
         <SectionHeader title="General" />

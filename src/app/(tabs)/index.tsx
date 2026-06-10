@@ -3,12 +3,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons, Feather, FontAwesome5 } from '@expo/vector-icons';
 import { useState, useEffect } from 'react';
 import { AppStorage } from '../../utils/storage';
+import { useAuth } from '../../context/AuthContext';
 
 type AlertButton = { text: string; onPress?: () => void; style?: 'cancel' | 'destructive' | 'default' };
 
 const initialApps: any[] = [];
 
 export default function Home() {
+  const { role } = useAuth();
   const [appStates, setAppStates] = useState<any[]>([]);
   const [isStorageLoaded, setIsStorageLoaded] = useState(false);
 
@@ -32,6 +34,7 @@ export default function Home() {
   const [deviceApps, setDeviceApps] = useState<any[]>([]);
   const [loadingApps, setLoadingApps] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [addAppSearchQuery, setAddAppSearchQuery] = useState('');
   
   const [customAlert, setCustomAlert] = useState<{ visible: boolean; title: string; message: string; buttons?: AlertButton[] }>({ 
     visible: false, 
@@ -82,7 +85,6 @@ export default function Home() {
     // Prevent adding same app multiple times
     if (appStates.some(app => app.name === item.label)) {
       showAlert("Already Added", `${item.label} is already in your apps list.`);
-      setModalVisible(false);
       return;
     }
 
@@ -100,10 +102,14 @@ export default function Home() {
     };
 
     setAppStates([...appStates, newApp]);
-    setModalVisible(false);
   };
 
   const handleRemoveApp = (id: string, name: string) => {
+    if (role === 'user') {
+      showAlert("Admin Access Required", "Only administrators can remove apps.");
+      return;
+    }
+
     showAlert(
       "Remove Application",
       `Are you sure you want to remove ${name} from your list?`,
@@ -119,6 +125,11 @@ export default function Home() {
   };
 
   const toggleSwitch = async (id: string) => {
+    if (role === 'user') {
+      showAlert("Admin Access Required", "Only administrators can enable or disable apps.");
+      return;
+    }
+
     const app = appStates.find(a => a.id === id);
     if (!app?.isProtected) {
       const isEnabled = await AppStorage.checkAccessibilityPermission();
@@ -181,6 +192,7 @@ export default function Home() {
   };
 
   const filteredApps = appStates.filter(app => app.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredDeviceApps = deviceApps.filter(app => app.label.toLowerCase().includes(addAppSearchQuery.toLowerCase()));
 
   return (
     <SafeAreaView className="flex-1 bg-[#F8FAFC]" edges={['top']}>
@@ -251,15 +263,17 @@ export default function Home() {
       </ScrollView>
 
       {/* FAB */}
-      <TouchableOpacity 
-        className="absolute bottom-6 right-6 w-16 h-16 bg-[#2563EB] rounded-2xl items-center justify-center shadow-lg z-50"
-        onPress={() => {
-          setModalVisible(true);
-          fetchApps();
-        }}
-      >
-        <Feather name="plus" size={32} color="white" />
-      </TouchableOpacity>
+      {role === 'admin' && (
+        <TouchableOpacity 
+          className="absolute bottom-6 right-6 w-16 h-16 bg-[#2563EB] rounded-2xl items-center justify-center shadow-lg z-50"
+          onPress={() => {
+            setModalVisible(true);
+            fetchApps();
+          }}
+        >
+          <Feather name="plus" size={32} color="white" />
+        </TouchableOpacity>
+      )}
 
       {/* Add App Modal */}
       <Modal
@@ -277,6 +291,17 @@ export default function Home() {
               </TouchableOpacity>
             </View>
 
+            <View className="flex-row items-center bg-[#EEF2FF] rounded-2xl px-4 py-4 mb-4">
+              <Feather name="search" size={22} color="#64748B" />
+              <TextInput 
+                placeholder="Search installed apps..." 
+                placeholderTextColor="#64748B"
+                className="flex-1 ml-3 text-lg text-[#0F172A]"
+                value={addAppSearchQuery}
+                onChangeText={setAddAppSearchQuery}
+              />
+            </View>
+
             {loadingApps ? (
               <View className="flex-1 justify-center items-center">
                 <ActivityIndicator size="large" color="#2563EB" />
@@ -284,7 +309,7 @@ export default function Home() {
               </View>
             ) : (
               <FlatList
-                data={deviceApps}
+                data={filteredDeviceApps}
                 keyExtractor={(item) => item.packageName}
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{ paddingBottom: 40 }}

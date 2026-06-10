@@ -1,11 +1,13 @@
-import { View, Text, ScrollView, TouchableOpacity, Modal, Switch, Image } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Modal, Switch, Image, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons, Feather, FontAwesome5, Ionicons } from '@expo/vector-icons';
 import { useState, useCallback } from 'react';
 import { useFocusEffect } from 'expo-router';
 import { AppStorage } from '../../utils/storage';
+import { useAuth } from '../../context/AuthContext';
 
 export default function Permissions() {
+  const { role } = useAuth();
   const [lockedApps, setLockedApps] = useState<any[]>([]);
   const [selectedApp, setSelectedApp] = useState<any | null>(null);
   const [permissions, setPermissions] = useState<any>({});
@@ -30,6 +32,10 @@ export default function Permissions() {
   };
 
   const togglePermission = async (key: string) => {
+    if (role === 'user') {
+      Alert.alert("Admin Access Required", "Only administrators can change application permissions.");
+      return;
+    }
     const newPerms = { ...permissions, [key]: !permissions[key] };
     setPermissions(newPerms);
     if (selectedApp) {
@@ -74,6 +80,7 @@ export default function Permissions() {
         ios_backgroundColor="#E2E8F0"
         onValueChange={() => togglePermission(key)}
         value={permissions[key]}
+        disabled={role === 'user'}
       />
     </View>
   );
