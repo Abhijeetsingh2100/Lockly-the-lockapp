@@ -11,9 +11,10 @@ interface PinPadProps {
   error?: string;
   showBiometric?: boolean;
   onBiometricPress?: () => void;
+  invisiblePassword?: boolean;
 }
 
-export default function PinPad({ pin, setPin, title, subtitle, onComplete, error, showBiometric, onBiometricPress }: PinPadProps) {
+export default function PinPad({ pin, setPin, title, subtitle, onComplete, error, showBiometric, onBiometricPress, invisiblePassword }: PinPadProps) {
   const handlePress = (num: string) => {
     if (pin.length < 6) {
       const newPin = pin + num;
@@ -38,7 +39,7 @@ export default function PinPad({ pin, setPin, title, subtitle, onComplete, error
           key={i} 
           style={{
             width: 16, height: 16, borderRadius: 8, marginHorizontal: 8,
-            backgroundColor: error ? '#EF4444' : (i < pin.length ? '#2563EB' : '#E2E8F0')
+            backgroundColor: error ? '#EF4444' : ((i < pin.length) ? '#2563EB' : '#E2E8F0')
           }}
         />
       );
@@ -71,7 +72,7 @@ export default function PinPad({ pin, setPin, title, subtitle, onComplete, error
               return (
                 <TouchableOpacity 
                   key={index} 
-                  activeOpacity={0.7}
+                  activeOpacity={invisiblePassword ? 1 : 0.7}
                   onPress={onBiometricPress}
                   className="items-center justify-center bg-gray-50"
                   style={{ width: 85, height: 85, borderRadius: 45 }}
@@ -86,7 +87,7 @@ export default function PinPad({ pin, setPin, title, subtitle, onComplete, error
             return (
               <TouchableOpacity 
                 key={index} 
-                activeOpacity={0.7}
+                activeOpacity={invisiblePassword ? 1 : 0.7}
                 onPress={handleBackspace}
                 className="items-center justify-center bg-gray-50"
                 style={{ width: 85, height: 85, borderRadius: 45 }}
@@ -98,7 +99,7 @@ export default function PinPad({ pin, setPin, title, subtitle, onComplete, error
           return (
             <TouchableOpacity 
               key={index} 
-              activeOpacity={0.7}
+              activeOpacity={invisiblePassword ? 1 : 0.7}
               onPress={() => handlePress(btn)}
               className="items-center justify-center bg-white border border-gray-100 shadow-sm"
               style={{ width: 85, height: 85, borderRadius: 45 }}

@@ -17,6 +17,7 @@ class AppWatcherService : AccessibilityService() {
     private var unlockedApp: String = ""
     private var unlockedAppBackgroundTime: Long = 0
     private var autoLockDelayMs: Long = 0
+    private var isUninstallProtectionEnabled: Boolean = false
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
         if (event == null) return
@@ -72,7 +73,8 @@ class AppWatcherService : AccessibilityService() {
                 if (packageName == "com.android.settings" && (
                     className.contains("SettingsPanelActivity") || 
                     className.contains("WifiDialogActivity") ||
-                    className.contains("bottomsheet")
+                    className.contains("bottomsheet") ||
+                    className.contains("DeviceAdminAdd")
                 )) {
                     return
                 }
@@ -83,6 +85,13 @@ class AppWatcherService : AccessibilityService() {
                 
                 // It's a locked app! Lock it!
                 launchLockScreen(packageName)
+            } else if (isUninstallProtectionEnabled && (packageName == "com.google.android.packageinstaller" || packageName == "com.android.packageinstaller")) {
+                val className = event.className?.toString() ?: ""
+                if (className.contains("Uninstall") || className.contains("PackageInstallerActivity") || className.contains("UninstallerActivity")) {
+                    if (packageName != unlockedApp) {
+                        launchLockScreen(packageName)
+                    }
+                }
             }
         }
     }
@@ -98,6 +107,7 @@ class AppWatcherService : AccessibilityService() {
         try {
             val sharedPref = getSharedPreferences("LocklyPrefs", Context.MODE_PRIVATE)
             autoLockDelayMs = sharedPref.getLong("autolock_delay_ms", 0L)
+            isUninstallProtectionEnabled = sharedPref.getString("app_uninstall_protection", "false") == "true"
             val jsonString = sharedPref.getString("locked_apps_json", "[]")
             if (jsonString == null) return
             

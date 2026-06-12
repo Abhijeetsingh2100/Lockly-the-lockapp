@@ -1,13 +1,17 @@
 import { View, Text, BackHandler, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter, useFocusEffect } from 'expo-router';
 import * as Linking from 'expo-linking';
 import { RNLauncherKitHelper } from 'react-native-launcher-kit';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import PinPad from '../components/PinPad';
 import { SafeStorage } from '../utils/storage';
 import { NativeModules } from 'react-native';
-import * as LocalAuthentication from 'expo-local-authentication';
+
+let LocalAuthentication: any = null;
+try {
+  LocalAuthentication = require('expo-local-authentication');
+} catch (e) {}
 
 const { LocklyModule } = NativeModules;
 
@@ -19,6 +23,14 @@ export default function LockedScreen() {
   const [errorMsg, setErrorMsg] = useState('');
   const [savedPin, setSavedPin] = useState<string | null>(null);
   const [biometricEnabled, setBiometricEnabled] = useState(false);
+  const [invisiblePassword, setInvisiblePassword] = useState(true);
+
+  useFocusEffect(
+    useCallback(() => {
+      setEnteredPin('');
+      setErrorMsg('');
+    }, [])
+  );
 
   useEffect(() => {
     // Prevent back button from bypassing lock
@@ -30,6 +42,8 @@ export default function LockedScreen() {
       setSavedPin(pin);
       const biometric = await SafeStorage.getItem('app_biometric');
       setBiometricEnabled(biometric === 'true');
+      const invisPass = await SafeStorage.getItem('app_invisible_password');
+      setInvisiblePassword(invisPass !== 'false');
     };
     loadPin();
 
@@ -72,6 +86,7 @@ export default function LockedScreen() {
   };
 
   const handleBiometricUnlock = async () => {
+    if (!LocalAuthentication) return;
     try {
       const result = await LocalAuthentication.authenticateAsync({
         promptMessage: 'Authenticate to access application'
@@ -116,6 +131,7 @@ export default function LockedScreen() {
         onComplete={handleVerifyPin}
         showBiometric={biometricEnabled}
         onBiometricPress={handleBiometricUnlock}
+        invisiblePassword={invisiblePassword}
       />
     </SafeAreaView>
   );

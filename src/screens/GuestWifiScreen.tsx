@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, FlatList, Switch, ActivityIndicator, TextInput, Modal, Alert, NativeModules, PermissionsAndroid, Platform, BackHandler } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
-import WifiManager from 'react-native-wifi-reborn';
+
+let WifiManager: any = null;
+try {
+  WifiManager = require('react-native-wifi-reborn').default;
+} catch (e) {}
 
 export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -33,6 +37,7 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
   }, [onBack]);
 
   const checkWifiStatus = async () => {
+    if (!WifiManager) return;
     try {
       const enabled = await WifiManager.isEnabled();
       setIsEnabled(enabled);
@@ -51,6 +56,7 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
   };
 
   const scanNetworks = async () => {
+    if (!WifiManager) return;
     setLoading(true);
     try {
       if (Platform.OS === 'android') {
@@ -87,7 +93,7 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
   };
 
   const handleConnect = async () => {
-    if (!selectedNetwork) return;
+    if (!selectedNetwork || !WifiManager) return;
     setConnecting(true);
     
     const isSecure = selectedNetwork.capabilities?.toUpperCase().includes('WPA') || 

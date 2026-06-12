@@ -4,9 +4,13 @@ import { Feather, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useState, useEffect } from 'react';
 import { SafeStorage, AppStorage } from '../../utils/storage';
 import PinPad from '../../components/PinPad';
-import * as LocalAuthentication from 'expo-local-authentication';
 import { useAuth } from '../../context/AuthContext';
 import { useRouter } from 'expo-router';
+
+let LocalAuthentication: any = null;
+try {
+  LocalAuthentication = require('expo-local-authentication');
+} catch (e) {}
 
 type AlertButton = { text: string; onPress?: () => void; style?: 'cancel' | 'destructive' | 'default' };
 
@@ -36,16 +40,33 @@ export default function Settings() {
 
   // Settings state
   const [biometricEnabled, setBiometricEnabled] = useState(false);
+  const [invisiblePassword, setInvisiblePassword] = useState(true);
+  const [uninstallProtection, setUninstallProtection] = useState(false);
   const [autoLockDelay, setAutoLockDelay] = useState(0);
   const [isAutoLockModalVisible, setIsAutoLockModalVisible] = useState(false);
+  const [isDisguiseModalVisible, setIsDisguiseModalVisible] = useState(false);
+  const [currentDisguise, setCurrentDisguise] = useState('Lockly');
 
   useEffect(() => {
     const loadSettings = async () => {
       const isEnabled = await SafeStorage.getItem('app_biometric');
       setBiometricEnabled(isEnabled === 'true');
+      const invisPass = await SafeStorage.getItem('app_invisible_password');
+      setInvisiblePassword(invisPass !== 'false'); // default true
       const delay = await SafeStorage.getItem('app_autolock_delay');
       if (delay) {
         setAutoLockDelay(parseInt(delay, 10));
+      }
+      const disguise = await SafeStorage.getItem('app_disguise');
+      if (disguise) {
+        setCurrentDisguise(disguise);
+      }
+      
+      const { LocklyModule } = require('react-native').NativeModules;
+      if (LocklyModule && LocklyModule.isDeviceAdminEnabled) {
+        const isAdmin = await LocklyModule.isDeviceAdminEnabled();
+        setUninstallProtection(isAdmin);
+        await SafeStorage.setItem('app_uninstall_protection', isAdmin ? 'true' : 'false');
       }
     };
     loadSettings();
@@ -66,6 +87,10 @@ export default function Settings() {
   };
 
   const handleSetupBiometric = async () => {
+    if (!LocalAuthentication) {
+        showAlert("Unsupported", "Biometric authentication is not supported.");
+        return;
+    }
     try {
       const hasHardware = await LocalAuthentication.hasHardwareAsync();
       if (!hasHardware) {
@@ -98,6 +123,48 @@ export default function Settings() {
     setBiometricEnabled(false);
     showAlert("Disabled", "Biometric authentication has been disabled.");
     setIsBiometricSetupVisible(false);
+  };
+
+  const toggleInvisiblePassword = async (value: boolean) => {
+    setInvisiblePassword(value);
+    await SafeStorage.setItem('app_invisible_password', value ? 'true' : 'false');
+  };
+
+  const handleDisguiseSelect = async (disguise: string) => {
+    setCurrentDisguise(disguise);
+    await SafeStorage.setItem('app_disguise', disguise);
+    setIsDisguiseModalVisible(false);
+    
+    const { LocklyModule } = require('react-native').NativeModules;
+    if (LocklyModule && LocklyModule.changeAppIcon) {
+      LocklyModule.changeAppIcon(disguise);
+    }
+    showAlert("Disguise Applied", `App icon and name will change to ${disguise}. It may take a moment to reflect on your home screen.`);
+  };
+
+  const toggleUninstallProtection = async () => {
+    const { LocklyModule } = require('react-native').NativeModules;
+    if (!LocklyModule) return;
+    
+    if (uninstallProtection) {
+      if (LocklyModule.removeDeviceAdmin) {
+        await LocklyModule.removeDeviceAdmin();
+        setUninstallProtection(false);
+        await SafeStorage.setItem('app_uninstall_protection', 'false');
+        showAlert("Disabled", "Uninstall protection has been removed.");
+      }
+    } else {
+      if (LocklyModule.requestDeviceAdmin) {
+        if (LocklyModule.setUnlockedApp) {
+          await LocklyModule.setUnlockedApp('com.android.settings');
+        }
+        await LocklyModule.requestDeviceAdmin();
+        // Since we can't synchronously know if they accepted the system prompt, we will assume true for now.
+        // It will be re-synced on next reload.
+        await SafeStorage.setItem('app_uninstall_protection', 'true');
+        setUninstallProtection(true);
+      }
+    }
   };
 
   // ... (Pin change logic remains exactly the same)
@@ -216,11 +283,32 @@ export default function Settings() {
                 onPress={() => setIsBiometricSetupVisible(true)}
               />
               <SettingItem 
+                icon={<Feather name="eye-off" size={20} color="#475569" />}
+                title="Invisible Password"
+                type="toggle"
+                value={invisiblePassword}
+                onToggle={toggleInvisiblePassword}
+              />
+              <SettingItem 
                 icon={<Feather name="clock" size={20} color="#475569" />}
                 title="Auto Lock"
                 type="link"
                 value={getAutoLockLabel(autoLockDelay)}
                 onPress={() => setIsAutoLockModalVisible(true)}
+              />
+              <SettingItem 
+                icon={<Feather name="shield" size={20} color="#475569" />}
+                title="Uninstall Protection"
+                type="toggle"
+                value={uninstallProtection}
+                onToggle={toggleUninstallProtection}
+              />
+              <SettingItem 
+                icon={<Feather name="user-x" size={20} color="#475569" />}
+                title="Disguise App"
+                type="link"
+                value={currentDisguise}
+                onPress={() => setIsDisguiseModalVisible(true)}
                 isLast={true}
               />
             </View>
@@ -257,11 +345,11 @@ export default function Settings() {
             </TouchableOpacity>
           </View>
           {step === 'current' ? (
-            <PinPad title="Current PIN" subtitle="Please enter your current 6-digit PIN." pin={currentPinInput} setPin={(p) => { setCurrentPinInput(p); setErrorMsg(''); }} onComplete={handleCurrentPin} error={errorMsg} />
+            <PinPad title="Current PIN" subtitle="Please enter your current 6-digit PIN." pin={currentPinInput} setPin={(p) => { setCurrentPinInput(p); setErrorMsg(''); }} onComplete={handleCurrentPin} error={errorMsg} invisiblePassword={invisiblePassword} />
           ) : step === 'new' ? (
-            <PinPad title="New PIN" subtitle="Enter your new secure 6-digit PIN." pin={currentPinInput} setPin={(p) => { setCurrentPinInput(p); setErrorMsg(''); }} onComplete={handleNewPin} error={errorMsg} />
+            <PinPad title="New PIN" subtitle="Enter your new secure 6-digit PIN." pin={currentPinInput} setPin={(p) => { setCurrentPinInput(p); setErrorMsg(''); }} onComplete={handleNewPin} error={errorMsg} invisiblePassword={invisiblePassword} />
           ) : (
-            <PinPad title="Confirm New PIN" subtitle="Please re-enter your new PIN to confirm." pin={currentPinInput} setPin={(p) => { setCurrentPinInput(p); setErrorMsg(''); }} onComplete={handleConfirmNewPin} error={errorMsg} />
+            <PinPad title="Confirm New PIN" subtitle="Please re-enter your new PIN to confirm." pin={currentPinInput} setPin={(p) => { setCurrentPinInput(p); setErrorMsg(''); }} onComplete={handleConfirmNewPin} error={errorMsg} invisiblePassword={invisiblePassword} />
           )}
         </SafeAreaView>
       </Modal>
@@ -394,6 +482,47 @@ export default function Settings() {
               >
                 <Text className="text-[#1E293B] text-lg font-medium">{option.label}</Text>
                 {autoLockDelay === option.value && (
+                  <Feather name="check" size={24} color="#2563EB" />
+                )}
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      </Modal>
+
+      {/* Disguise Modal */}
+      <Modal animationType="slide" visible={isDisguiseModalVisible} onRequestClose={() => setIsDisguiseModalVisible(false)} transparent={true}>
+        <View className="flex-1 bg-black/50 justify-end">
+          <View className="bg-white rounded-t-[32px] p-6 pb-12">
+            <View className="flex-row justify-between items-center mb-6">
+              <Text className="text-2xl font-bold text-[#0F172A]">Disguise Application</Text>
+              <TouchableOpacity onPress={() => setIsDisguiseModalVisible(false)} className="bg-gray-100 p-2 rounded-full">
+                <Feather name="x" size={24} color="#0F172A" />
+              </TouchableOpacity>
+            </View>
+            <Text className="text-[#64748B] text-base mb-6">
+              Select an icon and name to disguise Lockly on your device.
+            </Text>
+            
+            {[
+              { label: 'Lockly (Default)', value: 'Lockly', icon: 'shield-check' },
+              { label: 'Calculator', value: 'Calculator', icon: 'calculator' },
+              { label: 'Weather', value: 'Weather', icon: 'weather-cloudy' },
+              { label: 'Notes', value: 'Notes', icon: 'note-text' },
+              { label: 'Clock', value: 'Clock', icon: 'clock-outline' },
+              { label: 'Calendar', value: 'Calendar', icon: 'calendar-month' },
+            ].map((option) => (
+              <TouchableOpacity 
+                key={option.value}
+                activeOpacity={0.7}
+                onPress={() => handleDisguiseSelect(option.value)}
+                className="flex-row items-center justify-between py-4 border-b border-gray-100"
+              >
+                <View className="flex-row items-center gap-3">
+                  <MaterialCommunityIcons name={option.icon as any} size={24} color="#475569" />
+                  <Text className="text-[#1E293B] text-lg font-medium">{option.label}</Text>
+                </View>
+                {currentDisguise === option.value && (
                   <Feather name="check" size={24} color="#2563EB" />
                 )}
               </TouchableOpacity>

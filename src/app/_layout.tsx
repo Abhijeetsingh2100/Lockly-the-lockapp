@@ -6,13 +6,28 @@ import { SafeStorage } from "../utils/storage";
 import PinPad from "../components/PinPad";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Linking from 'expo-linking';
-import { RNLauncherKitHelper } from 'react-native-launcher-kit';
 import { NativeModules } from 'react-native';
-import * as LocalAuthentication from 'expo-local-authentication';
+
+let RNLauncherKitHelper: any = null;
+try {
+  RNLauncherKitHelper = require('react-native-launcher-kit').RNLauncherKitHelper;
+} catch (e) {}
+let LocalAuthentication: any = null;
+try {
+  LocalAuthentication = require('expo-local-authentication');
+} catch (e) {}
 import { AuthProvider } from '../context/AuthContext';
-import { TouchableOpacity, Text, BackHandler } from 'react-native';
+import { TouchableOpacity, Text, BackHandler, AppState, AppStateStatus } from 'react-native';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import GuestWifiScreen from '../screens/GuestWifiScreen';
+
+export function ErrorBoundary(props: any) {
+  return (
+    <View style={{ flex: 1, backgroundColor: 'red', alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={{ color: 'white' }}>{props.error?.message || 'Unknown error'}</Text>
+    </View>
+  );
+}
 
 export default function RootLayout() {
   const url = Linking.useURL();
@@ -20,6 +35,7 @@ export default function RootLayout() {
   const [isLocked, setIsLocked] = useState(true);
   const [hasPin, setHasPin] = useState<boolean | null>(null);
   const [biometricEnabled, setBiometricEnabled] = useState(false);
+  const [invisiblePassword, setInvisiblePassword] = useState(true);
   
   const [loginRole, setLoginRole] = useState<'none' | 'admin' | 'user'>('none');
   const [lastCancelledUrl, setLastCancelledUrl] = useState<string | null>(null);
@@ -36,6 +52,21 @@ export default function RootLayout() {
 
   useEffect(() => {
     checkPinStatus();
+
+    const subscription = AppState.addEventListener('change', async (nextAppState) => {
+      if (nextAppState === 'active') {
+        const pin = await SafeStorage.getItem('app_pin');
+        if (pin) {
+          setCurrentPin(''); // Clear the pre-filled PIN
+          setErrorMsg('');
+          setIsLocked(true);
+        }
+      }
+    });
+
+    return () => {
+      subscription.remove();
+    };
   }, []);
 
   const rootNavigationState = useRootNavigationState();
@@ -50,6 +81,8 @@ export default function RootLayout() {
       }
       const biometric = await SafeStorage.getItem('app_biometric');
       setBiometricEnabled(biometric === 'true');
+      const invisPass = await SafeStorage.getItem('app_invisible_password');
+      setInvisiblePassword(invisPass !== 'false');
     } catch (e) {
       console.log('Error checking pin status', e);
       setHasPin(false);
@@ -213,6 +246,7 @@ export default function RootLayout() {
           onComplete={handleDeepLinkUnlock}
           showBiometric={biometricEnabled}
           onBiometricPress={handleDeepLinkBiometric}
+          invisiblePassword={invisiblePassword}
         />
       </SafeAreaView>
     );
@@ -294,6 +328,7 @@ export default function RootLayout() {
           error={errorMsg}
           showBiometric={biometricEnabled}
           onBiometricPress={handleBiometricUnlock}
+          invisiblePassword={invisiblePassword}
         />
       ) : setupStep === 'create' ? (
         <PinPad
@@ -306,6 +341,7 @@ export default function RootLayout() {
           }}
           onComplete={handleCreatePin}
           error={errorMsg}
+          invisiblePassword={invisiblePassword}
         />
       ) : (
         <PinPad
@@ -318,6 +354,7 @@ export default function RootLayout() {
           }}
           onComplete={handleConfirmPin}
           error={errorMsg}
+          invisiblePassword={invisiblePassword}
         />
       )}
     </SafeAreaView>
