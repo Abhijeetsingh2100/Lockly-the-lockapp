@@ -1,56 +1,300 @@
-# Welcome to your Expo app 👋
+# 🔒 Lockly
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern Android Device Access Control and Application Management platform built with React Native and Expo Development Build.
 
-## Get started
+Lockly helps organizations control application access, manage device permissions, and create secure experiences on dedicated Android devices, shared workplace devices, and kiosk deployments.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 📱 Overview
 
-2. Start the app
+Lockly is designed for businesses that require controlled access to applications and device capabilities on Android devices.
 
-   ```bash
-   npx expo start
-   ```
+The platform provides a simple and intuitive interface for managing application access through PIN and biometric authentication while offering centralized permission controls for device resources such as Wi-Fi, Bluetooth, Location, Camera, and Microphone.
 
-In the output, you'll find options to open the app in a
+Lockly is ideal for kiosk environments, enterprise deployments, educational institutions, retail devices, and shared workstations.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## ✨ Features
 
-## Get a fresh project
+### 🔐 Application Access Control
 
-When you're ready, run:
+* PIN-based Authentication
+* Biometric Authentication
+* Application Lock Management
+* Secure Access Verification
 
-```bash
-npm run reset-project
+### 📲 Application Management
+
+* View Installed Applications
+* Enable or Disable Protection
+* Search Applications
+* Application Status Monitoring
+
+### ⚙️ Permission Management
+
+Control application access to:
+
+* Wi-Fi
+* Bluetooth
+* Location
+* Camera
+* Microphone
+* Storage
+
+### 🏢 Enterprise & Kiosk Support
+
+* Dedicated Device Workflows
+* Shared Device Environments
+* Simplified User Access
+* Enterprise-Friendly Interface
+
+### 🎨 Modern User Experience
+
+* Material Design Inspired UI
+* Dark Mode Support
+* Responsive Layout
+* Clean Navigation Structure
+
+---
+
+## 🎯 Use Cases
+
+### Enterprise Devices
+
+Manage application access on company-owned Android devices.
+
+### Kiosk Systems
+
+Provide controlled application access on kiosk deployments.
+
+### Retail & POS
+
+Secure business-critical applications on retail devices.
+
+### Educational Institutions
+
+Restrict access to approved applications on shared devices.
+
+### Shared Workplace Devices
+
+Protect sensitive applications in multi-user environments.
+
+---
+
+## 🛠️ Technology Stack
+
+### Frontend
+
+* React Native
+* Expo Development Build
+* TypeScript
+
+### State Management
+
+* Zustand
+
+### Navigation
+
+* Expo Router
+
+### Authentication
+
+* Expo Local Authentication
+* Android Biometric APIs
+
+### Storage
+
+* MMKV
+* Secure Local Storage
+
+### Native Integration
+
+* Android Permission APIs
+* Device Capability Management
+
+---
+
+## 📂 Project Structure
+
+```text
+lockly/
+│
+├── app/
+│   ├── (tabs)/
+│   ├── permissions/
+│   ├── settings/
+│   └── auth/
+│
+├── components/
+│   ├── ui/
+│   ├── cards/
+│   ├── forms/
+│   └── navigation/
+│
+├── hooks/
+│
+├── services/
+│   ├── authentication/
+│   ├── permissions/
+│   ├── applications/
+│   └── storage/
+│
+├── store/
+│
+├── assets/
+│
+└── utils/
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-### Other setup steps
+## 🚀 Getting Started
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+### Prerequisites
 
-## Learn more
+* Node.js
+* Android Studio
+* Android SDK
+* Expo CLI
+* Java Development Kit (JDK)
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Clone Repository
 
-## Join the community
+```bash
+git clone https://github.com/YOUR_USERNAME/lockly.git
+cd lockly
+```
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+### Start Development Server
+
+```bash
+npx expo start
+```
+
+---
+
+### Run Android Development Build
+
+```bash
+npx expo run:android
+```
+
+---
+
+## 📸 Application Screens
+
+### Lock Screen
+
+Secure application access using PIN or biometric authentication.
+
+### Home Dashboard
+
+Manage protected applications and device access.
+
+### Permissions Center
+
+Control access to device resources for managed applications.
+
+### Settings
+
+Configure security preferences, biometrics, and application behavior.
+
+---
+
+## 🔐 Security
+
+Lockly follows security-first development principles:
+
+* Secure local storage
+* Biometric authentication support
+* Protected access workflows
+* Permission-based controls
+* Minimal required permissions
+
+No sensitive credentials are stored in plain text.
+
+---
+
+## 🗺️ Roadmap
+
+### Version 1.0
+
+* App Access Control
+* PIN Authentication
+* Biometric Authentication
+* Permission Management
+* Dark Mode
+
+### Version 1.5
+
+* Activity Logs
+* Enhanced Access Policies
+* Device Profiles
+
+### Version 2.0
+
+* Multi-Device Management
+* Cloud Synchronization
+* Admin Dashboard
+* Enterprise Policy Management
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome.
+
+1. Fork the repository
+2. Create a feature branch
+
+```bash
+git checkout -b feature/new-feature
+```
+
+3. Commit your changes
+
+```bash
+git commit -m "Add new feature"
+```
+
+4. Push to your branch
+
+```bash
+git push origin feature/new-feature
+```
+
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**Abhijeet Singh**
+
+GitHub: https://github.com/Abhijeetsingh2100
+
+---
+
+## ⭐ Support
+
+If you found this project useful, consider giving it a star on GitHub. It helps support future development and improvements.
