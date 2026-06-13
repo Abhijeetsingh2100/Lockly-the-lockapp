@@ -170,6 +170,26 @@ export default function Home() {
         );
         return;
       }
+      
+      const { LocklyModule } = require('react-native').NativeModules;
+      if (LocklyModule && LocklyModule.checkOverlayPermission) {
+        const hasOverlay = await LocklyModule.checkOverlayPermission();
+        if (!hasOverlay) {
+          showAlert(
+            "Overlay Permission Required",
+            "Lockly needs 'Display over other apps' permission to show the lock screen over locked applications.",
+            [
+              { text: "Cancel", style: "cancel" },
+              {
+                text: "Grant Permission",
+                style: "default",
+                onPress: () => LocklyModule.requestOverlayPermission()
+              }
+            ]
+          );
+          return;
+        }
+      }
     }
 
     setAppStates(prev => prev.map(a => 

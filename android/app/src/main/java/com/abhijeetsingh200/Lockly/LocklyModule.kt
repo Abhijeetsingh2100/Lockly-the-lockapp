@@ -133,6 +133,38 @@ class LocklyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
     }
 
     @ReactMethod
+    fun setUninstallProtection(isEnabled: Boolean, promise: Promise) {
+        val sharedPref = reactApplicationContext.getSharedPreferences("LocklyPrefs", Context.MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putString("app_uninstall_protection", if (isEnabled) "true" else "false")
+            apply()
+        }
+        promise.resolve(true)
+    }
+
+    @ReactMethod
+    fun checkOverlayPermission(promise: Promise) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            promise.resolve(Settings.canDrawOverlays(reactApplicationContext))
+        } else {
+            promise.resolve(true)
+        }
+    }
+
+    @ReactMethod
+    fun requestOverlayPermission(promise: Promise) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(reactApplicationContext)) {
+                val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    android.net.Uri.parse("package:" + reactApplicationContext.packageName))
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                reactApplicationContext.startActivity(intent)
+            }
+        }
+        promise.resolve(true)
+    }
+
+    @ReactMethod
     fun changeAppIcon(aliasName: String, promise: Promise) {
         val pm = reactApplicationContext.packageManager
         val packageName = reactApplicationContext.packageName

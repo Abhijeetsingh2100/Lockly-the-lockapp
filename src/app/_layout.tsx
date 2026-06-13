@@ -199,7 +199,9 @@ export default function RootLayout() {
         if (NativeModules.LocklyModule) {
           await NativeModules.LocklyModule.setUnlockedApp(targetPkg);
         }
-        RNLauncherKitHelper.launchApplication(targetPkg);
+        if (targetPkg !== 'com.google.android.packageinstaller' && targetPkg !== 'com.android.packageinstaller' && targetPkg !== 'com.android.settings') {
+          RNLauncherKitHelper.launchApplication(targetPkg);
+        }
         setTimeout(() => {
           BackHandler.exitApp();
         }, 300);
@@ -222,7 +224,9 @@ export default function RootLayout() {
         if (NativeModules.LocklyModule) {
           await NativeModules.LocklyModule.setUnlockedApp(targetPkg);
         }
-        RNLauncherKitHelper.launchApplication(targetPkg);
+        if (targetPkg !== 'com.google.android.packageinstaller' && targetPkg !== 'com.android.packageinstaller' && targetPkg !== 'com.android.settings') {
+          RNLauncherKitHelper.launchApplication(targetPkg);
+        }
         setTimeout(() => {
           BackHandler.exitApp();
         }, 300);

@@ -35,8 +35,10 @@ class AppWatcherService : AccessibilityService() {
             // Check if there is a pending unlocked app from the React Native UI
             val sharedPref = getSharedPreferences("LocklyPrefs", Context.MODE_PRIVATE)
             val tempUnlocked = sharedPref.getString("temp_unlocked_pkg", "")
+            var justUnlocked = false
             if (!tempUnlocked.isNullOrEmpty()) {
                 unlockedApp = tempUnlocked
+                justUnlocked = true
                 sharedPref.edit().remove("temp_unlocked_pkg").apply()
             }
 
@@ -56,7 +58,7 @@ class AppWatcherService : AccessibilityService() {
                         unlockedAppBackgroundTime = System.currentTimeMillis()
                     }
                     
-                    if (packageName == unlockedApp) {
+                    if (packageName == unlockedApp && !justUnlocked) {
                         // Coming back to unlocked app
                         if (autoLockDelayMs == 0L || (System.currentTimeMillis() - unlockedAppBackgroundTime > autoLockDelayMs)) {
                             unlockedApp = "" // Lock it!
@@ -87,13 +89,51 @@ class AppWatcherService : AccessibilityService() {
                 launchLockScreen(packageName)
             } else if (isUninstallProtectionEnabled && (packageName == "com.google.android.packageinstaller" || packageName == "com.android.packageinstaller")) {
                 val className = event.className?.toString() ?: ""
-                if (className.contains("Uninstall") || className.contains("PackageInstallerActivity") || className.contains("UninstallerActivity")) {
+                if (className.contains("Uninstall") || className.contains("PackageInstallerActivity") || className.contains("UninstallerActivity") || className.contains("AlertDialog")) {
                     if (packageName != unlockedApp) {
-                        launchLockScreen(packageName)
+                        var shouldLock = false
+                        val allTexts = findTextInNode(rootInActiveWindow).joinToString(" ")
+                        val pm = packageManager
+                        
+                        try {
+                            val locklyInfo = pm.getApplicationInfo("com.abhijeetsingh200.Lockly", 0)
+                            val locklyName = pm.getApplicationLabel(locklyInfo).toString()
+                            if (allTexts.contains(locklyName, ignoreCase = true) || allTexts.contains("Lockly", ignoreCase = true)) {
+                                shouldLock = true
+                            }
+                        } catch (e: Exception) {}
+
+                        if (!shouldLock) {
+                            for (lockedPkg in lockedAppsCache) {
+                                try {
+                                    val appInfo = pm.getApplicationInfo(lockedPkg, 0)
+                                    val appName = pm.getApplicationLabel(appInfo).toString()
+                                    if (appName.isNotEmpty() && allTexts.contains(appName, ignoreCase = true)) {
+                                        shouldLock = true
+                                        break
+                                    }
+                                } catch (e: Exception) {}
+                            }
+                        }
+
+                        if (shouldLock) {
+                            launchLockScreen(packageName)
+                        }
                     }
                 }
             }
         }
+    }
+
+    private fun findTextInNode(node: android.view.accessibility.AccessibilityNodeInfo?): List<String> {
+        val texts = mutableListOf<String>()
+        if (node == null) return texts
+        if (node.text != null) texts.add(node.text.toString())
+        if (node.contentDescription != null) texts.add(node.contentDescription.toString())
+        for (i in 0 until node.childCount) {
+            texts.addAll(findTextInNode(node.getChild(i)))
+        }
+        return texts
     }
 
     private fun launchLockScreen(lockedPackage: String) {
