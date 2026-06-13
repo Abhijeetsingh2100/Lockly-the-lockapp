@@ -87,39 +87,24 @@ class AppWatcherService : AccessibilityService() {
                 
                 // It's a locked app! Lock it!
                 launchLockScreen(packageName)
-            } else if (isUninstallProtectionEnabled && (packageName == "com.google.android.packageinstaller" || packageName == "com.android.packageinstaller")) {
+            } else if (isUninstallProtectionEnabled) {
                 val className = event.className?.toString() ?: ""
-                if (className.contains("Uninstall") || className.contains("PackageInstallerActivity") || className.contains("UninstallerActivity") || className.contains("AlertDialog")) {
-                    if (packageName != unlockedApp) {
-                        var shouldLock = false
-                        val allTexts = findTextInNode(rootInActiveWindow).joinToString(" ")
-                        val pm = packageManager
-                        
-                        try {
-                            val locklyInfo = pm.getApplicationInfo("com.abhijeetsingh200.Lockly", 0)
-                            val locklyName = pm.getApplicationLabel(locklyInfo).toString()
-                            if (allTexts.contains(locklyName, ignoreCase = true) || allTexts.contains("Lockly", ignoreCase = true)) {
-                                shouldLock = true
-                            }
-                        } catch (e: Exception) {}
-
-                        if (!shouldLock) {
-                            for (lockedPkg in lockedAppsCache) {
-                                try {
-                                    val appInfo = pm.getApplicationInfo(lockedPkg, 0)
-                                    val appName = pm.getApplicationLabel(appInfo).toString()
-                                    if (appName.isNotEmpty() && allTexts.contains(appName, ignoreCase = true)) {
-                                        shouldLock = true
-                                        break
-                                    }
-                                } catch (e: Exception) {}
-                            }
-                        }
-
-                        if (shouldLock) {
-                            launchLockScreen(packageName)
-                        }
+                val isPackageInstaller = packageName.contains("packageinstaller", ignoreCase = true)
+                val isUninstallActivity = className.contains("Uninstall", ignoreCase = true) || className.contains("Uninstaller", ignoreCase = true)
+                
+                var shouldLock = false
+                if (isPackageInstaller && (isUninstallActivity || className.contains("AlertDialog"))) {
+                    // Check if it's an uninstall prompt and not an install prompt
+                    val textNodes = findTextInNode(rootInActiveWindow).joinToString(" ").lowercase()
+                    if (textNodes.contains("uninstall") || isUninstallActivity) {
+                        shouldLock = true
                     }
+                } else if (isUninstallActivity) {
+                    shouldLock = true
+                }
+                
+                if (shouldLock && packageName != unlockedApp) {
+                    launchLockScreen(packageName)
                 }
             }
         }

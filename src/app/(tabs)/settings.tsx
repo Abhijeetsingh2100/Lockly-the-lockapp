@@ -63,13 +63,11 @@ export default function Settings() {
       }
       
       const { LocklyModule } = require('react-native').NativeModules;
-      if (LocklyModule && LocklyModule.isDeviceAdminEnabled) {
-        const isAdmin = await LocklyModule.isDeviceAdminEnabled();
-        setUninstallProtection(isAdmin);
-        await SafeStorage.setItem('app_uninstall_protection', isAdmin ? 'true' : 'false');
-        if (LocklyModule.setUninstallProtection) {
-          await LocklyModule.setUninstallProtection(isAdmin);
-        }
+      const protectionState = await SafeStorage.getItem('app_uninstall_protection');
+      const isProtected = protectionState === 'true';
+      setUninstallProtection(isProtected);
+      if (LocklyModule && LocklyModule.setUninstallProtection) {
+        await LocklyModule.setUninstallProtection(isProtected);
       }
     };
     loadSettings();
@@ -149,30 +147,21 @@ export default function Settings() {
     const { LocklyModule } = require('react-native').NativeModules;
     if (!LocklyModule) return;
     
-    if (uninstallProtection) {
-      if (LocklyModule.removeDeviceAdmin) {
-        await LocklyModule.removeDeviceAdmin();
-        if (LocklyModule.setUninstallProtection) {
-          await LocklyModule.setUninstallProtection(false);
-        }
-        setUninstallProtection(false);
-        await SafeStorage.setItem('app_uninstall_protection', 'false');
-        showAlert("Disabled", "Uninstall protection has been removed.");
+    try {
+      const newValue = !uninstallProtection;
+      if (LocklyModule.setUninstallProtection) {
+        await LocklyModule.setUninstallProtection(newValue);
       }
-    } else {
-      if (LocklyModule.requestDeviceAdmin) {
-        if (LocklyModule.setUnlockedApp) {
-          await LocklyModule.setUnlockedApp('com.android.settings');
-        }
-        await LocklyModule.requestDeviceAdmin();
-        if (LocklyModule.setUninstallProtection) {
-          await LocklyModule.setUninstallProtection(true);
-        }
-        // Since we can't synchronously know if they accepted the system prompt, we will assume true for now.
-        // It will be re-synced on next reload.
-        await SafeStorage.setItem('app_uninstall_protection', 'true');
-        setUninstallProtection(true);
+      await SafeStorage.setItem('app_uninstall_protection', newValue ? 'true' : 'false');
+      setUninstallProtection(newValue);
+      
+      if (!newValue && LocklyModule.removeDeviceAdmin) {
+         await LocklyModule.removeDeviceAdmin();
+      } else if (newValue && LocklyModule.requestDeviceAdmin) {
+         await LocklyModule.requestDeviceAdmin();
       }
+    } catch (e) {
+      console.error(e);
     }
   };
 
