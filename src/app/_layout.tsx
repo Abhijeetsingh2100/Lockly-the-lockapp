@@ -287,30 +287,32 @@ export default function RootLayout() {
   if (loginRole === 'none') {
     return (
       <SafeAreaView className="flex-1 bg-[#F8FAFC] justify-center px-6">
-        <View className="items-center mb-12">
-          <MaterialCommunityIcons name="shield-check" size={64} color="#2563EB" />
-          <Text className="text-4xl font-extrabold text-[#0F172A] mt-4">Lockly</Text>
-          <Text className="text-[#64748B] text-base mt-2">Select your login role</Text>
-        </View>
+        <View className="w-full max-w-sm self-center">
+          <View className="items-center mb-12">
+            <MaterialCommunityIcons name="shield-check" size={64} color="#2563EB" />
+            <Text className="text-4xl font-extrabold text-[#0F172A] mt-4">Lockly</Text>
+            <Text className="text-[#64748B] text-base mt-2">Select your login role</Text>
+          </View>
 
-        <View className="gap-4">
-          <TouchableOpacity 
-            activeOpacity={0.7}
-            onPress={handleAdminLogin}
-            className="w-full bg-[#2563EB] py-4 rounded-2xl items-center flex-row justify-center gap-2 shadow-sm"
-          >
-            <Feather name="shield" size={24} color="white" />
-            <Text className="text-white text-lg font-bold">Admin Login</Text>
-          </TouchableOpacity>
+          <View className="gap-4">
+            <TouchableOpacity 
+              activeOpacity={0.7}
+              onPress={handleAdminLogin}
+              className="w-full bg-[#2563EB] py-4 rounded-2xl items-center flex-row justify-center gap-2 shadow-sm"
+            >
+              <Feather name="shield" size={24} color="white" />
+              <Text className="text-white text-lg font-bold">Admin Login</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity 
-            activeOpacity={0.7}
-            onPress={handleUserLogin}
-            className="w-full bg-[#EEF2FF] py-4 rounded-2xl items-center flex-row justify-center gap-2"
-          >
-            <Feather name="user" size={24} color="#2563EB" />
-            <Text className="text-[#2563EB] text-lg font-bold">User Login</Text>
-          </TouchableOpacity>
+            <TouchableOpacity 
+              activeOpacity={0.7}
+              onPress={handleUserLogin}
+              className="w-full bg-[#EEF2FF] py-4 rounded-2xl items-center flex-row justify-center gap-2"
+            >
+              <Feather name="user" size={24} color="#2563EB" />
+              <Text className="text-[#2563EB] text-lg font-bold">User Login</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </SafeAreaView>
     );

@@ -254,7 +254,7 @@ export default function Settings() {
 
   return (
     <SafeAreaView className="flex-1 bg-[#F8FAFC]" edges={['top']}>
-      <ScrollView className="flex-1 px-5" showsVerticalScrollIndicator={false}>
+      <ScrollView className="flex-1 w-full max-w-4xl self-center px-5" showsVerticalScrollIndicator={false}>
         {/* App Logo Header */}
         <View className="flex-row items-center mt-2 mb-8 gap-2">
           <MaterialCommunityIcons name="shield-check" size={24} color="#2563EB" />

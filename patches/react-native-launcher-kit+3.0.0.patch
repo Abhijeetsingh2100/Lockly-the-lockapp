@@ -1,0 +1,1611 @@
+diff --git a/node_modules/react-native-launcher-kit/android/.classpath b/node_modules/react-native-launcher-kit/android/.classpath
+new file mode 100644
+index 0000000..bbe97e5
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/.classpath
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<classpath>
++	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17/"/>
++	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
++	<classpathentry kind="output" path="bin/default"/>
++</classpath>
+diff --git a/node_modules/react-native-launcher-kit/android/.gradle/8.9/checksums/checksums.lock b/node_modules/react-native-launcher-kit/android/.gradle/8.9/checksums/checksums.lock
+new file mode 100644
+index 0000000..b8da8ae
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/.gradle/8.9/checksums/checksums.lock differ
+diff --git a/node_modules/react-native-launcher-kit/android/.gradle/8.9/dependencies-accessors/gc.properties b/node_modules/react-native-launcher-kit/android/.gradle/8.9/dependencies-accessors/gc.properties
+new file mode 100644
+index 0000000..e69de29
+diff --git a/node_modules/react-native-launcher-kit/android/.gradle/8.9/fileChanges/last-build.bin b/node_modules/react-native-launcher-kit/android/.gradle/8.9/fileChanges/last-build.bin
+new file mode 100644
+index 0000000..f76dd23
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/.gradle/8.9/fileChanges/last-build.bin differ
+diff --git a/node_modules/react-native-launcher-kit/android/.gradle/8.9/fileHashes/fileHashes.lock b/node_modules/react-native-launcher-kit/android/.gradle/8.9/fileHashes/fileHashes.lock
+new file mode 100644
+index 0000000..e1bf799
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/.gradle/8.9/fileHashes/fileHashes.lock differ
+diff --git a/node_modules/react-native-launcher-kit/android/.gradle/8.9/gc.properties b/node_modules/react-native-launcher-kit/android/.gradle/8.9/gc.properties
+new file mode 100644
+index 0000000..e69de29
+diff --git a/node_modules/react-native-launcher-kit/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock b/node_modules/react-native-launcher-kit/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock
+new file mode 100644
+index 0000000..6e6c3e8
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock differ
+diff --git a/node_modules/react-native-launcher-kit/android/.gradle/buildOutputCleanup/cache.properties b/node_modules/react-native-launcher-kit/android/.gradle/buildOutputCleanup/cache.properties
+new file mode 100644
+index 0000000..57c9da5
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/.gradle/buildOutputCleanup/cache.properties
+@@ -0,0 +1,2 @@
++#Thu Jun 11 17:01:33 IST 2026
++gradle.version=8.9
+diff --git a/node_modules/react-native-launcher-kit/android/.gradle/vcs-1/gc.properties b/node_modules/react-native-launcher-kit/android/.gradle/vcs-1/gc.properties
+new file mode 100644
+index 0000000..e69de29
+diff --git a/node_modules/react-native-launcher-kit/android/.project b/node_modules/react-native-launcher-kit/android/.project
+new file mode 100644
+index 0000000..2947b63
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/.project
+@@ -0,0 +1,34 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<projectDescription>
++	<name>react-native-launcher-kit</name>
++	<comment>Project react-native-launcher-kit created by Buildship.</comment>
++	<projects>
++	</projects>
++	<buildSpec>
++		<buildCommand>
++			<name>org.eclipse.jdt.core.javabuilder</name>
++			<arguments>
++			</arguments>
++		</buildCommand>
++		<buildCommand>
++			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
++			<arguments>
++			</arguments>
++		</buildCommand>
++	</buildSpec>
++	<natures>
++		<nature>org.eclipse.jdt.core.javanature</nature>
++		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
++	</natures>
++	<filteredResources>
++		<filter>
++			<id>1781176846781</id>
++			<name></name>
++			<type>30</type>
++			<matcher>
++				<id>org.eclipse.core.resources.regexFilterMatcher</id>
++				<arguments>node_modules|\.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
++			</matcher>
++		</filter>
++	</filteredResources>
++</projectDescription>
+diff --git a/node_modules/react-native-launcher-kit/android/.settings/org.eclipse.buildship.core.prefs b/node_modules/react-native-launcher-kit/android/.settings/org.eclipse.buildship.core.prefs
+new file mode 100644
+index 0000000..1675490
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/.settings/org.eclipse.buildship.core.prefs
+@@ -0,0 +1,2 @@
++connection.project.dir=../../../android
++eclipse.preferences.version=1
+diff --git a/node_modules/react-native-launcher-kit/android/build/.transforms/d379c1b10057046672d1095c02237d70/results.bin b/node_modules/react-native-launcher-kit/android/build/.transforms/d379c1b10057046672d1095c02237d70/results.bin
+new file mode 100644
+index 0000000..0d259dd
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/.transforms/d379c1b10057046672d1095c02237d70/results.bin
+@@ -0,0 +1 @@
++o/classes
+diff --git a/node_modules/react-native-launcher-kit/android/build/.transforms/d379c1b10057046672d1095c02237d70/transformed/classes/classes_dex/classes.dex b/node_modules/react-native-launcher-kit/android/build/.transforms/d379c1b10057046672d1095c02237d70/transformed/classes/classes_dex/classes.dex
+new file mode 100644
+index 0000000..5403bc7
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/.transforms/d379c1b10057046672d1095c02237d70/transformed/classes/classes_dex/classes.dex differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/buildConfig/debug/com/launcherkit/BuildConfig.java b/node_modules/react-native-launcher-kit/android/build/generated/source/buildConfig/debug/com/launcherkit/BuildConfig.java
+new file mode 100644
+index 0000000..0b19682
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/buildConfig/debug/com/launcherkit/BuildConfig.java
+@@ -0,0 +1,12 @@
++/**
++ * Automatically generated file. DO NOT MODIFY
++ */
++package com.launcherkit;
++
++public final class BuildConfig {
++  public static final boolean DEBUG = Boolean.parseBoolean("true");
++  public static final String LIBRARY_PACKAGE_NAME = "com.launcherkit";
++  public static final String BUILD_TYPE = "debug";
++  // Field from default config.
++  public static final boolean IS_NEW_ARCHITECTURE_ENABLED = true;
++}
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/java/com/launcherkit/NativeLauncherKitSpec.java b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/java/com/launcherkit/NativeLauncherKitSpec.java
+new file mode 100644
+index 0000000..f108ee3
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/java/com/launcherkit/NativeLauncherKitSpec.java
+@@ -0,0 +1,100 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateModuleJavaSpec.js
++ *
++ * @nolint
++ */
++
++package com.launcherkit;
++
++import com.facebook.proguard.annotations.DoNotStrip;
++import com.facebook.react.bridge.Promise;
++import com.facebook.react.bridge.ReactApplicationContext;
++import com.facebook.react.bridge.ReactContextBaseJavaModule;
++import com.facebook.react.bridge.ReactMethod;
++import com.facebook.react.bridge.ReadableMap;
++import com.facebook.react.turbomodule.core.interfaces.TurboModule;
++import javax.annotation.Nonnull;
++import javax.annotation.Nullable;
++
++public abstract class NativeLauncherKitSpec extends ReactContextBaseJavaModule implements TurboModule {
++  public static final String NAME = "LauncherKit";
++
++  public NativeLauncherKitSpec(ReactApplicationContext reactContext) {
++    super(reactContext);
++  }
++
++  @Override
++  public @Nonnull String getName() {
++    return NAME;
++  }
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void getApps(boolean includeVersion, boolean includeAccentColor, Promise promise);
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void launchApplication(String packageName, @Nullable ReadableMap params);
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void isPackageInstalled(String packageName, Promise promise);
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void getDefaultLauncherPackageName(Promise promise);
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void setAsDefaultLauncher();
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void getBatteryStatus(Promise promise);
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void goToSettings();
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void openAlarmApp();
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void openSetDefaultLauncher(Promise promise);
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void startListeningForAppInstallations();
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void stopListeningForAppInstallations();
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void startListeningForAppRemovals();
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void stopListeningForAppRemovals();
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void startListeningForBatteryChanges();
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void stopListeningForBatteryChanges();
++
++  @ReactMethod
++  @DoNotStrip
++  public abstract void requestDefaultLauncher(Promise promise);
++}
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/CMakeLists.txt b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/CMakeLists.txt
+new file mode 100644
+index 0000000..d5697f5
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/CMakeLists.txt
+@@ -0,0 +1,28 @@
++# Copyright (c) Meta Platforms, Inc. and affiliates.
++#
++# This source code is licensed under the MIT license found in the
++# LICENSE file in the root directory of this source tree.
++
++cmake_minimum_required(VERSION 3.13)
++set(CMAKE_VERBOSE_MAKEFILE on)
++
++file(GLOB react_codegen_SRCS CONFIGURE_DEPENDS *.cpp react/renderer/components/RNLauncherKitSpec/*.cpp)
++
++add_library(
++  react_codegen_RNLauncherKitSpec
++  OBJECT
++  ${react_codegen_SRCS}
++)
++
++target_include_directories(react_codegen_RNLauncherKitSpec PUBLIC . react/renderer/components/RNLauncherKitSpec)
++
++target_link_libraries(
++  react_codegen_RNLauncherKitSpec
++  fbjni
++  jsi
++  # We need to link different libraries based on whether we are building rncore or not, that's necessary
++  # because we want to break a circular dependency between react_codegen_rncore and reactnative
++  reactnative
++)
++
++target_compile_reactnative_options(react_codegen_RNLauncherKitSpec PRIVATE)
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/RNLauncherKitSpec-generated.cpp b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/RNLauncherKitSpec-generated.cpp
+new file mode 100644
+index 0000000..2139cb3
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/RNLauncherKitSpec-generated.cpp
+@@ -0,0 +1,122 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateModuleJniCpp.js
++ */
++
++#include "RNLauncherKitSpec.h"
++
++namespace facebook::react {
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_getApps(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, PromiseKind, "getApps", "(ZZLcom/facebook/react/bridge/Promise;)V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_launchApplication(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "launchApplication", "(Ljava/lang/String;Lcom/facebook/react/bridge/ReadableMap;)V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_isPackageInstalled(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, PromiseKind, "isPackageInstalled", "(Ljava/lang/String;Lcom/facebook/react/bridge/Promise;)V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_getDefaultLauncherPackageName(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, PromiseKind, "getDefaultLauncherPackageName", "(Lcom/facebook/react/bridge/Promise;)V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_setAsDefaultLauncher(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "setAsDefaultLauncher", "()V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_getBatteryStatus(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, PromiseKind, "getBatteryStatus", "(Lcom/facebook/react/bridge/Promise;)V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_goToSettings(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "goToSettings", "()V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_openAlarmApp(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "openAlarmApp", "()V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_openSetDefaultLauncher(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, PromiseKind, "openSetDefaultLauncher", "(Lcom/facebook/react/bridge/Promise;)V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_startListeningForAppInstallations(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "startListeningForAppInstallations", "()V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_stopListeningForAppInstallations(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "stopListeningForAppInstallations", "()V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_startListeningForAppRemovals(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "startListeningForAppRemovals", "()V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_stopListeningForAppRemovals(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "stopListeningForAppRemovals", "()V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_startListeningForBatteryChanges(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "startListeningForBatteryChanges", "()V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_stopListeningForBatteryChanges(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, VoidKind, "stopListeningForBatteryChanges", "()V", args, count, cachedMethodId);
++}
++
++static facebook::jsi::Value __hostFunction_NativeLauncherKitSpecJSI_requestDefaultLauncher(facebook::jsi::Runtime& rt, TurboModule &turboModule, const facebook::jsi::Value* args, size_t count) {
++  static jmethodID cachedMethodId = nullptr;
++  return static_cast<JavaTurboModule &>(turboModule).invokeJavaMethod(rt, PromiseKind, "requestDefaultLauncher", "(Lcom/facebook/react/bridge/Promise;)V", args, count, cachedMethodId);
++}
++
++NativeLauncherKitSpecJSI::NativeLauncherKitSpecJSI(const JavaTurboModule::InitParams &params)
++  : JavaTurboModule(params) {
++  methodMap_["getApps"] = MethodMetadata {2, __hostFunction_NativeLauncherKitSpecJSI_getApps};
++  methodMap_["launchApplication"] = MethodMetadata {2, __hostFunction_NativeLauncherKitSpecJSI_launchApplication};
++  methodMap_["isPackageInstalled"] = MethodMetadata {1, __hostFunction_NativeLauncherKitSpecJSI_isPackageInstalled};
++  methodMap_["getDefaultLauncherPackageName"] = MethodMetadata {0, __hostFunction_NativeLauncherKitSpecJSI_getDefaultLauncherPackageName};
++  methodMap_["setAsDefaultLauncher"] = MethodMetadata {0, __hostFunction_NativeLauncherKitSpecJSI_setAsDefaultLauncher};
++  methodMap_["getBatteryStatus"] = MethodMetadata {0, __hostFunction_NativeLauncherKitSpecJSI_getBatteryStatus};
++  methodMap_["goToSettings"] = MethodMetadata {0, __hostFunction_NativeLauncherKitSpecJSI_goToSettings};
++  methodMap_["openAlarmApp"] = MethodMetadata {0, __hostFunction_NativeLauncherKitSpecJSI_openAlarmApp};
++  methodMap_["openSetDefaultLauncher"] = MethodMetadata {0, __hostFunction_NativeLauncherKitSpecJSI_openSetDefaultLauncher};
++  methodMap_["startListeningForAppInstallations"] = MethodMetadata {0, __hostFunction_NativeLauncherKitSpecJSI_startListeningForAppInstallations};
++  methodMap_["stopListeningForAppInstallations"] = MethodMetadata {0, __hostFunction_NativeLauncherKitSpecJSI_stopListeningForAppInstallations};
++  methodMap_["startListeningForAppRemovals"] = MethodMetadata {0, __hostFunction_NativeLauncherKitSpecJSI_startListeningForAppRemovals};
++  methodMap_["stopListeningForAppRemovals"] = MethodMetadata {0, __hostFunction_NativeLauncherKitSpecJSI_stopListeningForAppRemovals};
++  methodMap_["startListeningForBatteryChanges"] = MethodMetadata {0, __hostFunction_NativeLauncherKitSpecJSI_startListeningForBatteryChanges};
++  methodMap_["stopListeningForBatteryChanges"] = MethodMetadata {0, __hostFunction_NativeLauncherKitSpecJSI_stopListeningForBatteryChanges};
++  methodMap_["requestDefaultLauncher"] = MethodMetadata {0, __hostFunction_NativeLauncherKitSpecJSI_requestDefaultLauncher};
++}
++
++std::shared_ptr<TurboModule> RNLauncherKitSpec_ModuleProvider(const std::string &moduleName, const JavaTurboModule::InitParams &params) {
++  if (moduleName == "LauncherKit") {
++    return std::make_shared<NativeLauncherKitSpecJSI>(params);
++  }
++  return nullptr;
++}
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/RNLauncherKitSpec.h b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/RNLauncherKitSpec.h
+new file mode 100644
+index 0000000..3dad874
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/RNLauncherKitSpec.h
+@@ -0,0 +1,31 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateModuleJniH.js
++ */
++
++#pragma once
++
++#include <ReactCommon/JavaTurboModule.h>
++#include <ReactCommon/TurboModule.h>
++#include <jsi/jsi.h>
++
++namespace facebook::react {
++
++/**
++ * JNI C++ class for module 'NativeLauncherKit'
++ */
++class JSI_EXPORT NativeLauncherKitSpecJSI : public JavaTurboModule {
++public:
++  NativeLauncherKitSpecJSI(const JavaTurboModule::InitParams &params);
++};
++
++
++JSI_EXPORT
++std::shared_ptr<TurboModule> RNLauncherKitSpec_ModuleProvider(const std::string &moduleName, const JavaTurboModule::InitParams &params);
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/ComponentDescriptors.cpp b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/ComponentDescriptors.cpp
+new file mode 100644
+index 0000000..78c86d1
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/ComponentDescriptors.cpp
+@@ -0,0 +1,22 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateComponentDescriptorCpp.js
++ */
++
++#include <react/renderer/components/RNLauncherKitSpec/ComponentDescriptors.h>
++#include <react/renderer/core/ConcreteComponentDescriptor.h>
++#include <react/renderer/componentregistry/ComponentDescriptorProviderRegistry.h>
++
++namespace facebook::react {
++
++void RNLauncherKitSpec_registerComponentDescriptorsFromCodegen(
++  std::shared_ptr<const ComponentDescriptorProviderRegistry> registry) {
++
++}
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/ComponentDescriptors.h b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/ComponentDescriptors.h
+new file mode 100644
+index 0000000..1b2fe87
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/ComponentDescriptors.h
+@@ -0,0 +1,24 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateComponentDescriptorH.js
++ */
++
++#pragma once
++
++#include <react/renderer/components/RNLauncherKitSpec/ShadowNodes.h>
++#include <react/renderer/core/ConcreteComponentDescriptor.h>
++#include <react/renderer/componentregistry/ComponentDescriptorProviderRegistry.h>
++
++namespace facebook::react {
++
++
++
++void RNLauncherKitSpec_registerComponentDescriptorsFromCodegen(
++  std::shared_ptr<const ComponentDescriptorProviderRegistry> registry);
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/EventEmitters.cpp b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/EventEmitters.cpp
+new file mode 100644
+index 0000000..17ca94a
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/EventEmitters.cpp
+@@ -0,0 +1,16 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateEventEmitterCpp.js
++ */
++
++#include <react/renderer/components/RNLauncherKitSpec/EventEmitters.h>
++
++
++namespace facebook::react {
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/EventEmitters.h b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/EventEmitters.h
+new file mode 100644
+index 0000000..2845a63
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/EventEmitters.h
+@@ -0,0 +1,17 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateEventEmitterH.js
++ */
++#pragma once
++
++#include <react/renderer/components/view/ViewEventEmitter.h>
++
++
++namespace facebook::react {
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/Props.cpp b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/Props.cpp
+new file mode 100644
+index 0000000..29b62e9
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/Props.cpp
+@@ -0,0 +1,19 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GeneratePropsCpp.js
++ */
++
++#include <react/renderer/components/RNLauncherKitSpec/Props.h>
++#include <react/renderer/core/PropsParserContext.h>
++#include <react/renderer/core/propsConversions.h>
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/Props.h b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/Props.h
+new file mode 100644
+index 0000000..870864b
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/Props.h
+@@ -0,0 +1,18 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GeneratePropsH.js
++ */
++#pragma once
++
++
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/RNLauncherKitSpecJSI.h b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/RNLauncherKitSpecJSI.h
+new file mode 100644
+index 0000000..f6e9dec
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/RNLauncherKitSpecJSI.h
+@@ -0,0 +1,162 @@
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateModuleH.js
++ */
++
++#pragma once
++
++#include <ReactCommon/TurboModule.h>
++#include <react/bridging/Bridging.h>
++
++namespace facebook::react {
++
++
++template <typename T>
++class JSI_EXPORT NativeLauncherKitCxxSpec : public TurboModule {
++public:
++  static constexpr std::string_view kModuleName = "LauncherKit";
++
++protected:
++  NativeLauncherKitCxxSpec(std::shared_ptr<CallInvoker> jsInvoker) : TurboModule(std::string{NativeLauncherKitCxxSpec::kModuleName}, jsInvoker) {
++    methodMap_["getApps"] = MethodMetadata {.argCount = 2, .invoker = __getApps};
++    methodMap_["launchApplication"] = MethodMetadata {.argCount = 2, .invoker = __launchApplication};
++    methodMap_["isPackageInstalled"] = MethodMetadata {.argCount = 1, .invoker = __isPackageInstalled};
++    methodMap_["getDefaultLauncherPackageName"] = MethodMetadata {.argCount = 0, .invoker = __getDefaultLauncherPackageName};
++    methodMap_["setAsDefaultLauncher"] = MethodMetadata {.argCount = 0, .invoker = __setAsDefaultLauncher};
++    methodMap_["getBatteryStatus"] = MethodMetadata {.argCount = 0, .invoker = __getBatteryStatus};
++    methodMap_["goToSettings"] = MethodMetadata {.argCount = 0, .invoker = __goToSettings};
++    methodMap_["openAlarmApp"] = MethodMetadata {.argCount = 0, .invoker = __openAlarmApp};
++    methodMap_["openSetDefaultLauncher"] = MethodMetadata {.argCount = 0, .invoker = __openSetDefaultLauncher};
++    methodMap_["startListeningForAppInstallations"] = MethodMetadata {.argCount = 0, .invoker = __startListeningForAppInstallations};
++    methodMap_["stopListeningForAppInstallations"] = MethodMetadata {.argCount = 0, .invoker = __stopListeningForAppInstallations};
++    methodMap_["startListeningForAppRemovals"] = MethodMetadata {.argCount = 0, .invoker = __startListeningForAppRemovals};
++    methodMap_["stopListeningForAppRemovals"] = MethodMetadata {.argCount = 0, .invoker = __stopListeningForAppRemovals};
++    methodMap_["startListeningForBatteryChanges"] = MethodMetadata {.argCount = 0, .invoker = __startListeningForBatteryChanges};
++    methodMap_["stopListeningForBatteryChanges"] = MethodMetadata {.argCount = 0, .invoker = __stopListeningForBatteryChanges};
++    methodMap_["requestDefaultLauncher"] = MethodMetadata {.argCount = 0, .invoker = __requestDefaultLauncher};
++  }
++  
++private:
++  static jsi::Value __getApps(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
++    static_assert(
++      bridging::getParameterCount(&T::getApps) == 3,
++      "Expected getApps(...) to have 3 parameters");
++    return bridging::callFromJs<jsi::Value>(rt, &T::getApps,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule),
++      count <= 0 ? throw jsi::JSError(rt, "Expected argument in position 0 to be passed") : args[0].asBool(),
++      count <= 1 ? throw jsi::JSError(rt, "Expected argument in position 1 to be passed") : args[1].asBool());
++  }
++
++  static jsi::Value __launchApplication(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
++    static_assert(
++      bridging::getParameterCount(&T::launchApplication) == 3,
++      "Expected launchApplication(...) to have 3 parameters");
++    bridging::callFromJs<void>(rt, &T::launchApplication,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule),
++      count <= 0 ? throw jsi::JSError(rt, "Expected argument in position 0 to be passed") : args[0].asString(rt),
++      count <= 1 || args[1].isUndefined() ? std::nullopt : std::make_optional(args[1].asObject(rt)));return jsi::Value::undefined();
++  }
++
++  static jsi::Value __isPackageInstalled(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* args, size_t count) {
++    static_assert(
++      bridging::getParameterCount(&T::isPackageInstalled) == 2,
++      "Expected isPackageInstalled(...) to have 2 parameters");
++    return bridging::callFromJs<jsi::Value>(rt, &T::isPackageInstalled,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule),
++      count <= 0 ? throw jsi::JSError(rt, "Expected argument in position 0 to be passed") : args[0].asString(rt));
++  }
++
++  static jsi::Value __getDefaultLauncherPackageName(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* /*args*/, size_t /*count*/) {
++    static_assert(
++      bridging::getParameterCount(&T::getDefaultLauncherPackageName) == 1,
++      "Expected getDefaultLauncherPackageName(...) to have 1 parameters");
++    return bridging::callFromJs<jsi::Value>(rt, &T::getDefaultLauncherPackageName,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule));
++  }
++
++  static jsi::Value __setAsDefaultLauncher(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* /*args*/, size_t /*count*/) {
++    static_assert(
++      bridging::getParameterCount(&T::setAsDefaultLauncher) == 1,
++      "Expected setAsDefaultLauncher(...) to have 1 parameters");
++    bridging::callFromJs<void>(rt, &T::setAsDefaultLauncher,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule));return jsi::Value::undefined();
++  }
++
++  static jsi::Value __getBatteryStatus(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* /*args*/, size_t /*count*/) {
++    static_assert(
++      bridging::getParameterCount(&T::getBatteryStatus) == 1,
++      "Expected getBatteryStatus(...) to have 1 parameters");
++    return bridging::callFromJs<jsi::Value>(rt, &T::getBatteryStatus,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule));
++  }
++
++  static jsi::Value __goToSettings(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* /*args*/, size_t /*count*/) {
++    static_assert(
++      bridging::getParameterCount(&T::goToSettings) == 1,
++      "Expected goToSettings(...) to have 1 parameters");
++    bridging::callFromJs<void>(rt, &T::goToSettings,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule));return jsi::Value::undefined();
++  }
++
++  static jsi::Value __openAlarmApp(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* /*args*/, size_t /*count*/) {
++    static_assert(
++      bridging::getParameterCount(&T::openAlarmApp) == 1,
++      "Expected openAlarmApp(...) to have 1 parameters");
++    bridging::callFromJs<void>(rt, &T::openAlarmApp,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule));return jsi::Value::undefined();
++  }
++
++  static jsi::Value __openSetDefaultLauncher(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* /*args*/, size_t /*count*/) {
++    static_assert(
++      bridging::getParameterCount(&T::openSetDefaultLauncher) == 1,
++      "Expected openSetDefaultLauncher(...) to have 1 parameters");
++    return bridging::callFromJs<jsi::Value>(rt, &T::openSetDefaultLauncher,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule));
++  }
++
++  static jsi::Value __startListeningForAppInstallations(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* /*args*/, size_t /*count*/) {
++    static_assert(
++      bridging::getParameterCount(&T::startListeningForAppInstallations) == 1,
++      "Expected startListeningForAppInstallations(...) to have 1 parameters");
++    bridging::callFromJs<void>(rt, &T::startListeningForAppInstallations,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule));return jsi::Value::undefined();
++  }
++
++  static jsi::Value __stopListeningForAppInstallations(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* /*args*/, size_t /*count*/) {
++    static_assert(
++      bridging::getParameterCount(&T::stopListeningForAppInstallations) == 1,
++      "Expected stopListeningForAppInstallations(...) to have 1 parameters");
++    bridging::callFromJs<void>(rt, &T::stopListeningForAppInstallations,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule));return jsi::Value::undefined();
++  }
++
++  static jsi::Value __startListeningForAppRemovals(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* /*args*/, size_t /*count*/) {
++    static_assert(
++      bridging::getParameterCount(&T::startListeningForAppRemovals) == 1,
++      "Expected startListeningForAppRemovals(...) to have 1 parameters");
++    bridging::callFromJs<void>(rt, &T::startListeningForAppRemovals,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule));return jsi::Value::undefined();
++  }
++
++  static jsi::Value __stopListeningForAppRemovals(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* /*args*/, size_t /*count*/) {
++    static_assert(
++      bridging::getParameterCount(&T::stopListeningForAppRemovals) == 1,
++      "Expected stopListeningForAppRemovals(...) to have 1 parameters");
++    bridging::callFromJs<void>(rt, &T::stopListeningForAppRemovals,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule));return jsi::Value::undefined();
++  }
++
++  static jsi::Value __startListeningForBatteryChanges(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* /*args*/, size_t /*count*/) {
++    static_assert(
++      bridging::getParameterCount(&T::startListeningForBatteryChanges) == 1,
++      "Expected startListeningForBatteryChanges(...) to have 1 parameters");
++    bridging::callFromJs<void>(rt, &T::startListeningForBatteryChanges,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule));return jsi::Value::undefined();
++  }
++
++  static jsi::Value __stopListeningForBatteryChanges(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* /*args*/, size_t /*count*/) {
++    static_assert(
++      bridging::getParameterCount(&T::stopListeningForBatteryChanges) == 1,
++      "Expected stopListeningForBatteryChanges(...) to have 1 parameters");
++    bridging::callFromJs<void>(rt, &T::stopListeningForBatteryChanges,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule));return jsi::Value::undefined();
++  }
++
++  static jsi::Value __requestDefaultLauncher(jsi::Runtime &rt, TurboModule &turboModule, const jsi::Value* /*args*/, size_t /*count*/) {
++    static_assert(
++      bridging::getParameterCount(&T::requestDefaultLauncher) == 1,
++      "Expected requestDefaultLauncher(...) to have 1 parameters");
++    return bridging::callFromJs<jsi::Value>(rt, &T::requestDefaultLauncher,  static_cast<NativeLauncherKitCxxSpec*>(&turboModule)->jsInvoker_, static_cast<T*>(&turboModule));
++  }
++};
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/ShadowNodes.cpp b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/ShadowNodes.cpp
+new file mode 100644
+index 0000000..a5ff9fb
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/ShadowNodes.cpp
+@@ -0,0 +1,17 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateShadowNodeCpp.js
++ */
++
++#include <react/renderer/components/RNLauncherKitSpec/ShadowNodes.h>
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/ShadowNodes.h b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/ShadowNodes.h
+new file mode 100644
+index 0000000..31e323f
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/ShadowNodes.h
+@@ -0,0 +1,23 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateShadowNodeH.js
++ */
++
++#pragma once
++
++#include <react/renderer/components/RNLauncherKitSpec/EventEmitters.h>
++#include <react/renderer/components/RNLauncherKitSpec/Props.h>
++#include <react/renderer/components/RNLauncherKitSpec/States.h>
++#include <react/renderer/components/view/ConcreteViewShadowNode.h>
++#include <jsi/jsi.h>
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/States.cpp b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/States.cpp
+new file mode 100644
+index 0000000..1d2e255
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/States.cpp
+@@ -0,0 +1,16 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateStateCpp.js
++ */
++#include <react/renderer/components/RNLauncherKitSpec/States.h>
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/States.h b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/States.h
+new file mode 100644
+index 0000000..2e55bce
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/RNLauncherKitSpec/States.h
+@@ -0,0 +1,20 @@
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateStateH.js
++ */
++#pragma once
++
++#include <react/renderer/core/StateData.h>
++#ifdef RN_SERIALIZABLE_STATE
++#include <folly/dynamic.h>
++#endif
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/schema.json b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/schema.json
+new file mode 100644
+index 0000000..2e33ab8
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/schema.json
+@@ -0,0 +1 @@
++{"libraryName":"","modules":{"NativeLauncherKit":{"type":"NativeModule","aliasMap":{},"enumMap":{},"spec":{"eventEmitters":[],"methods":[{"name":"getApps","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"PromiseTypeAnnotation","elementType":{"type":"StringTypeAnnotation"}},"params":[{"name":"includeVersion","optional":false,"typeAnnotation":{"type":"BooleanTypeAnnotation"}},{"name":"includeAccentColor","optional":false,"typeAnnotation":{"type":"BooleanTypeAnnotation"}}]}},{"name":"launchApplication","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"VoidTypeAnnotation"},"params":[{"name":"packageName","optional":false,"typeAnnotation":{"type":"StringTypeAnnotation"}},{"name":"params","optional":true,"typeAnnotation":{"type":"GenericObjectTypeAnnotation"}}]}},{"name":"isPackageInstalled","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"PromiseTypeAnnotation","elementType":{"type":"BooleanTypeAnnotation"}},"params":[{"name":"packageName","optional":false,"typeAnnotation":{"type":"StringTypeAnnotation"}}]}},{"name":"getDefaultLauncherPackageName","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"PromiseTypeAnnotation","elementType":{"type":"StringTypeAnnotation"}},"params":[]}},{"name":"setAsDefaultLauncher","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"VoidTypeAnnotation"},"params":[]}},{"name":"getBatteryStatus","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"PromiseTypeAnnotation","elementType":{"type":"GenericObjectTypeAnnotation"}},"params":[]}},{"name":"goToSettings","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"VoidTypeAnnotation"},"params":[]}},{"name":"openAlarmApp","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"VoidTypeAnnotation"},"params":[]}},{"name":"openSetDefaultLauncher","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"PromiseTypeAnnotation","elementType":{"type":"BooleanTypeAnnotation"}},"params":[]}},{"name":"startListeningForAppInstallations","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"VoidTypeAnnotation"},"params":[]}},{"name":"stopListeningForAppInstallations","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"VoidTypeAnnotation"},"params":[]}},{"name":"startListeningForAppRemovals","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"VoidTypeAnnotation"},"params":[]}},{"name":"stopListeningForAppRemovals","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"VoidTypeAnnotation"},"params":[]}},{"name":"startListeningForBatteryChanges","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"VoidTypeAnnotation"},"params":[]}},{"name":"stopListeningForBatteryChanges","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"VoidTypeAnnotation"},"params":[]}},{"name":"requestDefaultLauncher","optional":false,"typeAnnotation":{"type":"FunctionTypeAnnotation","returnTypeAnnotation":{"type":"PromiseTypeAnnotation","elementType":{"type":"BooleanTypeAnnotation"}},"params":[]}}]},"moduleName":"LauncherKit"}}}
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml b/node_modules/react-native-launcher-kit/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml
+new file mode 100644
+index 0000000..70af1b1
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.launcherkit" >
++
++    <uses-sdk android:minSdkVersion="24" />
++
++    <queries>
++        <intent>
++            <action android:name="android.intent.action.SHOW_ALARMS" />
++        </intent>
++    </queries>
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output-metadata.json b/node_modules/react-native-launcher-kit/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output-metadata.json
+new file mode 100644
+index 0000000..a9b2088
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output-metadata.json
+@@ -0,0 +1,18 @@
++{
++  "version": 3,
++  "artifactType": {
++    "type": "AAPT_FRIENDLY_MERGED_MANIFESTS",
++    "kind": "Directory"
++  },
++  "applicationId": "com.launcherkit",
++  "variantName": "debug",
++  "elements": [
++    {
++      "type": "SINGLE",
++      "filters": [],
++      "attributes": [],
++      "outputFile": "AndroidManifest.xml"
++    }
++  ],
++  "elementType": "File"
++}
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/aar_metadata/debug/writeDebugAarMetadata/aar-metadata.properties b/node_modules/react-native-launcher-kit/android/build/intermediates/aar_metadata/debug/writeDebugAarMetadata/aar-metadata.properties
+new file mode 100644
+index 0000000..1211b1e
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/aar_metadata/debug/writeDebugAarMetadata/aar-metadata.properties
+@@ -0,0 +1,6 @@
++aarFormatVersion=1.0
++aarMetadataVersion=1.0
++minCompileSdk=1
++minCompileSdkExtension=0
++minAndroidGradlePluginVersion=1.0.0
++coreLibraryDesugaringEnabled=false
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/annotation_processor_list/debug/javaPreCompileDebug/annotationProcessors.json b/node_modules/react-native-launcher-kit/android/build/intermediates/annotation_processor_list/debug/javaPreCompileDebug/annotationProcessors.json
+new file mode 100644
+index 0000000..9e26dfe
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/annotation_processor_list/debug/javaPreCompileDebug/annotationProcessors.json
+@@ -0,0 +1 @@
++{}
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar b/node_modules/react-native-launcher-kit/android/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar
+new file mode 100644
+index 0000000..c3323f6
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar b/node_modules/react-native-launcher-kit/android/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar
+new file mode 100644
+index 0000000..84086e0
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/compile_symbol_list/debug/generateDebugRFile/R.txt b/node_modules/react-native-launcher-kit/android/build/intermediates/compile_symbol_list/debug/generateDebugRFile/R.txt
+new file mode 100644
+index 0000000..da9d30d
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/compile_symbol_list/debug/generateDebugRFile/R.txt
+@@ -0,0 +1 @@
++int anim slide_up 0x0
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/compiled_local_resources/debug/compileDebugLibraryResources/out/anim_slide_up.xml.flat b/node_modules/react-native-launcher-kit/android/build/intermediates/compiled_local_resources/debug/compileDebugLibraryResources/out/anim_slide_up.xml.flat
+new file mode 100644
+index 0000000..23c00c1
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/compiled_local_resources/debug/compileDebugLibraryResources/out/anim_slide_up.xml.flat differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties
+new file mode 100644
+index 0000000..2fde160
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties
+@@ -0,0 +1,2 @@
++#Sat Jun 13 16:46:35 IST 2026
++com.launcherkit.react-native-launcher-kit-main-6\:/anim/slide_up.xml=E\:\\Internship\\Lockly\\node_modules\\react-native-launcher-kit\\android\\build\\intermediates\\packaged_res\\debug\\packageDebugResources\\anim\\slide_up.xml
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml
+new file mode 100644
+index 0000000..e17a3ed
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\res"><file name="slide_up" path="E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\res\anim\slide_up.xml" qualifiers="" type="anim"/></source></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\debug\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\debug\res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\build\generated\res\resValues\debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated" generated-set="generated$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\build\generated\res\resValues\debug"/></dataSet><mergedItems/></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugAssets/merger.xml b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugAssets/merger.xml
+new file mode 100644
+index 0000000..116a9ae
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugAssets/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\assets"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\debug\assets"/></dataSet><dataSet config="generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\build\intermediates\shader_assets\debug\compileDebugShaders\out"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml
+new file mode 100644
+index 0000000..b56f359
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\debug\jniLibs"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugShaders/merger.xml b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugShaders/merger.xml
+new file mode 100644
+index 0000000..59e239b
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugShaders/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\shaders"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\debug\shaders"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/java_res/debug/processDebugJavaRes/out/META-INF/react-native-launcher-kit_debug.kotlin_module b/node_modules/react-native-launcher-kit/android/build/intermediates/java_res/debug/processDebugJavaRes/out/META-INF/react-native-launcher-kit_debug.kotlin_module
+new file mode 100644
+index 0000000..9dbc290
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/java_res/debug/processDebugJavaRes/out/META-INF/react-native-launcher-kit_debug.kotlin_module differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/BuildConfig.class b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/BuildConfig.class
+new file mode 100644
+index 0000000..af8d988
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/BuildConfig.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/NativeLauncherKitSpec.class b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/NativeLauncherKitSpec.class
+new file mode 100644
+index 0000000..e5bbe19
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/NativeLauncherKitSpec.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt b/node_modules/react-native-launcher-kit/android/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt
+new file mode 100644
+index 0000000..620ebe7
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt
+@@ -0,0 +1,3 @@
++R_DEF: Internal format may change without notice
++local
++anim slide_up
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/manifest_merge_blame_file/debug/processDebugManifest/manifest-merger-blame-debug-report.txt b/node_modules/react-native-launcher-kit/android/build/intermediates/manifest_merge_blame_file/debug/processDebugManifest/manifest-merger-blame-debug-report.txt
+new file mode 100644
+index 0000000..1c883b1
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/manifest_merge_blame_file/debug/processDebugManifest/manifest-merger-blame-debug-report.txt
+@@ -0,0 +1,17 @@
++1<?xml version="1.0" encoding="utf-8"?>
++2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++3    package="com.launcherkit" >
++4
++5    <uses-sdk android:minSdkVersion="24" />
++6
++7    <queries>
++7-->E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml:3:5-7:15
++8        <intent>
++8-->E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml:4:9-6:18
++9            <action android:name="android.intent.action.SHOW_ALARMS" />
++9-->E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml:5:13-72
++9-->E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml:5:21-69
++10        </intent>
++11    </queries>
++12
++13</manifest>
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml b/node_modules/react-native-launcher-kit/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml
+new file mode 100644
+index 0000000..70af1b1
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.launcherkit" >
++
++    <uses-sdk android:minSdkVersion="24" />
++
++    <queries>
++        <intent>
++            <action android:name="android.intent.action.SHOW_ALARMS" />
++        </intent>
++    </queries>
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/navigation_json/debug/extractDeepLinksDebug/navigation.json b/node_modules/react-native-launcher-kit/android/build/intermediates/navigation_json/debug/extractDeepLinksDebug/navigation.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/navigation_json/debug/extractDeepLinksDebug/navigation.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/nested_resources_validation_report/debug/generateDebugResources/nestedResourcesValidationReport.txt b/node_modules/react-native-launcher-kit/android/build/intermediates/nested_resources_validation_report/debug/generateDebugResources/nestedResourcesValidationReport.txt
+new file mode 100644
+index 0000000..08f4ebe
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/nested_resources_validation_report/debug/generateDebugResources/nestedResourcesValidationReport.txt
+@@ -0,0 +1 @@
++0 Warning/Error
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/packaged_res/debug/packageDebugResources/anim/slide_up.xml b/node_modules/react-native-launcher-kit/android/build/intermediates/packaged_res/debug/packageDebugResources/anim/slide_up.xml
+new file mode 100644
+index 0000000..18d5c98
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/packaged_res/debug/packageDebugResources/anim/slide_up.xml
+@@ -0,0 +1,6 @@
++<set xmlns:android="http://schemas.android.com/apk/res/android">
++  <translate
++    android:fromYDelta="100%"
++    android:toYDelta="0%"
++    android:duration="500" />
++</set>
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar
+new file mode 100644
+index 0000000..1aa79b1
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/symbol_list_with_package_name/debug/generateDebugRFile/package-aware-r.txt b/node_modules/react-native-launcher-kit/android/build/intermediates/symbol_list_with_package_name/debug/generateDebugRFile/package-aware-r.txt
+new file mode 100644
+index 0000000..2da5a9f
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/symbol_list_with_package_name/debug/generateDebugRFile/package-aware-r.txt
+@@ -0,0 +1,2 @@
++com.launcherkit
++anim slide_up
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab
+new file mode 100644
+index 0000000..0a4ccc6
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream
+new file mode 100644
+index 0000000..bec903e
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream.len
+new file mode 100644
+index 0000000..9ea24c3
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.keystream.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.len
+new file mode 100644
+index 0000000..a541356
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at
+new file mode 100644
+index 0000000..a75487c
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i
+new file mode 100644
+index 0000000..4014f3a
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab_i.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab
+new file mode 100644
+index 0000000..4d6f90f
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.keystream b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.keystream
+new file mode 100644
+index 0000000..52aab36
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.keystream differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.keystream.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.keystream.len
+new file mode 100644
+index 0000000..22d1d76
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.keystream.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.len
+new file mode 100644
+index 0000000..14f7c06
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.values.at b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.values.at
+new file mode 100644
+index 0000000..c1f99d4
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab.values.at differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i
+new file mode 100644
+index 0000000..1d78b59
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-attributes.tab_i.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab
+new file mode 100644
+index 0000000..d096b74
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream
+new file mode 100644
+index 0000000..52aab36
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream.len
+new file mode 100644
+index 0000000..22d1d76
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.len
+new file mode 100644
+index 0000000..14f7c06
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at
+new file mode 100644
+index 0000000..dcea8e3
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i
+new file mode 100644
+index 0000000..1d78b59
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab
+new file mode 100644
+index 0000000..bdf584a
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab.keystream b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab.keystream
+new file mode 100644
+index 0000000..3fd8c78
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab.keystream differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab.keystream.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab.keystream.len
+new file mode 100644
+index 0000000..b9d571f
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab.keystream.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab.len
+new file mode 100644
+index 0000000..2a17e6e
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab.values.at b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab.values.at
+new file mode 100644
+index 0000000..756c79b
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab.values.at differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab_i b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab_i
+new file mode 100644
+index 0000000..dd90ee7
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab_i differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab_i.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/constants.tab_i.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab
+new file mode 100644
+index 0000000..a4ba9bc
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream
+new file mode 100644
+index 0000000..d132ffc
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream.len
+new file mode 100644
+index 0000000..a45c72c
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.len
+new file mode 100644
+index 0000000..42df8b9
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at
+new file mode 100644
+index 0000000..899fb0c
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i
+new file mode 100644
+index 0000000..baf7ef5
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab
+new file mode 100644
+index 0000000..ba64011
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.keystream b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.keystream
+new file mode 100644
+index 0000000..6cb5f69
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.keystream differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.keystream.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.keystream.len
+new file mode 100644
+index 0000000..1e4af96
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.keystream.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.len
+new file mode 100644
+index 0000000..8fe89d8
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at
+new file mode 100644
+index 0000000..f036ff0
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i
+new file mode 100644
+index 0000000..0700fb2
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab_i.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab
+new file mode 100644
+index 0000000..55774b1
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream
+new file mode 100644
+index 0000000..bec903e
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream.len
+new file mode 100644
+index 0000000..9ea24c3
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.keystream.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.len
+new file mode 100644
+index 0000000..a541356
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at
+new file mode 100644
+index 0000000..9baccae
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i
+new file mode 100644
+index 0000000..4014f3a
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab_i.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab
+new file mode 100644
+index 0000000..6dea457
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream
+new file mode 100644
+index 0000000..883c455
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream.len
+new file mode 100644
+index 0000000..09272b8
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.keystream.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.len
+new file mode 100644
+index 0000000..93a595b
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.values.at b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.values.at
+new file mode 100644
+index 0000000..0f79ced
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab.values.at differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i
+new file mode 100644
+index 0000000..e315e6f
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/subtypes.tab_i.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab
+new file mode 100644
+index 0000000..f796ff1
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream
+new file mode 100644
+index 0000000..9ad05f4
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream.len
+new file mode 100644
+index 0000000..1161cbc
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.keystream.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.len
+new file mode 100644
+index 0000000..93a595b
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.values.at b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.values.at
+new file mode 100644
+index 0000000..41239c3
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab.values.at differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i
+new file mode 100644
+index 0000000..ac23ba0
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/supertypes.tab_i.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/counters.tab b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/counters.tab
+new file mode 100644
+index 0000000..920202f
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/counters.tab
+@@ -0,0 +1,2 @@
++11
++0
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab
+new file mode 100644
+index 0000000..b583f38
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.keystream b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.keystream
+new file mode 100644
+index 0000000..bec903e
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.keystream differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.keystream.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.keystream.len
+new file mode 100644
+index 0000000..9ea24c3
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.keystream.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.len
+new file mode 100644
+index 0000000..a541356
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.values.at b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.values.at
+new file mode 100644
+index 0000000..afce831
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab.values.at differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i
+new file mode 100644
+index 0000000..4014f3a
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/file-to-id.tab_i.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab
+new file mode 100644
+index 0000000..6491071
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream
+new file mode 100644
+index 0000000..b73411e
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream.len
+new file mode 100644
+index 0000000..296694d
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.keystream.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.len
+new file mode 100644
+index 0000000..a541356
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.values.at b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.values.at
+new file mode 100644
+index 0000000..3397358
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab.values.at differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i
+new file mode 100644
+index 0000000..fd27401
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/id-to-file.tab_i.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab
+new file mode 100644
+index 0000000..760bfe6
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream
+new file mode 100644
+index 0000000..24dbe83
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream.len
+new file mode 100644
+index 0000000..5604362
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.len
+new file mode 100644
+index 0000000..ede3ab4
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.at b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.at
+new file mode 100644
+index 0000000..7adaeef
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.at differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab_i b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab_i
+new file mode 100644
+index 0000000..5053252
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab_i differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab_i.len b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab_i.len
+new file mode 100644
+index 0000000..131e265
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab_i.len differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/last-build.bin b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/last-build.bin
+new file mode 100644
+index 0000000..9c11fc5
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/cacheable/last-build.bin differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin
+new file mode 100644
+index 0000000..3cd4757
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/classpath-snapshot/shrunk-classpath-snapshot.bin differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/local-state/build-history.bin b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/local-state/build-history.bin
+new file mode 100644
+index 0000000..119e213
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/kotlin/compileDebugKotlin/local-state/build-history.bin differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/outputs/logs/manifest-merger-debug-report.txt b/node_modules/react-native-launcher-kit/android/build/outputs/logs/manifest-merger-debug-report.txt
+new file mode 100644
+index 0000000..86b8ca6
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/outputs/logs/manifest-merger-debug-report.txt
+@@ -0,0 +1,24 @@
++-- Merging decision tree log ---
++manifest
++ADDED from E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml:1:1-9:12
++INJECTED from E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml:1:1-9:12
++	package
++		INJECTED from E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml
++	xmlns:android
++		ADDED from E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml:1:11-69
++queries
++ADDED from E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml:3:5-7:15
++intent#action:name:android.intent.action.SHOW_ALARMS
++ADDED from E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml:4:9-6:18
++action#android.intent.action.SHOW_ALARMS
++ADDED from E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml:5:13-72
++	android:name
++		ADDED from E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml:5:21-69
++uses-sdk
++INJECTED from E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml reason: use-sdk injection requested
++INJECTED from E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml
++INJECTED from E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml
++	android:targetSdkVersion
++		INJECTED from E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml
++	android:minSdkVersion
++		INJECTED from E:\Internship\Lockly\node_modules\react-native-launcher-kit\android\src\main\AndroidManifest.xml
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin b/node_modules/react-native-launcher-kit/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin
+new file mode 100644
+index 0000000..d247a21
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/META-INF/react-native-launcher-kit_debug.kotlin_module b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/META-INF/react-native-launcher-kit_debug.kotlin_module
+new file mode 100644
+index 0000000..9dbc290
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/META-INF/react-native-launcher-kit_debug.kotlin_module differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitModule$Companion.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitModule$Companion.class
+new file mode 100644
+index 0000000..a722c09
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitModule$Companion.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitModule.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitModule.class
+new file mode 100644
+index 0000000..e26d655
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitModule.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitModuleLegacy.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitModuleLegacy.class
+new file mode 100644
+index 0000000..e0337ff
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitModuleLegacy.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitModuleNew.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitModuleNew.class
+new file mode 100644
+index 0000000..3c4946b
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitModuleNew.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitPackage.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitPackage.class
+new file mode 100644
+index 0000000..694d612
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/LauncherKitPackage.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$Companion.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$Companion.class
+new file mode 100644
+index 0000000..6f95878
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$Companion.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$createAppInstallReceiver$1$onReceive$1.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$createAppInstallReceiver$1$onReceive$1.class
+new file mode 100644
+index 0000000..11360c7
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$createAppInstallReceiver$1$onReceive$1.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$createAppInstallReceiver$1.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$createAppInstallReceiver$1.class
+new file mode 100644
+index 0000000..8426148
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$createAppInstallReceiver$1.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$createAppRemovalReceiver$1$onReceive$1.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$createAppRemovalReceiver$1$onReceive$1.class
+new file mode 100644
+index 0000000..9966fbc
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$createAppRemovalReceiver$1$onReceive$1.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$createAppRemovalReceiver$1.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$createAppRemovalReceiver$1.class
+new file mode 100644
+index 0000000..c2c06b6
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager$createAppRemovalReceiver$1.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager.class
+new file mode 100644
+index 0000000..7792d3a
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/AppEventManager.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/BatteryEventManager$Companion.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/BatteryEventManager$Companion.class
+new file mode 100644
+index 0000000..41980cd
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/BatteryEventManager$Companion.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/BatteryEventManager$startListening$1.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/BatteryEventManager$startListening$1.class
+new file mode 100644
+index 0000000..11f93ab
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/BatteryEventManager$startListening$1.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/BatteryEventManager.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/BatteryEventManager.class
+new file mode 100644
+index 0000000..d3af184
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/managers/BatteryEventManager.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/models/AppDetail$Companion.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/models/AppDetail$Companion.class
+new file mode 100644
+index 0000000..db9d715
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/models/AppDetail$Companion.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/models/AppDetail.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/models/AppDetail.class
+new file mode 100644
+index 0000000..e6ed5e3
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/models/AppDetail.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/providers/AppInfoProvider$Companion.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/providers/AppInfoProvider$Companion.class
+new file mode 100644
+index 0000000..620003b
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/providers/AppInfoProvider$Companion.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/providers/AppInfoProvider$getApps$1.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/providers/AppInfoProvider$getApps$1.class
+new file mode 100644
+index 0000000..6387b32
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/providers/AppInfoProvider$getApps$1.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/providers/AppInfoProvider.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/providers/AppInfoProvider.class
+new file mode 100644
+index 0000000..c390282
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/providers/AppInfoProvider.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/AppLauncher$Companion.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/AppLauncher$Companion.class
+new file mode 100644
+index 0000000..a8e0389
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/AppLauncher$Companion.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/AppLauncher.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/AppLauncher.class
+new file mode 100644
+index 0000000..4b5d85c
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/AppLauncher.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/LauncherHelper$Companion.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/LauncherHelper$Companion.class
+new file mode 100644
+index 0000000..3ad04f2
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/LauncherHelper$Companion.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/LauncherHelper.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/LauncherHelper.class
+new file mode 100644
+index 0000000..c3168d0
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/LauncherHelper.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/SystemUtility$Companion.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/SystemUtility$Companion.class
+new file mode 100644
+index 0000000..41c1f43
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/SystemUtility$Companion.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/SystemUtility.class b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/SystemUtility.class
+new file mode 100644
+index 0000000..ffd1518
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/kotlin-classes/debug/com/launcherkit/utils/SystemUtility.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/src/main/java/com/launcherkit/providers/AppInfoProvider.kt b/node_modules/react-native-launcher-kit/android/src/main/java/com/launcherkit/providers/AppInfoProvider.kt
+index ff9427a..42c31bd 100644
+--- a/node_modules/react-native-launcher-kit/android/src/main/java/com/launcherkit/providers/AppInfoProvider.kt
++++ b/node_modules/react-native-launcher-kit/android/src/main/java/com/launcherkit/providers/AppInfoProvider.kt
+@@ -44,11 +44,19 @@ class AppInfoProvider(private val reactContext: ReactContext) {
+     val addedPackages = mutableSetOf<String>()
+     val pManager = reactContext.packageManager
+ 
+-    return Intent(Intent.ACTION_MAIN).apply {
++    val launcherIntent = Intent(Intent.ACTION_MAIN).apply {
+       addCategory(Intent.CATEGORY_LAUNCHER)
+-    }.let { intent ->
+-      pManager.queryIntentActivities(intent, 0)
+-    }.mapNotNull { resolveInfo ->
++    }
++    val leanbackIntent = Intent(Intent.ACTION_MAIN).apply {
++      addCategory(Intent.CATEGORY_LEANBACK_LAUNCHER)
++    }
++    
++    val launcherApps = pManager.queryIntentActivities(launcherIntent, 0)
++    val leanbackApps = pManager.queryIntentActivities(leanbackIntent, 0)
++    
++    val allApps = launcherApps + leanbackApps
++
++    return allApps.mapNotNull { resolveInfo ->
+       resolveInfo.activityInfo.packageName.takeUnless {
+         addedPackages.contains(it)
+       }?.let { packageName ->

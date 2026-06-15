@@ -82,9 +82,10 @@ export default function Home() {
   };
 
   const handleAddApp = async (item: any) => {
+    const appName = item.label || item.packageName || 'Unknown App';
     // Prevent adding same app multiple times
-    if (appStates.some(app => app.name === item.label)) {
-      showAlert("Already Added", `${item.label} is already in your apps list.`);
+    if (appStates.some(app => app.name === appName)) {
+      showAlert("Already Added", `${appName} is already in your apps list.`);
       return;
     }
 
@@ -112,7 +113,7 @@ export default function Home() {
 
     const newApp = {
       id: Date.now().toString(),
-      name: item.label,
+      name: appName,
       packageName: item.packageName,
       status: 'Protected',
       iconType: 'DeviceIcon',
@@ -233,11 +234,11 @@ export default function Home() {
     }
   };
 
-  const filteredApps = appStates.filter(app => app.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredApps = appStates.filter(app => (app?.name || '').toLowerCase().includes((searchQuery || '').toLowerCase()));
   const filteredDeviceApps = deviceApps.filter(
     app => 
-      app.label.toLowerCase().includes(addAppSearchQuery.toLowerCase()) && 
-      !appStates.some(addedApp => addedApp.name === app.label)
+      (app?.label || app?.packageName || '').toLowerCase().includes((addAppSearchQuery || '').toLowerCase()) && 
+      !appStates.some(addedApp => addedApp.name === (app?.label || app?.packageName || 'Unknown App'))
   );
 
   return (
@@ -253,7 +254,7 @@ export default function Home() {
         </TouchableOpacity>
       </View>
 
-      <ScrollView className="flex-1 px-6 pt-4 pb-20" showsVerticalScrollIndicator={false}>
+      <ScrollView className="flex-1 w-full max-w-4xl self-center px-6 pt-4 pb-20" showsVerticalScrollIndicator={false}>
         <View className="flex-row items-end justify-between mb-2">
           <Text className="text-[#0F172A] text-4xl font-extrabold">My Apps</Text>
         </View>
@@ -272,13 +273,13 @@ export default function Home() {
         </View>
 
         {/* App List */}
-        <View className="gap-4 pb-24">
+        <View className="flex-row flex-wrap gap-4 pb-24">
           {filteredApps.map(app => (
             <TouchableOpacity 
               key={app.id} 
               activeOpacity={0.7}
               onLongPress={() => handleRemoveApp(app.id, app.name)}
-              className="flex-row items-center justify-between bg-white p-4 rounded-[28px] shadow-sm"
+              className="flex-row items-center justify-between bg-white p-4 rounded-[28px] shadow-sm min-w-[300px] flex-1"
             >
               <View className="flex-row items-center gap-4">
                 <View className={`w-14 h-14 rounded-2xl items-center justify-center ${app.bgColor}`}>
@@ -379,7 +380,7 @@ export default function Home() {
                         </View>
                       )}
                       <View className="flex-1 pr-4">
-                        <Text className="text-[#0F172A] text-lg font-bold" numberOfLines={1}>{item.label}</Text>
+                        <Text className="text-[#0F172A] text-lg font-bold" numberOfLines={1}>{item?.label || item?.packageName || 'Unknown App'}</Text>
                         <Text className="text-gray-500 text-xs mt-1" numberOfLines={1}>{item.packageName}</Text>
                       </View>
                     </View>
