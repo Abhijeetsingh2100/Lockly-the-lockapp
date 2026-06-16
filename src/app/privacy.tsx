@@ -31,29 +31,29 @@ export default function PrivacyPolicy() {
           <View className="w-20 h-20 bg-blue-50 rounded-full items-center justify-center mb-4">
             <MaterialCommunityIcons name="shield-lock-outline" size={40} color="#2563EB" />
           </View>
-          <Text className="text-2xl font-extrabold text-[#0F172A] text-center">Lockly Privacy Policy</Text>
+          <Text className="text-2xl font-extrabold text-[#0F172A] text-center">SantaProtect Privacy Policy</Text>
           <Text className="text-[#64748B] text-sm mt-2">Last Updated: June 10, 2026</Text>
         </View>
 
         <View className="bg-white rounded-3xl p-6 shadow-sm mb-10">
           <PolicySection 
             title="1. Introduction" 
-            content="Welcome to Lockly. We are committed to protecting your personal information and your right to privacy. This policy explains what information we collect, how we use it, and your rights." 
+            content="Welcome to SantaProtect. We are committed to protecting your personal information and your right to privacy. This policy explains what information we collect, how we use it, and your rights." 
           />
           
           <PolicySection 
             title="2. Accessibility Services" 
-            content="Lockly uses the Android Accessibility Service API to detect when you launch an application. This is strictly used to provide the app locking functionality by identifying the package name of the active window and displaying our lock screen when a protected app is opened. We do not use this permission to read your screen content, monitor your keystrokes, or collect any personal data." 
+            content="SantaProtect uses the Android Accessibility Service API to detect when you launch an application. This is strictly used to provide the app locking functionality by identifying the package name of the active window and displaying our lock screen when a protected app is opened. We do not use this permission to read your screen content, monitor your keystrokes, or collect any personal data." 
           />
 
           <PolicySection 
             title="3. Data Collection" 
-            content="Lockly is designed with a privacy-first approach. All your data, including your PIN, protected applications list, and biometric settings, are stored locally and securely on your device. We do not transmit any of this data to external servers." 
+            content="SantaProtect is designed with a privacy-first approach. All your data, including your PIN, protected applications list, and biometric settings, are stored locally and securely on your device. We do not transmit any of this data to external servers." 
           />
 
           <PolicySection 
             title="4. Biometric Authentication" 
-            content="If you enable Biometric Unlock, Lockly relies on your device's native biometric hardware (Fingerprint or Face ID). Lockly receives a simple success or failure signal and does not have access to your raw biometric data." 
+            content="If you enable Biometric Unlock, SantaProtect relies on your device's native biometric hardware (Fingerprint or Face ID). SantaProtect receives a simple success or failure signal and does not have access to your raw biometric data." 
           />
 
           <PolicySection 

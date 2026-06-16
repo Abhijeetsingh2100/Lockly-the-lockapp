@@ -159,7 +159,7 @@ export default function Home() {
       if (!isEnabled) {
         showAlert(
           "Permission Required",
-          "Lockly requires the Accessibility Service to detect when locked apps are opened. Please enable it in Settings to protect your apps.",
+          "SantaProtect requires the Accessibility Service to detect when locked apps are opened. Please enable it in Settings to protect your apps.",
           [
             { text: "Cancel", style: "cancel" },
             { 
@@ -178,7 +178,7 @@ export default function Home() {
         if (!hasOverlay) {
           showAlert(
             "Overlay Permission Required",
-            "Lockly needs 'Display over other apps' permission to show the lock screen over locked applications.",
+            "SantaProtect needs 'Display over other apps' permission to show the lock screen over locked applications.",
             [
               { text: "Cancel", style: "cancel" },
               {
@@ -246,12 +246,9 @@ export default function Home() {
       {/* Header */}
       <View className="flex-row justify-between items-center px-6 pt-4 pb-2">
         <View className="flex-row items-center gap-2">
-          <MaterialCommunityIcons name="shield-check" size={28} color="#2563EB" />
-          <Text className="text-[#2563EB] text-2xl font-bold tracking-tight">Lockly</Text>
+          <Image source={require('../../../assets/images/SantaProtectLogo.png')} style={{ width: 36, height: 36 }} resizeMode="contain" />
+          <Text className="text-[#2563EB] text-2xl font-bold tracking-tight">SantaProtect</Text>
         </View>
-        <TouchableOpacity>
-          <Feather name="more-vertical" size={24} color="#475569" />
-        </TouchableOpacity>
       </View>
 
       <ScrollView className="flex-1 w-full max-w-4xl self-center px-6 pt-4 pb-20" showsVerticalScrollIndicator={false}>

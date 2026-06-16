@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { Feather, Ionicons } from '@expo/vector-icons';
 
 interface PinPadProps {
@@ -53,7 +53,7 @@ export default function PinPad({ pin, setPin, title, subtitle, onComplete, error
     <View className="flex-1 items-center justify-center w-full px-6 pb-12">
       <View className="items-center mb-12">
         <View className="bg-blue-50 items-center justify-center mb-6" style={{ width: 80, height: 80, borderRadius: 40 }}>
-          <Feather name="lock" size={32} color="#2563EB" />
+          <Image source={require('../../assets/images/SantaProtectLogo.png')} style={{ width: 48, height: 48 }} resizeMode="contain" />
         </View>
         <Text className="text-3xl font-extrabold text-[#0F172A] mb-2">{title}</Text>
         {subtitle ? <Text className="text-base text-[#64748B] text-center px-4">{subtitle}</Text> : null}

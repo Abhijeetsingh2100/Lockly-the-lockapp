@@ -90,12 +90,9 @@ export default function Permissions() {
       {/* Header */}
       <View className="flex-row justify-between items-center px-6 pt-4 pb-2">
               <View className="flex-row items-center gap-2">
-                <MaterialCommunityIcons name="shield-check" size={28} color="#2563EB" />
-                <Text className="text-[#2563EB] text-2xl font-bold tracking-tight">Lockly</Text>
+                <Image source={require('../../../assets/images/SantaProtectLogo.png')} style={{ width: 36, height: 36 }} resizeMode="contain" />
+                <Text className="text-[#2563EB] text-2xl font-bold tracking-tight">SantaProtect</Text>
               </View>
-              <TouchableOpacity>
-                <Feather name="more-vertical" size={24} color="#475569" />
-              </TouchableOpacity>
             </View>
       <View className="px-6 pt-4 pb-2 border-b border-gray-100">
         <Text className="text-[#0F172A] text-4xl font-extrabold">Permissions</Text>

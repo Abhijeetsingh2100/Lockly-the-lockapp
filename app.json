@@ -1,21 +1,21 @@
 {
   "expo": {
-    "name": "Lockly",
-    "slug": "Lockly",
+    "name": "SantaProtect",
+    "slug": "SantaProtect",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/logolockly.png",
+    "icon": "./assets/images/SantaProtectLogo.png",
     "scheme": "lockly",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/images/logolockly.png"
+      "icon": "./assets/images/SantaProtectLogo.png"
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/logolockly.png",
+        "foregroundImage": "./assets/images/SantaProtectLogo.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/logolockly.png"
+        "monochromeImage": "./assets/images/SantaProtectLogo.png"
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.abhijeetsingh200.Lockly",
@@ -34,8 +34,8 @@
         {
           "backgroundColor": "#208AEF",
           "android": {
-            "image": "./assets/images/logolockly.png",
-            "imageWidth": 76
+            "image": "./assets/images/SantaProtectLogo.png",
+            "imageWidth": 200
           }
         }
       ]

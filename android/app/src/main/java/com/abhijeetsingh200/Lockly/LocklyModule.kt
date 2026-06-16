@@ -170,15 +170,13 @@ class LocklyModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
         val packageName = reactApplicationContext.packageName
         
         val aliases = listOf(
-            "$packageName.LocklyAlias",
+            "$packageName.SantaProtectAlias",
             "$packageName.CalculatorAlias",
             "$packageName.WeatherAlias",
-            "$packageName.NotesAlias",
-            "$packageName.ClockAlias",
             "$packageName.CalendarAlias"
         )
         
-        val targetAlias = if (aliasName == "Lockly") "$packageName.LocklyAlias" else "$packageName.${aliasName}Alias"
+        val targetAlias = if (aliasName == "SantaProtect") "$packageName.SantaProtectAlias" else "$packageName.${aliasName}Alias"
         
         for (alias in aliases) {
             val componentName = ComponentName(packageName, alias)

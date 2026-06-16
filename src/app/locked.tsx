@@ -126,7 +126,7 @@ export default function LockedScreen() {
         pin={enteredPin}
         setPin={setEnteredPin}
         title="App Locked"
-        subtitle="Enter your Lockly PIN to access this application"
+        subtitle="Enter your SantaProtect PIN to access this application"
         error={errorMsg}
         onComplete={handleVerifyPin}
         showBiometric={biometricEnabled}

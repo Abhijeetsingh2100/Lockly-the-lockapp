@@ -1,7 +1,7 @@
 import "../../global.css";
 import { Stack, useRouter, useRootNavigationState } from "expo-router";
 import { useState, useEffect } from "react";
-import { View, ActivityIndicator } from "react-native";
+import { View, ActivityIndicator, Image } from "react-native";
 import { SafeStorage } from "../utils/storage";
 import PinPad from "../components/PinPad";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -134,7 +134,7 @@ export default function RootLayout() {
   const handleBiometricUnlock = async () => {
     try {
       const result = await LocalAuthentication.authenticateAsync({
-        promptMessage: 'Authenticate to unlock Lockly'
+        promptMessage: 'Authenticate to unlock SantaProtect'
       });
       if (result.success) {
         setIsLocked(false);
@@ -245,7 +245,7 @@ export default function RootLayout() {
           pin={currentPin}
           setPin={(p) => { setCurrentPin(p); setErrorMsg(''); }}
           title="App Locked"
-          subtitle="Enter your Lockly PIN to access this application"
+          subtitle="Enter your SantaProtect PIN to access this application"
           error={errorMsg}
           onComplete={handleDeepLinkUnlock}
           showBiometric={biometricEnabled}
@@ -289,8 +289,8 @@ export default function RootLayout() {
       <SafeAreaView className="flex-1 bg-[#F8FAFC] justify-center px-6">
         <View className="w-full max-w-sm self-center">
           <View className="items-center mb-12">
-            <MaterialCommunityIcons name="shield-check" size={64} color="#2563EB" />
-            <Text className="text-4xl font-extrabold text-[#0F172A] mt-4">Lockly</Text>
+            <Image source={require('../../assets/images/SantaProtectLogo.png')} style={{ width: 120, height: 120 }} resizeMode="contain" />
+            <Text className="text-4xl font-extrabold text-[#0F172A] mt-4">SantaProtect</Text>
             <Text className="text-[#64748B] text-base mt-2">Select your login role</Text>
           </View>
 
@@ -324,7 +324,7 @@ export default function RootLayout() {
       {hasPin ? (
         <PinPad
           title="Enter PIN"
-          subtitle="Please enter your 6-digit PIN to unlock Lockly."
+          subtitle="Please enter your 6-digit PIN to unlock SantaProtect."
           pin={currentPin}
           setPin={(pin) => {
             setCurrentPin(pin);

@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ScrollView, Switch, Modal, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Switch, Modal, Alert, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useState, useEffect } from 'react';
@@ -45,7 +45,7 @@ export default function Settings() {
   const [autoLockDelay, setAutoLockDelay] = useState(0);
   const [isAutoLockModalVisible, setIsAutoLockModalVisible] = useState(false);
   const [isDisguiseModalVisible, setIsDisguiseModalVisible] = useState(false);
-  const [currentDisguise, setCurrentDisguise] = useState('Lockly');
+  const [currentDisguise, setCurrentDisguise] = useState('SantaProtect');
 
   useEffect(() => {
     const loadSettings = async () => {
@@ -257,8 +257,8 @@ export default function Settings() {
       <ScrollView className="flex-1 w-full max-w-4xl self-center px-5" showsVerticalScrollIndicator={false}>
         {/* App Logo Header */}
         <View className="flex-row items-center mt-2 mb-8 gap-2">
-          <MaterialCommunityIcons name="shield-check" size={24} color="#2563EB" />
-          <Text className="text-[#2563EB] text-xl font-bold">Lockly</Text>
+          <Image source={require('../../../assets/images/SantaProtectLogo.png')} style={{ width: 32, height: 32 }} resizeMode="contain" />
+          <Text className="text-[#2563EB] text-xl font-bold">SantaProtect</Text>
         </View>
 
         <Text className="text-[34px] font-bold text-[#0F172A] mb-2">Settings</Text>
@@ -366,7 +366,7 @@ export default function Settings() {
             </View>
             <Text className="text-3xl font-extrabold text-[#0F172A] mb-4 text-center">Biometric Unlock</Text>
             <Text className="text-base text-[#64748B] text-center mb-10 leading-relaxed">
-              Use your fingerprint or Face ID to quickly and securely unlock Lockly without entering your PIN every time.
+              Use your fingerprint or Face ID to quickly and securely unlock SantaProtect without entering your PIN every time.
             </Text>
             
             {biometricEnabled ? (
@@ -499,15 +499,13 @@ export default function Settings() {
               </TouchableOpacity>
             </View>
             <Text className="text-[#64748B] text-base mb-6">
-              Select an icon and name to disguise Lockly on your device.
+              Select an icon and name to disguise SantaProtect on your device.
             </Text>
             
             {[
-              { label: 'Lockly (Default)', value: 'Lockly', icon: 'shield-check' },
+              { label: 'SantaProtect (Default)', value: 'SantaProtect', icon: 'shield-check' },
               { label: 'Calculator', value: 'Calculator', icon: 'calculator' },
               { label: 'Weather', value: 'Weather', icon: 'weather-cloudy' },
-              { label: 'Notes', value: 'Notes', icon: 'note-text' },
-              { label: 'Clock', value: 'Clock', icon: 'clock-outline' },
               { label: 'Calendar', value: 'Calendar', icon: 'calendar-month' },
             ].map((option) => (
               <TouchableOpacity 

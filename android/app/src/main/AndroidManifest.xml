@@ -49,37 +49,25 @@
       </intent-filter>
     </receiver>
 
-    <activity-alias android:name=".LocklyAlias" android:enabled="true" android:exported="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:targetActivity=".MainActivity">
+    <activity-alias android:name=".SantaProtectAlias" android:enabled="true" android:exported="true" android:icon="@mipmap/santaprotect" android:label="@string/app_name" android:targetActivity=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity-alias>
-    <activity-alias android:name=".CalculatorAlias" android:enabled="false" android:exported="true" android:icon="@mipmap/ic_launcher" android:label="Calculator" android:targetActivity=".MainActivity">
+    <activity-alias android:name=".CalculatorAlias" android:enabled="false" android:exported="true" android:icon="@mipmap/calculator" android:label="Calculator" android:targetActivity=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity-alias>
-    <activity-alias android:name=".WeatherAlias" android:enabled="false" android:exported="true" android:icon="@mipmap/ic_launcher" android:label="Weather" android:targetActivity=".MainActivity">
+    <activity-alias android:name=".WeatherAlias" android:enabled="false" android:exported="true" android:icon="@mipmap/weather" android:label="Weather" android:targetActivity=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity-alias>
-    <activity-alias android:name=".NotesAlias" android:enabled="false" android:exported="true" android:icon="@mipmap/ic_launcher" android:label="Notes" android:targetActivity=".MainActivity">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity-alias>
-    <activity-alias android:name=".ClockAlias" android:enabled="false" android:exported="true" android:icon="@mipmap/ic_launcher" android:label="Clock" android:targetActivity=".MainActivity">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity-alias>
-    <activity-alias android:name=".CalendarAlias" android:enabled="false" android:exported="true" android:icon="@mipmap/ic_launcher" android:label="Calendar" android:targetActivity=".MainActivity">
+    <activity-alias android:name=".CalendarAlias" android:enabled="false" android:exported="true" android:icon="@mipmap/calendar" android:label="Calendar" android:targetActivity=".MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

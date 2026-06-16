@@ -64,7 +64,7 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
           PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
           {
             title: 'Location Permission',
-            message: 'Lockly needs location permission to scan for Wi-Fi networks.',
+            message: 'SantaProtect needs location permission to scan for Wi-Fi networks.',
             buttonNeutral: 'Ask Me Later',
             buttonNegative: 'Cancel',
             buttonPositive: 'OK',
