@@ -12,9 +12,11 @@ interface PinPadProps {
   showBiometric?: boolean;
   onBiometricPress?: () => void;
   invisiblePassword?: boolean;
+  onUseMasterPassword?: () => void;
+  useMasterPasswordLabel?: string;
 }
 
-export default function PinPad({ pin, setPin, title, subtitle, onComplete, error, showBiometric, onBiometricPress, invisiblePassword }: PinPadProps) {
+export default function PinPad({ pin, setPin, title, subtitle, onComplete, error, showBiometric, onBiometricPress, invisiblePassword, onUseMasterPassword, useMasterPasswordLabel }: PinPadProps) {
   const handlePress = (num: string) => {
     if (pin.length < 6) {
       const newPin = pin + num;
@@ -109,6 +111,16 @@ export default function PinPad({ pin, setPin, title, subtitle, onComplete, error
           );
         })}
       </View>
+
+      {onUseMasterPassword && (
+        <TouchableOpacity 
+          className="mt-8 py-3 px-6"
+          activeOpacity={0.7}
+          onPress={onUseMasterPassword}
+        >
+          <Text className="text-[#2563EB] font-bold text-base text-center">{useMasterPasswordLabel || "Open with Master Password"}</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }

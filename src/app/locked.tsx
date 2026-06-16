@@ -24,6 +24,8 @@ export default function LockedScreen() {
   const [savedPin, setSavedPin] = useState<string | null>(null);
   const [biometricEnabled, setBiometricEnabled] = useState(false);
   const [invisiblePassword, setInvisiblePassword] = useState(true);
+  const [hasMasterPin, setHasMasterPin] = useState(false);
+  const [isMasterPinMode, setIsMasterPinMode] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
@@ -44,6 +46,9 @@ export default function LockedScreen() {
       setBiometricEnabled(biometric === 'true');
       const invisPass = await SafeStorage.getItem('app_invisible_password');
       setInvisiblePassword(invisPass !== 'false');
+      
+      const storedMasterPin = await SafeStorage.getItem('app_master_pin');
+      setHasMasterPin(!!storedMasterPin);
     };
     loadPin();
 
@@ -65,7 +70,8 @@ export default function LockedScreen() {
   }, [url]);
 
   const handleVerifyPin = async (pin: string) => {
-    if (pin === savedPin) {
+    const targetPin = isMasterPinMode ? await SafeStorage.getItem('app_master_pin') : savedPin;
+    if (pin === targetPin) {
       // Success! Unlock and launch the target application
       if (pkg) {
         if (LocklyModule) {
@@ -80,7 +86,7 @@ export default function LockedScreen() {
         BackHandler.exitApp();
       }
     } else {
-      setErrorMsg('Incorrect PIN. Please try again.');
+      setErrorMsg(isMasterPinMode ? 'Incorrect Master Password. Please try again.' : 'Incorrect PIN. Please try again.');
       setEnteredPin('');
     }
   };
@@ -125,13 +131,18 @@ export default function LockedScreen() {
       <PinPad
         pin={enteredPin}
         setPin={setEnteredPin}
-        title="App Locked"
-        subtitle="Enter your SantaProtect PIN to access this application"
+        title={isMasterPinMode ? "Enter Master Password" : "App Locked"}
+        subtitle={isMasterPinMode ? "Please enter your master password to access this application" : "Enter your SantaProtect PIN to access this application"}
         error={errorMsg}
         onComplete={handleVerifyPin}
-        showBiometric={biometricEnabled}
+        showBiometric={!isMasterPinMode && biometricEnabled}
         onBiometricPress={handleBiometricUnlock}
-        invisiblePassword={invisiblePassword}
+        invisiblePassword={isMasterPinMode ? true : invisiblePassword}
+        onUseMasterPassword={(!isMasterPinMode && hasMasterPin) ? () => {
+          setIsMasterPinMode(true);
+          setEnteredPin('');
+          setErrorMsg('');
+        } : undefined}
       />
     </SafeAreaView>
   );

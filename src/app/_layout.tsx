@@ -36,6 +36,8 @@ export default function RootLayout() {
   const [hasPin, setHasPin] = useState<boolean | null>(null);
   const [biometricEnabled, setBiometricEnabled] = useState(false);
   const [invisiblePassword, setInvisiblePassword] = useState(true);
+  const [hasMasterPin, setHasMasterPin] = useState(false);
+  const [isMasterPinMode, setIsMasterPinMode] = useState(false);
   
   const [loginRole, setLoginRole] = useState<'none' | 'admin' | 'user'>('none');
   const [lastCancelledUrl, setLastCancelledUrl] = useState<string | null>(null);
@@ -83,6 +85,8 @@ export default function RootLayout() {
       setBiometricEnabled(biometric === 'true');
       const invisPass = await SafeStorage.getItem('app_invisible_password');
       setInvisiblePassword(invisPass !== 'false');
+      const storedMasterPin = await SafeStorage.getItem('app_master_pin');
+      setHasMasterPin(!!storedMasterPin);
     } catch (e) {
       console.log('Error checking pin status', e);
       setHasPin(false);
@@ -118,11 +122,12 @@ export default function RootLayout() {
 
   const handleUnlockPin = async (pin: string) => {
     try {
-      const storedPin = await SafeStorage.getItem('app_pin');
+      const storedPin = await SafeStorage.getItem(isMasterPinMode ? 'app_master_pin' : 'app_pin');
       if (pin === storedPin) {
         setIsLocked(false);
+        setIsMasterPinMode(false);
       } else {
-        setErrorMsg('Incorrect PIN');
+        setErrorMsg(isMasterPinMode ? 'Incorrect Master Password' : 'Incorrect PIN');
         setCurrentPin('');
       }
     } catch (e) {
@@ -194,7 +199,7 @@ export default function RootLayout() {
 
   const handleDeepLinkUnlock = async (pin: string) => {
     try {
-      const storedPin = await SafeStorage.getItem('app_pin');
+      const storedPin = await SafeStorage.getItem(isMasterPinMode ? 'app_master_pin' : 'app_pin');
       if (pin === storedPin) {
         if (NativeModules.LocklyModule) {
           await NativeModules.LocklyModule.setUnlockedApp(targetPkg);
@@ -202,11 +207,12 @@ export default function RootLayout() {
         if (targetPkg !== 'com.google.android.packageinstaller' && targetPkg !== 'com.android.packageinstaller' && targetPkg !== 'com.android.settings') {
           RNLauncherKitHelper.launchApplication(targetPkg);
         }
+        setIsMasterPinMode(false);
         setTimeout(() => {
           BackHandler.exitApp();
         }, 300);
       } else {
-        setErrorMsg('Incorrect PIN. Please try again.');
+        setErrorMsg(isMasterPinMode ? 'Incorrect Master Password. Please try again.' : 'Incorrect PIN. Please try again.');
         setCurrentPin('');
       }
     } catch (e) {
@@ -244,13 +250,18 @@ export default function RootLayout() {
         <PinPad
           pin={currentPin}
           setPin={(p) => { setCurrentPin(p); setErrorMsg(''); }}
-          title="App Locked"
-          subtitle="Enter your SantaProtect PIN to access this application"
+          title={isMasterPinMode ? "Enter Master Password" : "App Locked"}
+          subtitle={isMasterPinMode ? "Please enter your master password to access this application" : "Enter your SantaProtect PIN to access this application"}
           error={errorMsg}
           onComplete={handleDeepLinkUnlock}
-          showBiometric={biometricEnabled}
+          showBiometric={!isMasterPinMode && biometricEnabled}
           onBiometricPress={handleDeepLinkBiometric}
-          invisiblePassword={invisiblePassword}
+          invisiblePassword={isMasterPinMode ? true : invisiblePassword}
+          onUseMasterPassword={(!isMasterPinMode && hasMasterPin) ? () => {
+            setIsMasterPinMode(true);
+            setCurrentPin('');
+            setErrorMsg('');
+          } : undefined}
         />
       </SafeAreaView>
     );
@@ -323,8 +334,8 @@ export default function RootLayout() {
     <SafeAreaView className="flex-1 bg-[#F8FAFC]">
       {hasPin ? (
         <PinPad
-          title="Enter PIN"
-          subtitle="Please enter your 6-digit PIN to unlock SantaProtect."
+          title={isMasterPinMode ? "Enter Master Password" : "Enter PIN"}
+          subtitle={isMasterPinMode ? "Please enter your master password to unlock SantaProtect." : "Please enter your 6-digit PIN to unlock SantaProtect."}
           pin={currentPin}
           setPin={(pin) => {
             setCurrentPin(pin);
@@ -332,9 +343,14 @@ export default function RootLayout() {
           }}
           onComplete={handleUnlockPin}
           error={errorMsg}
-          showBiometric={biometricEnabled}
+          showBiometric={!isMasterPinMode && biometricEnabled}
           onBiometricPress={handleBiometricUnlock}
-          invisiblePassword={invisiblePassword}
+          invisiblePassword={isMasterPinMode ? true : invisiblePassword}
+          onUseMasterPassword={(!isMasterPinMode && hasMasterPin) ? () => {
+            setIsMasterPinMode(true);
+            setCurrentPin('');
+            setErrorMsg('');
+          } : undefined}
         />
       ) : setupStep === 'create' ? (
         <PinPad

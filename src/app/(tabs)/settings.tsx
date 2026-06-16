@@ -23,6 +23,15 @@ export default function Settings() {
   const [currentPinInput, setCurrentPinInput] = useState('');
   const [tempNewPin, setTempNewPin] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  
+  const [isMasterPinModeForChangePin, setIsMasterPinModeForChangePin] = useState(false);
+  const [hasMasterPinForChange, setHasMasterPinForChange] = useState(false);
+
+  // Master Pin state
+  const [isChangingMasterPin, setIsChangingMasterPin] = useState(false);
+  const [masterPinStep, setMasterPinStep] = useState<'current' | 'new' | 'confirm'>('current');
+  const [currentMasterPinInput, setCurrentMasterPinInput] = useState('');
+  const [tempNewMasterPin, setTempNewMasterPin] = useState('');
 
   const [customAlert, setCustomAlert] = useState<{ visible: boolean; title: string; message: string; buttons?: AlertButton[] }>({ 
     visible: false, 
@@ -166,12 +175,16 @@ export default function Settings() {
   };
 
   // ... (Pin change logic remains exactly the same)
-  const handleStartChangePin = () => {
+  const handleStartChangePin = async () => {
     setIsChangingPin(true);
     setStep('current');
     setCurrentPinInput('');
     setTempNewPin('');
     setErrorMsg('');
+    setIsMasterPinModeForChangePin(false);
+    
+    const storedMasterPin = await SafeStorage.getItem('app_master_pin');
+    setHasMasterPinForChange(!!storedMasterPin);
   };
 
   const handleClose = () => {
@@ -182,14 +195,26 @@ export default function Settings() {
 
   const handleCurrentPin = async (pin: string) => {
     try {
-      const storedPin = await SafeStorage.getItem('app_pin');
-      if (pin === storedPin) {
-        setStep('new');
-        setCurrentPinInput('');
-        setErrorMsg('');
+      if (isMasterPinModeForChangePin) {
+        const storedMasterPin = await SafeStorage.getItem('app_master_pin');
+        if (pin === storedMasterPin) {
+          setStep('new');
+          setCurrentPinInput('');
+          setErrorMsg('');
+        } else {
+          setErrorMsg('Incorrect Master Password');
+          setCurrentPinInput('');
+        }
       } else {
-        setErrorMsg('Incorrect current PIN');
-        setCurrentPinInput('');
+        const storedPin = await SafeStorage.getItem('app_pin');
+        if (pin === storedPin) {
+          setStep('new');
+          setCurrentPinInput('');
+          setErrorMsg('');
+        } else {
+          setErrorMsg('Incorrect current PIN');
+          setCurrentPinInput('');
+        }
       }
     } catch (e) {
       setErrorMsg('Error verifying PIN');
@@ -219,6 +244,63 @@ export default function Settings() {
       setStep('new');
       setTempNewPin('');
       setCurrentPinInput('');
+    }
+  };
+
+  const handleStartChangeMasterPin = async () => {
+    const stored = await SafeStorage.getItem('app_master_pin');
+    setIsChangingMasterPin(true);
+    setMasterPinStep(stored ? 'current' : 'new');
+    setCurrentMasterPinInput('');
+    setTempNewMasterPin('');
+    setErrorMsg('');
+  };
+
+  const handleMasterPinClose = () => {
+    setIsChangingMasterPin(false);
+    setCurrentMasterPinInput('');
+    setErrorMsg('');
+  };
+
+  const handleCurrentMasterPin = async (pin: string) => {
+    try {
+      const storedPin = await SafeStorage.getItem('app_master_pin');
+      if (pin === storedPin) {
+        setMasterPinStep('new');
+        setCurrentMasterPinInput('');
+        setErrorMsg('');
+      } else {
+        setErrorMsg('Incorrect current Master PIN');
+        setCurrentMasterPinInput('');
+      }
+    } catch (e) {
+      setErrorMsg('Error verifying Master PIN');
+      setCurrentMasterPinInput('');
+    }
+  };
+
+  const handleNewMasterPin = (pin: string) => {
+    setTempNewMasterPin(pin);
+    setMasterPinStep('confirm');
+    setCurrentMasterPinInput('');
+    setErrorMsg('');
+  };
+
+  const handleConfirmNewMasterPin = async (pin: string) => {
+    if (pin === tempNewMasterPin) {
+      try {
+        await SafeStorage.setItem('app_master_pin', pin);
+        showAlert("Success", "Your Master PIN has been updated successfully.");
+        handleMasterPinClose();
+      } catch (e) {
+        setErrorMsg('Failed to save new Master PIN');
+        setCurrentMasterPinInput('');
+      }
+    } else {
+      setErrorMsg('PINs do not match. Try again.');
+      setMasterPinStep('new');
+      setTempNewMasterPin('');
+      setCurrentMasterPinInput('');
     }
   };
 
@@ -273,6 +355,12 @@ export default function Settings() {
                 title="Change PIN"
                 type="link"
                 onPress={handleStartChangePin}
+              />
+              <SettingItem 
+                icon={<MaterialCommunityIcons name="key-star" size={20} color="#475569" />}
+                title="Set Master Password"
+                type="link"
+                onPress={handleStartChangeMasterPin}
               />
               <SettingItem 
                 icon={<Ionicons name="finger-print" size={20} color="#475569" />}
@@ -343,11 +431,43 @@ export default function Settings() {
             </TouchableOpacity>
           </View>
           {step === 'current' ? (
-            <PinPad title="Current PIN" subtitle="Please enter your current 6-digit PIN." pin={currentPinInput} setPin={(p) => { setCurrentPinInput(p); setErrorMsg(''); }} onComplete={handleCurrentPin} error={errorMsg} invisiblePassword={invisiblePassword} />
+            <PinPad 
+              title={isMasterPinModeForChangePin ? "Enter Master Password" : "Current PIN"} 
+              subtitle={isMasterPinModeForChangePin ? "Please enter your Master Password to verify it's you." : "Please enter your current 6-digit PIN."} 
+              pin={currentPinInput} 
+              setPin={(p) => { setCurrentPinInput(p); setErrorMsg(''); }} 
+              onComplete={handleCurrentPin} 
+              error={errorMsg} 
+              invisiblePassword={isMasterPinModeForChangePin ? true : invisiblePassword} 
+              onUseMasterPassword={(!isMasterPinModeForChangePin && hasMasterPinForChange) ? () => {
+                setIsMasterPinModeForChangePin(true);
+                setCurrentPinInput('');
+                setErrorMsg('');
+              } : undefined}
+              useMasterPasswordLabel="Forgot PIN? Use Master Password"
+            />
           ) : step === 'new' ? (
             <PinPad title="New PIN" subtitle="Enter your new secure 6-digit PIN." pin={currentPinInput} setPin={(p) => { setCurrentPinInput(p); setErrorMsg(''); }} onComplete={handleNewPin} error={errorMsg} invisiblePassword={invisiblePassword} />
           ) : (
             <PinPad title="Confirm New PIN" subtitle="Please re-enter your new PIN to confirm." pin={currentPinInput} setPin={(p) => { setCurrentPinInput(p); setErrorMsg(''); }} onComplete={handleConfirmNewPin} error={errorMsg} invisiblePassword={invisiblePassword} />
+          )}
+        </SafeAreaView>
+      </Modal>
+
+      {/* Change Master PIN Modal */}
+      <Modal animationType="slide" visible={isChangingMasterPin} onRequestClose={handleMasterPinClose}>
+        <SafeAreaView className="flex-1 bg-[#F8FAFC]">
+          <View className="px-6 pt-4 pb-2 items-start">
+            <TouchableOpacity onPress={handleMasterPinClose} className="p-3 bg-gray-100 rounded-full">
+              <Feather name="x" size={24} color="#0F172A" />
+            </TouchableOpacity>
+          </View>
+          {masterPinStep === 'current' ? (
+            <PinPad title="Current Master PIN" subtitle="Please enter your current 6-digit Master PIN." pin={currentMasterPinInput} setPin={(p) => { setCurrentMasterPinInput(p); setErrorMsg(''); }} onComplete={handleCurrentMasterPin} error={errorMsg} invisiblePassword={invisiblePassword} />
+          ) : masterPinStep === 'new' ? (
+            <PinPad title="New Master PIN" subtitle="Enter your new secure 6-digit Master PIN." pin={currentMasterPinInput} setPin={(p) => { setCurrentMasterPinInput(p); setErrorMsg(''); }} onComplete={handleNewMasterPin} error={errorMsg} invisiblePassword={invisiblePassword} />
+          ) : (
+            <PinPad title="Confirm Master PIN" subtitle="Please re-enter your new Master PIN to confirm." pin={currentMasterPinInput} setPin={(p) => { setCurrentMasterPinInput(p); setErrorMsg(''); }} onComplete={handleConfirmNewMasterPin} error={errorMsg} invisiblePassword={invisiblePassword} />
           )}
         </SafeAreaView>
       </Modal>
