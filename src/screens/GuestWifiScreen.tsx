@@ -100,10 +100,17 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
                      selectedNetwork.capabilities?.toUpperCase().includes('WEP');
 
     try {
-      if (isSecure) {
-        await WifiManager.connectToProtectedSSID(selectedNetwork.SSID, password, false, false);
+      if (Platform.OS === 'android' && typeof Platform.Version === 'number' && Platform.Version >= 29) {
+        await WifiManager.suggestWifiNetwork([{
+          ssid: selectedNetwork.SSID,
+          ...(isSecure ? { password: password } : {})
+        }]);
       } else {
-        await WifiManager.connectToSSID(selectedNetwork.SSID);
+        if (isSecure) {
+          await WifiManager.connectToProtectedSSID(selectedNetwork.SSID, password, false, false);
+        } else {
+          await WifiManager.connectToSSID(selectedNetwork.SSID);
+        }
       }
       Alert.alert("Success", `Connected to ${selectedNetwork.SSID}`);
       setIsModalVisible(false);
