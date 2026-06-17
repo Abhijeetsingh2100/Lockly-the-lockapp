@@ -17,6 +17,7 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
 
   const [selectedNetwork, setSelectedNetwork] = useState<any | null>(null);
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [connecting, setConnecting] = useState(false);
   const [showInstructionModal, setShowInstructionModal] = useState(false);
@@ -104,7 +105,10 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
       }
 
       const list = await WifiManager.loadWifiList();
-      setNetworks(list);
+      const sortedList = [...list].sort((a: any, b: any) => {
+        return (b.level || -100) - (a.level || -100);
+      });
+      setNetworks(sortedList);
       try {
         const ssid = await WifiManager.getCurrentWifiSSID();
         setCurrentSSID(ssid);
@@ -141,6 +145,7 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
       Alert.alert("Success", `Connected to ${selectedNetwork.SSID}`);
       setIsModalVisible(false);
       setPassword('');
+      setShowPassword(false);
       scanNetworks();
     } catch (e) {
       console.log('Connection failed', e);
@@ -256,11 +261,14 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
                   className="flex-1 ml-3 text-base text-[#0F172A]"
                   placeholder="Password"
                   placeholderTextColor="#94A3B8"
-                  secureTextEntry
+                  secureTextEntry={!showPassword}
                   value={password}
                   onChangeText={setPassword}
                   autoFocus
                 />
+                <TouchableOpacity onPress={() => setShowPassword(!showPassword)} className="ml-2 p-1">
+                  <Feather name={showPassword ? "eye" : "eye-off"} size={20} color="#64748B" />
+                </TouchableOpacity>
               </View>
             ) : (
               <View className="mb-8">
@@ -271,7 +279,7 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
             <View className="flex-row gap-3">
               <TouchableOpacity 
                 activeOpacity={0.7}
-                onPress={() => { setIsModalVisible(false); setPassword(''); }}
+                onPress={() => { setIsModalVisible(false); setPassword(''); setShowPassword(false); }}
                 className="flex-1 py-3 bg-gray-100 rounded-full items-center"
               >
                 <Text className="text-[#475569] font-bold">Cancel</Text>
