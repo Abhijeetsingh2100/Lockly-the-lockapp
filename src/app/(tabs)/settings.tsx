@@ -338,10 +338,12 @@ export default function Settings() {
     <SafeAreaView className="flex-1 bg-[#F8FAFC]" edges={['top']}>
       <ScrollView className="flex-1 w-full max-w-4xl self-center px-5" showsVerticalScrollIndicator={false}>
         {/* App Logo Header */}
-        <View className="flex-row items-center mt-2 mb-8 gap-2">
-          <Image source={require('../../../assets/images/SantaProtectLogo.png')} style={{ width: 32, height: 32 }} resizeMode="contain" />
-          <Text className="text-[#2563EB] text-xl font-bold">SantaProtect</Text>
+       <View className="flex-row justify-between items-center px-3 pt-4 pb-2">
+        <View className="flex-row items-center gap-2">
+          <Image source={require('../../../assets/images/SantaProtectLogo.png')} style={{ width: 36, height: 36 }} resizeMode="contain" />
+          <Text className="text-[#2563EB] text-2xl font-bold tracking-tight">SantaProtect</Text>
         </View>
+      </View>
 
         <Text className="text-[34px] font-bold text-[#0F172A] mb-2">Settings</Text>
 

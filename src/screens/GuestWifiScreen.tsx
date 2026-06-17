@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, FlatList, Switch, ActivityIndicator, TextInput, Modal, Alert, NativeModules, PermissionsAndroid, Platform, BackHandler } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 let WifiManager: any = null;
 try {
@@ -18,8 +19,11 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
   const [password, setPassword] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [connecting, setConnecting] = useState(false);
+  const [showInstructionModal, setShowInstructionModal] = useState(false);
+  const [dontShowAgain, setDontShowAgain] = useState(false);
 
   useEffect(() => {
+    checkInstructionStatus();
     checkWifiStatus();
     
     const backAction = () => {
@@ -35,6 +39,28 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
       backHandler.remove();
     };
   }, [onBack]);
+
+  const checkInstructionStatus = async () => {
+    try {
+      const hideInstruction = await AsyncStorage.getItem('hideWifiInstruction');
+      if (hideInstruction !== 'true') {
+        setShowInstructionModal(true);
+      }
+    } catch (e) {
+      console.log('Failed to fetch instruction status');
+    }
+  };
+
+  const handleCloseInstruction = async () => {
+    try {
+      if (dontShowAgain) {
+        await AsyncStorage.setItem('hideWifiInstruction', 'true');
+      }
+    } catch (e) {
+      console.log('Failed to save instruction status');
+    }
+    setShowInstructionModal(false);
+  };
 
   const checkWifiStatus = async () => {
     if (!WifiManager) return;
@@ -263,6 +289,44 @@ export default function GuestWifiScreen({ onBack }: { onBack?: () => void }) {
                 )}
               </TouchableOpacity>
             </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Instruction Modal */}
+      <Modal animationType="fade" transparent={true} visible={showInstructionModal} onRequestClose={handleCloseInstruction}>
+        <View className="flex-1 bg-black/50 justify-center items-center px-6">
+          <View className="bg-white w-full rounded-[28px] p-6 shadow-xl">
+            <View className="flex-row items-center mb-4 gap-2">
+              <Feather name="info" size={24} color="#2563EB" />
+              <Text className="text-xl font-bold text-[#0F172A]">Important Instruction</Text>
+            </View>
+            <Text className="text-[#334155] text-sm mb-4 leading-5">
+              While setting is locked by santa protect the wifi can be connected from SantaProtect{'\n\n'}
+              Since it is a third party application it will initiate the connection for the wifi but the wifi will not allow the internet to fix it{'\n'}
+              1. connect from SantaProtect{'\n'}
+              2. Disable and Enable the wifi from control panel{'\n'}
+              3. Wifi connected
+            </Text>
+
+            <TouchableOpacity 
+              activeOpacity={0.7} 
+              onPress={() => setDontShowAgain(!dontShowAgain)}
+              className="flex-row items-center mb-6 gap-3"
+            >
+              <View className={`w-6 h-6 rounded border items-center justify-center ${dontShowAgain ? 'bg-[#2563EB] border-[#2563EB]' : 'border-gray-300'}`}>
+                {dontShowAgain && <Feather name="check" size={16} color="white" />}
+              </View>
+              <Text className="text-[#475569] font-medium">Don't show again</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+              activeOpacity={0.7}
+              onPress={handleCloseInstruction}
+              className="w-full py-3 bg-[#2563EB] rounded-full items-center"
+            >
+              <Text className="text-white font-bold">I Understand</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>

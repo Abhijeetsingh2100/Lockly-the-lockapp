@@ -12,7 +12,3 @@
 -keep class com.facebook.react.turbomodule.** { *; }
 
 # Add any project specific keep options here:
-
-# Keep Lockly native classes from being stripped or renamed in release builds
-# This is CRITICAL for the AccessibilityService and ReactModule to work in APKs!
--keep class com.abhijeetsingh200.Lockly.** { *; }

@@ -5,6 +5,11 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/SantaProtectLogo.png",
+    "splash": {
+      "image": "./assets/images/SantaProtectLogo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#208AEF"
+    },
     "scheme": "lockly",
     "userInterfaceStyle": "automatic",
     "ios": {
