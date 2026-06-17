@@ -98,18 +98,21 @@ export default function Settings() {
 
   const handleSetupBiometric = async () => {
     if (!LocalAuthentication) {
-        showAlert("Unsupported", "Biometric authentication is not supported.");
+        setIsBiometricSetupVisible(false);
+        setTimeout(() => showAlert("Unsupported", "Biometric authentication is not supported."), 300);
         return;
     }
     try {
       const hasHardware = await LocalAuthentication.hasHardwareAsync();
       if (!hasHardware) {
-        showAlert("Unsupported", "Your device does not support biometric authentication.");
+        setIsBiometricSetupVisible(false);
+        setTimeout(() => showAlert("Unsupported", "Your device does not support biometric authentication."), 300);
         return;
       }
       const isEnrolled = await LocalAuthentication.isEnrolledAsync();
       if (!isEnrolled) {
-        showAlert("Not Enrolled", "Please set up a fingerprint or Face ID in your device settings first.");
+        setIsBiometricSetupVisible(false);
+        setTimeout(() => showAlert("Not Enrolled", "Please set up a fingerprint or Face ID in your device settings first."), 300);
         return;
       }
       const result = await LocalAuthentication.authenticateAsync({
@@ -118,21 +121,23 @@ export default function Settings() {
       if (result.success) {
         await SafeStorage.setItem('app_biometric', 'true');
         setBiometricEnabled(true);
-        showAlert("Success", "Biometric authentication has been enabled.");
         setIsBiometricSetupVisible(false);
+        setTimeout(() => showAlert("Success", "Biometric authentication has been enabled."), 300);
       } else {
-        showAlert("Failed", "Biometric authentication failed.");
+        setIsBiometricSetupVisible(false);
+        setTimeout(() => showAlert("Failed", "Biometric authentication failed."), 300);
       }
     } catch (error) {
-      showAlert("Error", "Something went wrong.");
+      setIsBiometricSetupVisible(false);
+      setTimeout(() => showAlert("Error", "Something went wrong."), 300);
     }
   };
 
   const handleDisableBiometric = async () => {
     await SafeStorage.setItem('app_biometric', 'false');
     setBiometricEnabled(false);
-    showAlert("Disabled", "Biometric authentication has been disabled.");
     setIsBiometricSetupVisible(false);
+    setTimeout(() => showAlert("Disabled", "Biometric authentication has been disabled."), 300);
   };
 
   const toggleInvisiblePassword = async (value: boolean) => {
@@ -149,7 +154,9 @@ export default function Settings() {
     if (LocklyModule && LocklyModule.changeAppIcon) {
       LocklyModule.changeAppIcon(disguise);
     }
-    showAlert("Disguise Applied", `App icon and name will change to ${disguise}. It may take a moment to reflect on your home screen.`);
+    setTimeout(() => {
+      showAlert("Disguise Applied", `App icon and name will change to ${disguise}. It may take a moment to reflect on your home screen.`);
+    }, 300);
   };
 
   const toggleUninstallProtection = async () => {
@@ -233,8 +240,8 @@ export default function Settings() {
     if (pin === tempNewPin) {
       try {
         await SafeStorage.setItem('app_pin', pin);
-        showAlert("Success", "Your PIN has been updated successfully.");
         handleClose();
+        setTimeout(() => showAlert("Success", "Your PIN has been updated successfully."), 300);
       } catch (e) {
         setErrorMsg('Failed to save new PIN');
         setCurrentPinInput('');
@@ -290,8 +297,8 @@ export default function Settings() {
     if (pin === tempNewMasterPin) {
       try {
         await SafeStorage.setItem('app_master_pin', pin);
-        showAlert("Success", "Your Master PIN has been updated successfully.");
         handleMasterPinClose();
+        setTimeout(() => showAlert("Success", "Your Master PIN has been updated successfully."), 300);
       } catch (e) {
         setErrorMsg('Failed to save new Master PIN');
         setCurrentMasterPinInput('');

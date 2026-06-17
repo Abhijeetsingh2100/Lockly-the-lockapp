@@ -41,13 +41,33 @@ export default function Home() {
     title: '', 
     message: '' 
   });
+  const [wasModalVisible, setWasModalVisible] = useState(false);
 
   const showAlert = (title: string, message: string, buttons?: AlertButton[]) => {
-    setCustomAlert({ visible: true, title, message, buttons });
+    setModalVisible((isAddAppOpen) => {
+      if (isAddAppOpen) {
+        setWasModalVisible(true);
+        setTimeout(() => {
+          setCustomAlert({ visible: true, title, message, buttons });
+        }, 150);
+        return false;
+      } else {
+        setCustomAlert({ visible: true, title, message, buttons });
+        return isAddAppOpen;
+      }
+    });
   };
 
   const hideAlert = () => {
     setCustomAlert(prev => ({ ...prev, visible: false }));
+    setWasModalVisible((wasOpen) => {
+      if (wasOpen) {
+        setTimeout(() => {
+          setModalVisible(true);
+        }, 150);
+      }
+      return false;
+    });
   };
 
   const fetchApps = async () => {
@@ -85,29 +105,35 @@ export default function Home() {
     const appName = item.label || item.packageName || 'Unknown App';
     // Prevent adding same app multiple times
     if (appStates.some(app => app.name === appName)) {
-      showAlert("Already Added", `${appName} is already in your apps list.`);
+      setModalVisible(false);
+      setTimeout(() => {
+        showAlert("Already Added", `${appName} is already in your apps list.`);
+      }, 500);
       return;
     }
 
     const isEnabled = await AppStorage.checkAccessibilityPermission();
     if (!isEnabled) {
-      showAlert(
-        "Accessibility Required",
-        "Android 13+ blocks Accessibility for side-loaded apps. \n\n1. Click 'App Info' below, tap the 3 dots (⋮) in the top-right, and select 'Allow restricted settings'.\n2. Then click 'Accessibility' to turn it on.",
-        [
-          { text: "Cancel", style: "cancel" },
-          { 
-            text: "App Info", 
-            style: "default",
-            onPress: () => AppStorage.openAppInfoSettings()
-          },
-          { 
-            text: "Accessibility", 
-            style: "default",
-            onPress: () => AppStorage.openAccessibilitySettings()
-          }
-        ]
-      );
+      setModalVisible(false);
+      setTimeout(() => {
+        showAlert(
+          "Accessibility Required",
+          "Android 13+ blocks Accessibility for side-loaded apps. \n\n1. Click 'App Info' below, tap the 3 dots (⋮) in the top-right, and select 'Allow restricted settings'.\n2. Then click 'Accessibility' to turn it on.",
+          [
+            { text: "Cancel", style: "cancel" },
+            { 
+              text: "App Info", 
+              style: "default",
+              onPress: () => AppStorage.openAppInfoSettings()
+            },
+            { 
+              text: "Accessibility", 
+              style: "default",
+              onPress: () => AppStorage.openAccessibilitySettings()
+            }
+          ]
+        );
+      }, 500);
       return;
     }
 
@@ -125,6 +151,7 @@ export default function Home() {
     };
 
     setAppStates([...appStates, newApp]);
+    setModalVisible(false);
   };
 
   const handleRemoveApp = (id: string, name: string) => {
